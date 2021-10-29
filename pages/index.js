@@ -1,5 +1,6 @@
 import Head from "next/head";
-import Image from "next/image";
+import Link from "next/link";
+
 import { getProductsForHome } from "../lib/api";
 
 export default function Home({ products: { edges }, preview }) {
@@ -16,7 +17,11 @@ export default function Home({ products: { edges }, preview }) {
         <p>Recent posts</p>
         <ul>
           {edges.map(({ node }) => (
-            <li key={node.id}>{node.title}</li>
+            <li key={node.id}>
+              <Link href={`/product/${node.slug}`}>
+                <a>{node.title}</a>
+              </Link>
+            </li>
           ))}
         </ul>
       </main>
