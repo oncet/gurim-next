@@ -4,7 +4,6 @@ import Link from "next/link";
 import { getProductsForHome } from "../lib/api";
 
 export default function Home({ products: { edges }, preview }) {
-  console.log("edges", edges);
   return (
     <>
       <Head>
@@ -34,8 +33,6 @@ export default function Home({ products: { edges }, preview }) {
 
 export async function getStaticProps({ preview = false }) {
   const products = await getProductsForHome(preview);
-
-  console.log("products", products);
 
   return {
     props: { products, preview },
