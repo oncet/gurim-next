@@ -11,7 +11,7 @@ const styles = {
 
 const colors = {
   yellow: {
-    50: "#fffce5",
+    50: "#fffef6",
     100: "#fef7b9",
     200: "#fff189",
     300: "#ffeb5a",
