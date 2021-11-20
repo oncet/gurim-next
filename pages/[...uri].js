@@ -6,21 +6,16 @@ import {
   getPageByUri,
   getPostByUri,
 } from "../lib/api";
-import Layout from "../components/Layout";
 
-const createMarkup = (htmlContent) => {
-  return { __html: htmlContent };
-};
+import Layout from "../components/Layout";
+import UserContent from "../components/UserContent";
 
 export default function Nosotros({ page, preview }) {
   return (
     <>
       <Layout>
         <Heading>{page.title}</Heading>
-        <Box
-          className="user-content"
-          dangerouslySetInnerHTML={createMarkup(page.content)}
-        />
+        <UserContent content={page.content} />
       </Layout>
     </>
   );

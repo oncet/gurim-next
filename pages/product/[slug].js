@@ -5,16 +5,12 @@ import {
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbLink,
-  BreadcrumbSeparator,
 } from "@chakra-ui/react";
 
 import { getProduct, getProductsSlugs } from "../../lib/api";
+import UserContent from "../../components/UserContent";
 
 export default function Product({ product, preview }) {
-  const createMarkup = () => {
-    return { __html: product.content };
-  };
-
   return (
     <>
       <Head>
@@ -35,7 +31,7 @@ export default function Product({ product, preview }) {
           </BreadcrumbLink>
         </BreadcrumbItem>
       </Breadcrumb>
-      <div dangerouslySetInnerHTML={createMarkup()} />
+      <UserContent content={product.content} />
     </>
   );
 }
