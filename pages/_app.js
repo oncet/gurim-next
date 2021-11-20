@@ -1,10 +1,17 @@
 import { ChakraProvider, Container, extendTheme } from "@chakra-ui/react";
 import { mode } from "@chakra-ui/theme-tools";
 
+import "../wp-style.min.css";
+
 const styles = {
   global: (props) => ({
     body: {
       bg: mode("yellow.50", "gray.800")(props),
+    },
+    ".user-content": {
+      ul: {
+        marginInlineStart: "1em",
+      },
     },
   }),
 };
@@ -32,7 +39,7 @@ const theme = extendTheme({
 function MyApp({ Component, pageProps }) {
   return (
     <ChakraProvider theme={theme}>
-      <Container>
+      <Container maxW="container.lg">
         <main>
           <Component {...pageProps} />
         </main>
