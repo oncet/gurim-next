@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { Box, Heading } from "@chakra-ui/react";
 
 import {
@@ -7,16 +8,16 @@ import {
   getPostByUri,
 } from "../lib/api";
 
-import Layout from "../components/Layout";
 import UserContent from "../components/UserContent";
 
-export default function Nosotros({ page, preview }) {
+export default function Page({ page, preview }) {
   return (
     <>
-      <Layout>
-        <Heading>{page.title}</Heading>
-        <UserContent content={page.content} />
-      </Layout>
+      <Head>
+        <title>{page.title} — Gurim</title>
+      </Head>
+      <Heading>{page.title}</Heading>
+      <UserContent content={page.content} />
     </>
   );
 }

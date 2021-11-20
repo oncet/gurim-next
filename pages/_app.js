@@ -1,5 +1,6 @@
 import { ChakraProvider, Container, extendTheme } from "@chakra-ui/react";
 import { mode } from "@chakra-ui/theme-tools";
+import Layout from "../components/Layout";
 
 import "../wp-style.min.css";
 
@@ -41,7 +42,9 @@ function MyApp({ Component, pageProps }) {
     <ChakraProvider theme={theme}>
       <Container maxW="container.lg">
         <main>
-          <Component {...pageProps} />
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
         </main>
         {/* <footer>
           <p>Footer</p>
