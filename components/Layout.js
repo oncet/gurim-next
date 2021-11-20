@@ -1,5 +1,6 @@
 import Head from "next/head";
 import NextLink from "next/link";
+import NextImage from "next/image";
 import {
   Box,
   Image,
@@ -8,6 +9,8 @@ import {
   ListItem,
   Link,
 } from "@chakra-ui/react";
+
+import logo from "../public/logo.png";
 
 const Layout = ({ children }) => {
   return (
@@ -18,12 +21,11 @@ const Layout = ({ children }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Box>
-        {/* <Image
-          src={logo.sourceUrl}
-          alt={logo.altText}
-          width={logo.mediaDetails.width}
-          height={logo.mediaDetails.height}
-        /> */}
+        <Link as={NextLink} href="/">
+          <a>
+            <Image as={NextImage} src={logo} alt="Gurim logo" />
+          </a>
+        </Link>
         <Heading mb={2}>Gurim</Heading>
         <UnorderedList>
           <ListItem>
