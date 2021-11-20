@@ -3,11 +3,11 @@ import NextLink from "next/link";
 import NextImage from "next/image";
 import {
   Box,
-  Image,
   Heading,
-  UnorderedList,
-  ListItem,
+  Image,
   Link,
+  ListItem,
+  UnorderedList,
 } from "@chakra-ui/react";
 
 import logo from "../public/logo.png";
