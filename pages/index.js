@@ -1,13 +1,13 @@
-import { Heading, UnorderedList, ListItem, Container } from "@chakra-ui/react";
+import { UnorderedList, ListItem } from "@chakra-ui/react";
 import Link from "next/link";
 
-import { getGlobalData, getProductsForHome } from "../lib/api";
+import { getProductsForHome } from "../lib/api";
 import Layout from "../components/Layout";
 
-export default function Home({ globalData, products, preview }) {
+export default function Home({ products, preview }) {
   return (
     <>
-      <Layout globalData={globalData}>
+      <Layout>
         <UnorderedList>
           {products.edges.map(({ node }) => (
             <ListItem key={node.id}>
@@ -23,10 +23,9 @@ export default function Home({ globalData, products, preview }) {
 }
 
 export async function getStaticProps({ preview = false }) {
-  const globalData = await getGlobalData();
   const products = await getProductsForHome(preview);
 
   return {
-    props: { globalData, products, preview },
+    props: { products, preview },
   };
 }
