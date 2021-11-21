@@ -7,6 +7,7 @@ import {
   Link,
   ListItem,
   UnorderedList,
+  Icon,
   IconButton,
 } from "@chakra-ui/react";
 import { BsList } from "react-icons/bs";
@@ -25,7 +26,7 @@ const Header = () => {
           </a>
         </Link>
         <IconButton
-          icon={<BsList size="2em" color="rgba(0, 0, 0, 0.5)" />}
+          icon={<Icon as={BsList} w="8" h="8" color="rgba(0, 0, 0, 0.5)" />}
           variant="ghost"
           onClick={() => setIsOpen(!isOpen)}
         />
