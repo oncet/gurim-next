@@ -13,6 +13,9 @@ const styles = {
       ul: {
         marginInlineStart: "1em",
       },
+      ".blocks-gallery-grid": {
+        marginInlineStart: 0,
+      },
     },
   }),
 };
