@@ -16,6 +16,7 @@ const Layout = ({ children }) => {
       </Head>
       <Box>
         <Header />
+        <br />
         <main>{children}</main>
       </Box>
     </>

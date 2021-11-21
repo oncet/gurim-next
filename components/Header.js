@@ -31,15 +31,15 @@ const Header = () => {
         />
       </Box>
       {isOpen && (
-        <UnorderedList>
-          <ListItem>
+        <UnorderedList styleType="none" ml="0" textAlign="right">
+          <ListItem py="2">
             <Link as={NextLink} href="https://shop.gurim.com.ar/">
               <a>Tienda</a>
             </Link>
           </ListItem>
-          <ListItem>
+          <ListItem py="2">
             Catálogo
-            <UnorderedList>
+            <UnorderedList border="1px solid" display="none">
               <ListItem>
                 <Link as={NextLink} href="/category/cuadernos">
                   <a>Cuadernos</a>
@@ -62,12 +62,12 @@ const Header = () => {
               </ListItem>
             </UnorderedList>
           </ListItem>
-          <ListItem>
+          <ListItem py="2">
             <Link as={NextLink} href="/nosotros">
               <a>Gurim</a>
             </Link>
           </ListItem>
-          <ListItem>
+          <ListItem py="2">
             <Link as={NextLink} href="/contacto">
               <a>Contacto</a>
             </Link>
