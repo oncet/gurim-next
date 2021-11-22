@@ -1,5 +1,8 @@
+import { useRouter } from "next/router";
 import { ChakraProvider, Container, extendTheme } from "@chakra-ui/react";
 import { mode } from "@chakra-ui/theme-tools";
+import { motion } from "framer-motion";
+
 import Layout from "../components/Layout";
 
 import "../wp-style.min.css";
@@ -41,12 +44,24 @@ const theme = extendTheme({
 });
 
 function MyApp({ Component, pageProps }) {
+  const router = useRouter();
+
   return (
     <ChakraProvider theme={theme}>
       <Container maxW="container.lg">
         <main>
           <Layout>
-            <Component {...pageProps} />
+            <motion.div
+              key={router.pathname}
+              initial={{
+                opacity: 0,
+              }}
+              animate={{
+                opacity: 1,
+              }}
+            >
+              <Component {...pageProps} />
+            </motion.div>
           </Layout>
         </main>
         {/* <footer>
