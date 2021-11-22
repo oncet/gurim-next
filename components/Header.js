@@ -20,6 +20,10 @@ const AnimatedBox = motion(Box);
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
+  const handleClick = () => {
+    setIsOpen(false);
+  };
+
   return (
     <header>
       <Box display="flex" alignItems="center" justifyContent="space-between">
@@ -47,12 +51,12 @@ const Header = () => {
             overflow="hidden"
           >
             <UnorderedList styleType="none" ml="0" textAlign="right">
-              <ListItem py="2">
+              <ListItem onClick={handleClick} py="2">
                 <Link as={NextLink} href="https://shop.gurim.com.ar/">
                   <a>Tienda</a>
                 </Link>
               </ListItem>
-              <ListItem py="2">
+              <ListItem onClick={handleClick} py="2">
                 Catálogo
                 <UnorderedList border="1px solid" display="none">
                   <ListItem>
@@ -77,12 +81,12 @@ const Header = () => {
                   </ListItem>
                 </UnorderedList>
               </ListItem>
-              <ListItem py="2">
+              <ListItem onClick={handleClick} py="2">
                 <Link as={NextLink} href="/nosotros">
                   <a>Gurim</a>
                 </Link>
               </ListItem>
-              <ListItem py="2">
+              <ListItem onClick={handleClick} py="2">
                 <Link as={NextLink} href="/contacto">
                   <a>Contacto</a>
                 </Link>
