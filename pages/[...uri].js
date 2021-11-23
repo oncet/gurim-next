@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { Box, Heading } from "@chakra-ui/react";
+import { HStack, Heading } from "@chakra-ui/react";
 
 import {
   getPageUris,
@@ -9,6 +9,7 @@ import {
 } from "../lib/api";
 
 import UserContent from "../components/UserContent";
+import Tags from "../components/Tags";
 
 export default function Page({ page, preview }) {
   return (
@@ -16,7 +17,10 @@ export default function Page({ page, preview }) {
       <Head>
         <title>{page.title} — Gurim</title>
       </Head>
-      <Heading>{page.title}</Heading>
+      <Heading fontWeight="200" mb={2}>
+        {page.title}
+      </Heading>
+      {page.categories && <Tags tags={page.categories.nodes} />}
       <UserContent content={page.content} />
     </>
   );
