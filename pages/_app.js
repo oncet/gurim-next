@@ -8,19 +8,26 @@ import Layout from "../components/Layout";
 import "../wp-style.min.css";
 
 const styles = {
-  global: (props) => ({
-    body: {
-      bg: mode("yellow.50", "gray.800")(props),
-    },
-    ".user-content": {
-      ul: {
-        marginInlineStart: "1em",
+  global: (props) => {
+    return {
+      body: {
+        bg: mode("yellow.50", "gray.800")(props),
       },
-      ".blocks-gallery-grid": {
-        marginInlineStart: 0,
+      ".user-content": {
+        p: {
+          marginBottom: props.theme.space[4],
+        },
+        ul: {
+          marginInlineStart: props.theme.space[10],
+          marginBottom: props.theme.space[4],
+          listStyleType: "square",
+        },
+        ".blocks-gallery-grid": {
+          marginInlineStart: 0,
+        },
       },
-    },
-  }),
+    };
+  },
 };
 
 const colors = {
