@@ -12,7 +12,7 @@ export default function Product({ product, preview }) {
       <Head>
         <title>{product.title} — Gurim</title>
       </Head>
-      <Heading fontWeight="200" mb={2}>
+      <Heading fontWeight="200" mb={2} size="2xl">
         {product.title}
       </Heading>
       <Tags tags={product.categories.nodes} />
