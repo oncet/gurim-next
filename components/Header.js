@@ -51,12 +51,12 @@ const Header = () => {
             overflow="hidden"
           >
             <UnorderedList styleType="none" ml="0" textAlign="right">
-              <ListItem onClick={handleClick} py="2">
+              <ListItem py="2">
                 <Link as={NextLink} href="https://shop.gurim.com.ar/">
-                  <a>Tienda</a>
+                  <a onClick={handleClick}>Tienda</a>
                 </Link>
               </ListItem>
-              <ListItem onClick={handleClick} py="2">
+              <ListItem py="2">
                 Catálogo
                 <UnorderedList border="1px solid" display="none">
                   <ListItem>
@@ -81,14 +81,14 @@ const Header = () => {
                   </ListItem>
                 </UnorderedList>
               </ListItem>
-              <ListItem onClick={handleClick} py="2">
+              <ListItem py="2">
                 <Link as={NextLink} href="/nosotros">
-                  <a>Gurim</a>
+                  <a onClick={handleClick}>Gurim</a>
                 </Link>
               </ListItem>
-              <ListItem onClick={handleClick} py="2">
+              <ListItem py="2">
                 <Link as={NextLink} href="/contacto">
-                  <a>Contacto</a>
+                  <a onClick={handleClick}>Contacto</a>
                 </Link>
               </ListItem>
             </UnorderedList>
