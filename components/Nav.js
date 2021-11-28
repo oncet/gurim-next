@@ -24,13 +24,23 @@ const Nav = ({ handleClick }) => {
       <UnorderedList styleType="none" ml="0" textAlign="right">
         <ListItem>
           <Link as={NextLink} href="https://shop.gurim.com.ar/">
-            <chakra.a display="inline-block" py="2" onClick={handleClick}>
+            <chakra.a
+              cursor="pointer"
+              display="inline-block"
+              py="2"
+              onClick={handleClick}
+            >
               Tienda
             </chakra.a>
           </Link>
         </ListItem>
         <ListItem>
-          <chakra.a display="inline-block" py="2" onClick={handleSubmenuClick}>
+          <chakra.a
+            cursor="pointer"
+            display="inline-block"
+            py="2"
+            onClick={handleSubmenuClick}
+          >
             Catálogo
           </chakra.a>
           <AnimatePresence>
@@ -52,6 +62,7 @@ const Nav = ({ handleClick }) => {
                 <ListItem>
                   <Link as={NextLink} href="/category/cuadernos">
                     <chakra.a
+                      cursor="pointer"
                       display="inline-block"
                       py="2"
                       px="4"
@@ -64,6 +75,7 @@ const Nav = ({ handleClick }) => {
                 <ListItem>
                   <Link as={NextLink} href="/category/bolsos">
                     <chakra.a
+                      cursor="pointer"
                       display="inline-block"
                       py="2"
                       px="4"
@@ -76,6 +88,7 @@ const Nav = ({ handleClick }) => {
                 <ListItem>
                   <Link as={NextLink} href="/category/accesorios">
                     <chakra.a
+                      cursor="pointer"
                       display="inline-block"
                       py="2"
                       px="4"
@@ -88,6 +101,7 @@ const Nav = ({ handleClick }) => {
                 <ListItem>
                   <Link as={NextLink} href="/category/delantales">
                     <chakra.a
+                      cursor="pointer"
                       display="inline-block"
                       py="2"
                       px="4"
@@ -103,14 +117,24 @@ const Nav = ({ handleClick }) => {
         </ListItem>
         <ListItem>
           <Link as={NextLink} href="/nosotros">
-            <chakra.a display="inline-block" py="2" onClick={handleClick}>
+            <chakra.a
+              cursor="pointer"
+              display="inline-block"
+              py="2"
+              onClick={handleClick}
+            >
               Gurim
             </chakra.a>
           </Link>
         </ListItem>
         <ListItem>
           <Link as={NextLink} href="/contacto">
-            <chakra.a display="inline-block" py="2" onClick={handleClick}>
+            <chakra.a
+              cursor="pointer"
+              display="inline-block"
+              py="2"
+              onClick={handleClick}
+            >
               Contacto
             </chakra.a>
           </Link>
