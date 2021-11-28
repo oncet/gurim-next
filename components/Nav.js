@@ -12,6 +12,12 @@ import { AnimatePresence, motion } from "framer-motion";
 
 const AnimatedUnorderedList = motion(UnorderedList);
 
+const ChakraA = ({ children, ...props }) => (
+  <chakra.a cursor="pointer" display="inline-block" py="2" {...props}>
+    {children}
+  </chakra.a>
+);
+
 const Nav = ({ handleClick }) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -24,25 +30,11 @@ const Nav = ({ handleClick }) => {
       <UnorderedList styleType="none" ml="0" textAlign="right">
         <ListItem>
           <Link as={NextLink} href="https://shop.gurim.com.ar/">
-            <chakra.a
-              cursor="pointer"
-              display="inline-block"
-              py="2"
-              onClick={handleClick}
-            >
-              Tienda
-            </chakra.a>
+            <ChakraA onClick={handleClick}>Tienda</ChakraA>
           </Link>
         </ListItem>
         <ListItem>
-          <chakra.a
-            cursor="pointer"
-            display="inline-block"
-            py="2"
-            onClick={handleSubmenuClick}
-          >
-            Catálogo
-          </chakra.a>
+          <ChakraA onClick={handleSubmenuClick}>Catálogo</ChakraA>
           <AnimatePresence>
             {isOpen && (
               <AnimatedUnorderedList
@@ -61,54 +53,30 @@ const Nav = ({ handleClick }) => {
               >
                 <ListItem>
                   <Link as={NextLink} href="/category/cuadernos">
-                    <chakra.a
-                      cursor="pointer"
-                      display="inline-block"
-                      py="2"
-                      px="4"
-                      onClick={handleClick}
-                    >
+                    <ChakraA px="4" onClick={handleClick}>
                       Cuadernos
-                    </chakra.a>
+                    </ChakraA>
                   </Link>
                 </ListItem>
                 <ListItem>
                   <Link as={NextLink} href="/category/bolsos">
-                    <chakra.a
-                      cursor="pointer"
-                      display="inline-block"
-                      py="2"
-                      px="4"
-                      onClick={handleClick}
-                    >
+                    <ChakraA px="4" onClick={handleClick}>
                       Bolsos
-                    </chakra.a>
+                    </ChakraA>
                   </Link>
                 </ListItem>
                 <ListItem>
                   <Link as={NextLink} href="/category/accesorios">
-                    <chakra.a
-                      cursor="pointer"
-                      display="inline-block"
-                      py="2"
-                      px="4"
-                      onClick={handleClick}
-                    >
+                    <ChakraA px="4" onClick={handleClick}>
                       Accesorios
-                    </chakra.a>
+                    </ChakraA>
                   </Link>
                 </ListItem>
                 <ListItem>
                   <Link as={NextLink} href="/category/delantales">
-                    <chakra.a
-                      cursor="pointer"
-                      display="inline-block"
-                      py="2"
-                      px="4"
-                      onClick={handleClick}
-                    >
+                    <ChakraA px="4" onClick={handleClick}>
                       Delantales
-                    </chakra.a>
+                    </ChakraA>
                   </Link>
                 </ListItem>
               </AnimatedUnorderedList>
@@ -117,26 +85,12 @@ const Nav = ({ handleClick }) => {
         </ListItem>
         <ListItem>
           <Link as={NextLink} href="/nosotros">
-            <chakra.a
-              cursor="pointer"
-              display="inline-block"
-              py="2"
-              onClick={handleClick}
-            >
-              Gurim
-            </chakra.a>
+            <ChakraA onClick={handleClick}>Gurim</ChakraA>
           </Link>
         </ListItem>
         <ListItem>
           <Link as={NextLink} href="/contacto">
-            <chakra.a
-              cursor="pointer"
-              display="inline-block"
-              py="2"
-              onClick={handleClick}
-            >
-              Contacto
-            </chakra.a>
+            <ChakraA onClick={handleClick}>Contacto</ChakraA>
           </Link>
         </ListItem>
       </UnorderedList>
