@@ -1,15 +1,7 @@
 import { useState } from "react";
 import NextLink from "next/link";
 import NextImage from "next/image";
-import {
-  Box,
-  Image,
-  Link,
-  ListItem,
-  UnorderedList,
-  Icon,
-  IconButton,
-} from "@chakra-ui/react";
+import { Box, Image, Link, Icon, IconButton } from "@chakra-ui/react";
 import { BsList } from "react-icons/bs";
 import { AnimatePresence, motion } from "framer-motion";
 
