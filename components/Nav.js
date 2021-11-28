@@ -23,7 +23,7 @@ const Nav = ({ handleClick }) => {
     <chakra.nav>
       <UnorderedList styleType="none" ml="0" textAlign="right">
         <ListItem>
-          <Link as={NextLink} href="https://shop.gurim.com.ar/">
+          <Link as={NextLink} passHref href="https://shop.gurim.com.ar/">
             <ChakraA onClick={handleClick}>Tienda</ChakraA>
           </Link>
         </ListItem>
@@ -49,28 +49,28 @@ const Nav = ({ handleClick }) => {
                   py="2"
                 >
                   <ListItem>
-                    <Link as={NextLink} href="/category/cuadernos">
+                    <Link as={NextLink} passHref href="/category/cuadernos">
                       <ChakraA py="1" px="6" onClick={handleClick}>
                         Cuadernos
                       </ChakraA>
                     </Link>
                   </ListItem>
                   <ListItem>
-                    <Link as={NextLink} href="/category/bolsos">
+                    <Link as={NextLink} passHref href="/category/bolsos">
                       <ChakraA py="1" px="6" onClick={handleClick}>
                         Bolsos
                       </ChakraA>
                     </Link>
                   </ListItem>
                   <ListItem>
-                    <Link as={NextLink} href="/category/accesorios">
+                    <Link as={NextLink} passHref href="/category/accesorios">
                       <ChakraA py="1" px="6" onClick={handleClick}>
                         Accesorios
                       </ChakraA>
                     </Link>
                   </ListItem>
                   <ListItem>
-                    <Link as={NextLink} href="/category/delantales">
+                    <Link as={NextLink} passHref href="/category/delantales">
                       <ChakraA py="1" px="6" onClick={handleClick}>
                         Delantales
                       </ChakraA>
@@ -82,12 +82,12 @@ const Nav = ({ handleClick }) => {
           </AnimatePresence>
         </ListItem>
         <ListItem>
-          <Link as={NextLink} href="/nosotros">
+          <Link as={NextLink} passHref href="/nosotros">
             <ChakraA onClick={handleClick}>Gurim</ChakraA>
           </Link>
         </ListItem>
         <ListItem>
-          <Link as={NextLink} href="/contacto">
+          <Link as={NextLink} passHref href="/contacto">
             <ChakraA onClick={handleClick}>Contacto</ChakraA>
           </Link>
         </ListItem>
