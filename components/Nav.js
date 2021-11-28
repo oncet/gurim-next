@@ -1,16 +1,10 @@
 import { useState } from "react";
 import NextLink from "next/link";
-import {
-  chakra,
-  Button,
-  Link,
-  ListItem,
-  UnorderedList,
-} from "@chakra-ui/react";
+import { chakra, Box, Link, ListItem, UnorderedList } from "@chakra-ui/react";
 0;
 import { AnimatePresence, motion } from "framer-motion";
 
-const AnimatedUnorderedList = motion(UnorderedList);
+const AnimatedBox = motion(Box);
 
 const ChakraA = ({ children, ...props }) => (
   <chakra.a cursor="pointer" display="inline-block" py="2" {...props}>
@@ -37,7 +31,7 @@ const Nav = ({ handleClick }) => {
           <ChakraA onClick={handleSubmenuClick}>Catálogo</ChakraA>
           <AnimatePresence>
             {isOpen && (
-              <AnimatedUnorderedList
+              <AnimatedBox
                 initial={{ height: 0 }}
                 animate={{ height: "auto" }}
                 transition={{
@@ -45,41 +39,45 @@ const Nav = ({ handleClick }) => {
                   ease: "easeOut",
                 }}
                 exit={{ height: 0 }}
-                backgroundColor="black"
-                color="white"
-                maxWidth="160px"
-                ml="auto"
                 overflow="hidden"
               >
-                <ListItem>
-                  <Link as={NextLink} href="/category/cuadernos">
-                    <ChakraA px="4" onClick={handleClick}>
-                      Cuadernos
-                    </ChakraA>
-                  </Link>
-                </ListItem>
-                <ListItem>
-                  <Link as={NextLink} href="/category/bolsos">
-                    <ChakraA px="4" onClick={handleClick}>
-                      Bolsos
-                    </ChakraA>
-                  </Link>
-                </ListItem>
-                <ListItem>
-                  <Link as={NextLink} href="/category/accesorios">
-                    <ChakraA px="4" onClick={handleClick}>
-                      Accesorios
-                    </ChakraA>
-                  </Link>
-                </ListItem>
-                <ListItem>
-                  <Link as={NextLink} href="/category/delantales">
-                    <ChakraA px="4" onClick={handleClick}>
-                      Delantales
-                    </ChakraA>
-                  </Link>
-                </ListItem>
-              </AnimatedUnorderedList>
+                <UnorderedList
+                  backgroundColor="black"
+                  color="white"
+                  maxWidth="160px"
+                  ml="auto"
+                  py="2"
+                >
+                  <ListItem>
+                    <Link as={NextLink} href="/category/cuadernos">
+                      <ChakraA py="1" px="6" onClick={handleClick}>
+                        Cuadernos
+                      </ChakraA>
+                    </Link>
+                  </ListItem>
+                  <ListItem>
+                    <Link as={NextLink} href="/category/bolsos">
+                      <ChakraA py="1" px="6" onClick={handleClick}>
+                        Bolsos
+                      </ChakraA>
+                    </Link>
+                  </ListItem>
+                  <ListItem>
+                    <Link as={NextLink} href="/category/accesorios">
+                      <ChakraA py="1" px="6" onClick={handleClick}>
+                        Accesorios
+                      </ChakraA>
+                    </Link>
+                  </ListItem>
+                  <ListItem>
+                    <Link as={NextLink} href="/category/delantales">
+                      <ChakraA py="1" px="6" onClick={handleClick}>
+                        Delantales
+                      </ChakraA>
+                    </Link>
+                  </ListItem>
+                </UnorderedList>
+              </AnimatedBox>
             )}
           </AnimatePresence>
         </ListItem>
