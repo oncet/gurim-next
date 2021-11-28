@@ -22,13 +22,17 @@ const Nav = ({ handleClick }) => {
   return (
     <chakra.nav>
       <UnorderedList styleType="none" ml="0" textAlign="right">
-        <ListItem py="2">
+        <ListItem>
           <Link as={NextLink} href="https://shop.gurim.com.ar/">
-            <a onClick={handleClick}>Tienda</a>
+            <chakra.a display="inline-block" py="2" onClick={handleClick}>
+              Tienda
+            </chakra.a>
           </Link>
         </ListItem>
-        <ListItem py="2">
-          <a onClick={handleSubmenuClick}>Catálogo</a>
+        <ListItem>
+          <chakra.a display="inline-block" py="2" onClick={handleSubmenuClick}>
+            Catálogo
+          </chakra.a>
           <AnimatePresence>
             {isOpen && (
               <AnimatedUnorderedList
@@ -43,41 +47,72 @@ const Nav = ({ handleClick }) => {
                 color="white"
                 maxWidth="160px"
                 ml="auto"
-                mt="2"
                 overflow="hidden"
               >
-                <ListItem py="2" px="4">
+                <ListItem>
                   <Link as={NextLink} href="/category/cuadernos">
-                    <a onClick={handleClick}>Cuadernos</a>
+                    <chakra.a
+                      display="inline-block"
+                      py="2"
+                      px="4"
+                      onClick={handleClick}
+                    >
+                      Cuadernos
+                    </chakra.a>
                   </Link>
                 </ListItem>
-                <ListItem py="2" px="4">
+                <ListItem>
                   <Link as={NextLink} href="/category/bolsos">
-                    <a onClick={handleClick}>Bolsos</a>
+                    <chakra.a
+                      display="inline-block"
+                      py="2"
+                      px="4"
+                      onClick={handleClick}
+                    >
+                      Bolsos
+                    </chakra.a>
                   </Link>
                 </ListItem>
-                <ListItem py="2" px="4">
+                <ListItem>
                   <Link as={NextLink} href="/category/accesorios">
-                    <a onClick={handleClick}>Accesorios</a>
+                    <chakra.a
+                      display="inline-block"
+                      py="2"
+                      px="4"
+                      onClick={handleClick}
+                    >
+                      Accesorios
+                    </chakra.a>
                   </Link>
                 </ListItem>
-                <ListItem py="2" px="4">
+                <ListItem>
                   <Link as={NextLink} href="/category/delantales">
-                    <a onClick={handleClick}>Delantales</a>
+                    <chakra.a
+                      display="inline-block"
+                      py="2"
+                      px="4"
+                      onClick={handleClick}
+                    >
+                      Delantales
+                    </chakra.a>
                   </Link>
                 </ListItem>
               </AnimatedUnorderedList>
             )}
           </AnimatePresence>
         </ListItem>
-        <ListItem py="2">
+        <ListItem>
           <Link as={NextLink} href="/nosotros">
-            <a onClick={handleClick}>Gurim</a>
+            <chakra.a display="inline-block" py="2" onClick={handleClick}>
+              Gurim
+            </chakra.a>
           </Link>
         </ListItem>
-        <ListItem py="2">
+        <ListItem>
           <Link as={NextLink} href="/contacto">
-            <a onClick={handleClick}>Contacto</a>
+            <chakra.a display="inline-block" py="2" onClick={handleClick}>
+              Contacto
+            </chakra.a>
           </Link>
         </ListItem>
       </UnorderedList>
