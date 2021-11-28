@@ -21,7 +21,7 @@ const Header = () => {
     <header>
       <Box display="flex" alignItems="center" justifyContent="space-between">
         <Link as={NextLink} href="/">
-          <a>
+          <a onClick={handleClick}>
             <Image as={NextImage} src={logo} alt="Gurim logo" />
           </a>
         </Link>
