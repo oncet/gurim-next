@@ -1,16 +1,16 @@
-import { useState } from "react";
+import { forwardRef, useState } from "react";
 import NextLink from "next/link";
 import { chakra, Box, Link, ListItem, UnorderedList } from "@chakra-ui/react";
-0;
 import { AnimatePresence, motion } from "framer-motion";
 
 const AnimatedBox = motion(Box);
 
-const ChakraA = ({ children, ...props }) => (
-  <chakra.a cursor="pointer" display="inline-block" py="2" {...props}>
+const ChakraA = forwardRef(({ children, ...props }, ref) => (
+  <chakra.a cursor="pointer" display="inline-block" py="2" {...props} ref={ref}>
     {children}
   </chakra.a>
-);
+));
+ChakraA.displayName = "ChakraA";
 
 const Nav = ({ handleClick }) => {
   const [isOpen, setIsOpen] = useState(false);
