@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import NextLink from "next/link";
 import NextImage from "next/image";
+import { useRouter } from "next/router";
 import { Box, Image, Link, Icon, IconButton } from "@chakra-ui/react";
 import { BsList } from "react-icons/bs";
 import { AnimatePresence, motion } from "framer-motion";
@@ -12,16 +13,17 @@ const AnimatedBox = motion(Box);
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const router = useRouter();
 
-  const handleClick = () => {
+  useEffect(() => {
     setIsOpen(false);
-  };
+  }, [router.asPath]);
 
   return (
     <header>
       <Box display="flex" alignItems="center" justifyContent="space-between">
         <Link as={NextLink} href="/">
-          <a onClick={handleClick}>
+          <a>
             <Image as={NextImage} src={logo} alt="Gurim logo" />
           </a>
         </Link>
@@ -43,7 +45,7 @@ const Header = () => {
             exit={{ height: 0 }}
             overflow="hidden"
           >
-            <Nav handleClick={handleClick} />
+            <Nav />
           </AnimatedBox>
         )}
       </AnimatePresence>

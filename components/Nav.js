@@ -12,7 +12,7 @@ const ChakraA = forwardRef(({ children, ...props }, ref) => (
 ));
 ChakraA.displayName = "ChakraA";
 
-const Nav = ({ handleClick }) => {
+const Nav = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleSubmenuClick = () => {
@@ -24,7 +24,7 @@ const Nav = ({ handleClick }) => {
       <UnorderedList styleType="none" ml="0" textAlign="right">
         <ListItem>
           <Link as={NextLink} passHref href="https://shop.gurim.com.ar/">
-            <ChakraA onClick={handleClick}>Tienda</ChakraA>
+            <ChakraA>Tienda</ChakraA>
           </Link>
         </ListItem>
         <ListItem>
@@ -50,28 +50,28 @@ const Nav = ({ handleClick }) => {
                 >
                   <ListItem>
                     <Link as={NextLink} passHref href="/category/cuadernos">
-                      <ChakraA py="1" px="6" onClick={handleClick}>
+                      <ChakraA py="1" px="6">
                         Cuadernos
                       </ChakraA>
                     </Link>
                   </ListItem>
                   <ListItem>
                     <Link as={NextLink} passHref href="/category/bolsos">
-                      <ChakraA py="1" px="6" onClick={handleClick}>
+                      <ChakraA py="1" px="6">
                         Bolsos
                       </ChakraA>
                     </Link>
                   </ListItem>
                   <ListItem>
                     <Link as={NextLink} passHref href="/category/accesorios">
-                      <ChakraA py="1" px="6" onClick={handleClick}>
+                      <ChakraA py="1" px="6">
                         Accesorios
                       </ChakraA>
                     </Link>
                   </ListItem>
                   <ListItem>
                     <Link as={NextLink} passHref href="/category/delantales">
-                      <ChakraA py="1" px="6" onClick={handleClick}>
+                      <ChakraA py="1" px="6">
                         Delantales
                       </ChakraA>
                     </Link>
@@ -83,12 +83,12 @@ const Nav = ({ handleClick }) => {
         </ListItem>
         <ListItem>
           <Link as={NextLink} passHref href="/nosotros">
-            <ChakraA onClick={handleClick}>Gurim</ChakraA>
+            <ChakraA>Gurim</ChakraA>
           </Link>
         </ListItem>
         <ListItem>
           <Link as={NextLink} passHref href="/contacto">
-            <ChakraA onClick={handleClick}>Contacto</ChakraA>
+            <ChakraA>Contacto</ChakraA>
           </Link>
         </ListItem>
       </UnorderedList>
