@@ -1,16 +1,12 @@
 import Head from "next/head";
 import Link from "next/link";
-import {
-  Heading,
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbSeparator,
-} from "@chakra-ui/react";
+import NextImage from "next/image";
+import { Heading, Image, List, ListItem } from "@chakra-ui/react";
 
 import { getCategory, getCategoriesSlugs } from "../../lib/api";
 
 export default function Category({ category, preview }) {
+  console.log("category", category);
   return (
     <>
       <Head>
@@ -21,6 +17,19 @@ export default function Category({ category, preview }) {
       <Heading fontWeight="200" mb={2} size="2xl">
         {category.name}
       </Heading>
+      <List>
+        {category.products.edges.map(({ node }) => (
+          <ListItem key={node.slug}>
+            <NextImage
+              as={Image}
+              src={node.featuredImage.node.sourceUrl}
+              alt={node.title}
+              width={350}
+              height={350}
+            />
+          </ListItem>
+        ))}
+      </List>
     </>
   );
 }
