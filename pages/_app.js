@@ -59,7 +59,7 @@ function MyApp({ Component, pageProps }) {
         <main>
           <Layout>
             <motion.div
-              key={router.pathname}
+              key={router.asPath}
               initial={{
                 opacity: 0,
               }}
