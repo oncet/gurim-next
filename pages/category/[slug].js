@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Head from "next/head";
 import NextLink from "next/link";
 import NextImage from "next/image";
@@ -11,9 +12,11 @@ import {
   Grid,
   GridItem,
 } from "@chakra-ui/react";
+import { motion } from "framer-motion";
 
 import { getCategory, getCategoriesSlugs } from "../../lib/api";
-import { useState } from "react";
+
+const AnimatedGridItem = motion(GridItem);
 
 export default function Category({ category, preview }) {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -59,7 +62,15 @@ export default function Category({ category, preview }) {
             gap={6}
           >
             {[...category.products.edges, ...moreResults].map(({ node }) => (
-              <GridItem key={node.slug}>
+              <AnimatedGridItem
+                key={node.slug}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{
+                  duration: 0.6,
+                  ease: "easeOut",
+                }}
+              >
                 <Link as={NextLink} href={`/product/${node.slug}`}>
                   <a>
                     <NextImage
@@ -73,7 +84,7 @@ export default function Category({ category, preview }) {
                     <Text>{node.title}</Text>
                   </a>
                 </Link>
-              </GridItem>
+              </AnimatedGridItem>
             ))}
           </Grid>
           <Center mt="4">
