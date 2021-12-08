@@ -14,7 +14,7 @@ const Layout = ({ children }) => {
         <meta name="description" content="Author of handcrafted products" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Box>
+      <Box pb="4">
         <Header />
         <br />
         <main>{children}</main>
