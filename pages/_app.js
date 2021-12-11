@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import Layout from "../components/Layout";
 
 import "../wp-style.min.css";
+import Footer from "../components/Footer";
 
 const styles = {
   global: (props) => {
@@ -86,9 +87,7 @@ function MyApp({ Component, pageProps }) {
             </motion.div>
           </Layout>
         </main>
-        {/* <footer>
-          <p>Footer</p>
-        </footer> */}
+        <Footer />
       </Container>
     </ChakraProvider>
   );
