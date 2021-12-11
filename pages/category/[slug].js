@@ -87,17 +87,14 @@ export default function Category({ category, preview }) {
               </AnimatedGridItem>
             ))}
           </Grid>
-          {category.products.pageInfo.hasNextPage && (
+          {hasNextPage && (
             <Center mt="4">
               <Button
                 isLoading={isSubmitting}
                 variant="ghost"
                 onClick={showMoreHandler}
-                disabled={isSubmitting || !hasNextPage}
+                disabled={isSubmitting}
                 fontWeight="400"
-                title={
-                  !hasNextPage && "No hay mas resultados para esta categoría"
-                }
               >
                 Mostrar mas
               </Button>
