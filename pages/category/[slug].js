@@ -87,19 +87,22 @@ export default function Category({ category, preview }) {
               </AnimatedGridItem>
             ))}
           </Grid>
-          <Center mt="4">
-            <Button
-              isLoading={isSubmitting}
-              variant="outline"
-              onClick={showMoreHandler}
-              disabled={isSubmitting || !hasNextPage}
-              title={
-                !hasNextPage && "No hay mas resultados para esta categoría"
-              }
-            >
-              Mostrar mas
-            </Button>
-          </Center>
+          {category.products.pageInfo.hasNextPage && (
+            <Center mt="4">
+              <Button
+                isLoading={isSubmitting}
+                variant="ghost"
+                onClick={showMoreHandler}
+                disabled={isSubmitting || !hasNextPage}
+                fontWeight="400"
+                title={
+                  !hasNextPage && "No hay mas resultados para esta categoría"
+                }
+              >
+                Mostrar mas
+              </Button>
+            </Center>
+          )}
         </>
       )}
     </>
