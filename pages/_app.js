@@ -25,6 +25,21 @@ const styles = {
         ".blocks-gallery-grid": {
           marginInlineStart: 0,
         },
+        "@media screen and (max-width: 30em)": {
+          ".blocks-gallery-item": {
+            width: "100%",
+            marginRight: 0,
+          },
+        },
+        "@media screen and (max-width: 48em)": {
+          "figure.alignleft": {
+            width: "100%",
+            marginRight: 0,
+          },
+          img: {
+            width: "100%",
+          },
+        },
       },
     };
   },
