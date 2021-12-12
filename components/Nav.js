@@ -39,21 +39,23 @@ const Nav = () => {
           <AnimatePresence>
             {isOpen && (
               <AnimatedBox
-                initial={{ height: 0 }}
-                animate={{ height: "auto" }}
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: "auto", opacity: 1 }}
                 transition={{
                   duration: 0.3,
                   ease: "easeOut",
                 }}
-                exit={{ height: 0 }}
+                exit={{ height: 0, opacity: 0 }}
                 overflow="hidden"
+                position={["relative", "absolute"]}
               >
                 <UnorderedList
                   backgroundColor="black"
                   color="white"
-                  maxWidth="160px"
-                  ml="auto"
+                  width="160px"
                   py="2"
+                  ml={["auto", 0]}
+                  textAlign={["right", "left"]}
                 >
                   <ListItem>
                     <Link as={NextLink} passHref href="/category/cuadernos">

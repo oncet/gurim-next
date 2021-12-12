@@ -49,13 +49,13 @@ const Header = () => {
         <AnimatePresence>
           {isOpen && (
             <AnimatedBox
-              initial={{ height: 0 }}
-              animate={{ height: "auto" }}
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
               transition={{
                 duration: 0.3,
                 ease: "easeOut",
               }}
-              exit={{ height: 0 }}
+              exit={{ height: 0, opacity: 0 }}
               overflow="hidden"
             >
               <Nav />
