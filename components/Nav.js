@@ -1,5 +1,6 @@
-import { forwardRef, useState } from "react";
+import { useEffect, forwardRef, useState } from "react";
 import NextLink from "next/link";
+import { useRouter } from "next/router";
 import { chakra, Box, Link, ListItem, UnorderedList } from "@chakra-ui/react";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -14,6 +15,11 @@ ChakraA.displayName = "ChakraA";
 
 const Nav = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const router = useRouter();
+
+  useEffect(() => {
+    setIsOpen(false);
+  }, [router.asPath]);
 
   const handleSubmenuClick = () => {
     setIsOpen(!isOpen);
@@ -48,6 +54,7 @@ const Nav = () => {
                 exit={{ height: 0, opacity: 0 }}
                 overflow="hidden"
                 position={["relative", "absolute"]}
+                zIndex="1"
               >
                 <UnorderedList
                   backgroundColor="black"
