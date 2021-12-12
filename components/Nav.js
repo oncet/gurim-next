@@ -8,6 +8,7 @@ import {
   ListItem,
   UnorderedList,
   useOutsideClick,
+  useBreakpointValue,
 } from "@chakra-ui/react";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -24,6 +25,8 @@ const Nav = () => {
   const ref = useRef();
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
+
+  const duration = useBreakpointValue([0.3, 0.2]);
 
   useEffect(() => {
     setIsOpen(false);
@@ -53,7 +56,7 @@ const Nav = () => {
             <ChakraA>Tienda</ChakraA>
           </Link>
         </ListItem>
-        <ListItem>
+        <ListItem ref={ref}>
           <ChakraA onClick={handleSubmenuClick}>Catálogo</ChakraA>
           <AnimatePresence>
             {isOpen && (
@@ -61,14 +64,13 @@ const Nav = () => {
                 initial={{ height: 0, opacity: 0 }}
                 animate={{ height: "auto", opacity: 1 }}
                 transition={{
-                  duration: 0.3,
+                  duration,
                   ease: "easeOut",
                 }}
                 exit={{ height: 0, opacity: 0 }}
                 overflow="hidden"
                 position={["relative", "absolute"]}
                 zIndex="1"
-                ref={ref}
               >
                 <UnorderedList
                   backgroundColor="black"
