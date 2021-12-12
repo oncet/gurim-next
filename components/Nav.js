@@ -21,7 +21,14 @@ const Nav = () => {
 
   return (
     <chakra.nav>
-      <UnorderedList styleType="none" ml="0" textAlign="right">
+      <UnorderedList
+        styleType="none"
+        textAlign="right"
+        display="flex"
+        flexDirection={["column", "row"]}
+        gridGap={[0, 6]}
+        justifyContent="flex-end"
+      >
         <ListItem>
           <Link as={NextLink} passHref href="https://shop.gurim.com.ar/">
             <ChakraA>Tienda</ChakraA>

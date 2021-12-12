@@ -15,7 +15,6 @@ const Footer = () => {
       <nav>
         <UnorderedList
           styleType="none"
-          ml="0"
           textAlign="right"
           display="flex"
           flexDirection={["column", "row"]}

@@ -6,7 +6,11 @@ const UserContent = ({ content }) => {
   };
 
   return (
-    <Box className="user-content" dangerouslySetInnerHTML={createMarkup()} />
+    <Box
+      className="user-content"
+      overflow="auto"
+      dangerouslySetInnerHTML={createMarkup()}
+    />
   );
 };
 
