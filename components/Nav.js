@@ -1,7 +1,14 @@
-import { useEffect, forwardRef, useState } from "react";
+import { useEffect, forwardRef, useState, useRef } from "react";
 import NextLink from "next/link";
 import { useRouter } from "next/router";
-import { chakra, Box, Link, ListItem, UnorderedList } from "@chakra-ui/react";
+import {
+  chakra,
+  Box,
+  Link,
+  ListItem,
+  UnorderedList,
+  useOutsideClick,
+} from "@chakra-ui/react";
 import { AnimatePresence, motion } from "framer-motion";
 
 const AnimatedBox = motion(Box);
@@ -14,12 +21,18 @@ const ChakraA = forwardRef(({ children, ...props }, ref) => (
 ChakraA.displayName = "ChakraA";
 
 const Nav = () => {
+  const ref = useRef();
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
     setIsOpen(false);
   }, [router.asPath]);
+
+  useOutsideClick({
+    ref,
+    handler: () => setIsOpen(false),
+  });
 
   const handleSubmenuClick = () => {
     setIsOpen(!isOpen);
@@ -55,6 +68,7 @@ const Nav = () => {
                 overflow="hidden"
                 position={["relative", "absolute"]}
                 zIndex="1"
+                ref={ref}
               >
                 <UnorderedList
                   backgroundColor="black"
