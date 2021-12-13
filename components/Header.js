@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 import NextLink from "next/link";
-import NextImage from "next/image";
+import Image from "next/image";
 import { useRouter } from "next/router";
 import {
   Box,
-  Image,
   Link,
   Icon,
   IconButton,
@@ -32,7 +31,7 @@ const Header = () => {
       <Box display="flex" alignItems="center" justifyContent="space-between">
         <Link as={NextLink} href="/">
           <a>
-            <Image as={NextImage} src={logo} alt="Gurim logo" />
+            <Image src={logo} alt="Gurim logo" />
           </a>
         </Link>
         {isMobile ? (
