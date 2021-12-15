@@ -23,6 +23,9 @@ const styles = {
           marginBottom: props.theme.space[4],
           listStyleType: "square",
         },
+        "figure img": {
+          borderRadius: props.theme.radii.md,
+        },
         ".blocks-gallery-grid": {
           marginInlineStart: 0,
         },
@@ -32,6 +35,7 @@ const styles = {
         },
         ".wp-block-image img": {
           marginBottom: 2,
+          borderRadius: props.theme.radii.md,
         },
         [`@media screen and (max-width: ${props.theme.breakpoints.sm})`]: {
           ".blocks-gallery-item": {
