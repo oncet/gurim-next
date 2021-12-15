@@ -26,13 +26,20 @@ const styles = {
         ".blocks-gallery-grid": {
           marginInlineStart: 0,
         },
-        "@media screen and (max-width: 30em)": {
+        ".wp-block-image, .wp-block-image figure": {
+          marginTop: 0,
+          marginBottom: 0,
+        },
+        ".wp-block-image img": {
+          marginBottom: 2,
+        },
+        [`@media screen and (max-width: ${props.theme.breakpoints.sm})`]: {
           ".blocks-gallery-item": {
             width: "100%",
             marginRight: 0,
           },
         },
-        "@media screen and (max-width: 48em)": {
+        [`@media screen and (max-width: ${props.theme.breakpoints.md})`]: {
           "figure.alignleft": {
             width: "100%",
             marginRight: 0,
