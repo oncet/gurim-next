@@ -50,6 +50,7 @@ const Nav = () => {
         flexDirection={["column", "row"]}
         gridGap={[0, 6]}
         justifyContent="flex-end"
+        ml="0"
       >
         <ListItem>
           <Link as={NextLink} passHref href="https://shop.gurim.com.ar/">
@@ -57,7 +58,7 @@ const Nav = () => {
           </Link>
         </ListItem>
         <ListItem ref={ref}>
-          <ChakraA onClick={handleSubmenuClick}>Catálogo</ChakraA>
+          <ChakraA onClick={handleSubmenuClick}>Blog</ChakraA>
           <AnimatePresence>
             {isOpen && (
               <AnimatedBox
@@ -71,10 +72,14 @@ const Nav = () => {
                 overflow="hidden"
                 position={["relative", "absolute"]}
                 zIndex="1"
+                boxShadow={[null, "md"]}
+                borderRight={["1px solid", null]}
+                borderColor="gray.200"
+                rounded={[null, "md"]}
               >
                 <UnorderedList
-                  backgroundColor="black"
-                  color="white"
+                  backgroundColor="yellow.50"
+                  listStyleType="none"
                   width="160px"
                   py="2"
                   ml={["auto", 0]}
