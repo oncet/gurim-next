@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
-import { HStack, Heading } from "@chakra-ui/react";
+import { HStack, Heading, Stack } from "@chakra-ui/react";
 
 import { getProduct, getProductsSlugs } from "../../lib/api";
 import UserContent from "../../components/UserContent";
@@ -12,11 +12,13 @@ export default function Product({ product, preview }) {
       <Head>
         <title>{product.title} — Gurim</title>
       </Head>
-      <Heading fontWeight="200" mb="1" size="2xl">
-        {product.title}
-      </Heading>
-      <Tags tags={product.categories.nodes} />
-      <UserContent content={product.content} />
+      <Stack spacing="4">
+        <Heading fontWeight="200" size="2xl">
+          {product.title}
+        </Heading>
+        <Tags tags={product.categories.nodes} />
+        <UserContent content={product.content} />
+      </Stack>
     </>
   );
 }

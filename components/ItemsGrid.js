@@ -2,6 +2,7 @@ import { useState } from "react";
 import NextLink from "next/link";
 import NextImage from "next/image";
 import {
+  Box,
   Button,
   Center,
   Text,
@@ -54,22 +55,23 @@ const ItemsGrid = ({ initialItems, slug }) => {
           >
             <Link as={NextLink} href={`/product/${node.slug}`}>
               <a>
-                <NextImage
-                  as={Image}
-                  src={node.featuredImage.node.sourceUrl}
-                  alt={node.title}
-                  width={350}
-                  height={350}
-                  layout="responsive"
-                />
-                <Text>{node.title}</Text>
+                <Box rounded="md" overflow="hidden">
+                  <NextImage
+                    src={node.featuredImage.node.sourceUrl}
+                    alt={node.title}
+                    width={350}
+                    height={350}
+                    layout="responsive"
+                  />
+                </Box>
+                <Text mt="2">{node.title}</Text>
               </a>
             </Link>
           </AnimatedGridItem>
         ))}
       </Grid>
       {hasNextPage && (
-        <Center mt="4">
+        <Center mt="2">
           <Button
             isLoading={isSubmitting}
             variant="ghost"
