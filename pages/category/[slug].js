@@ -20,14 +20,22 @@ export default function Category({ category, preview }) {
           {category.name}
         </Heading>
         {category.products.edges && (
-          <ItemsGrid initialItems={category.products} slug={category.slug} />
+          <ItemsGrid
+            initialItems={category.products}
+            prefix="/product/"
+            slug={category.slug}
+          />
         )}
         {category.posts.edges && (
           <>
             <Heading fontWeight="200" size="xl" mt="2">
               Blog
             </Heading>
-            <ItemsGrid initialItems={category.posts} slug={category.slug} />
+            <ItemsGrid
+              initialItems={category.posts}
+              prefix="/"
+              slug={category.slug}
+            />
           </>
         )}
       </Stack>

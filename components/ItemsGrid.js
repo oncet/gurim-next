@@ -17,7 +17,7 @@ import { getCategory } from "../lib/api";
 
 const AnimatedGridItem = motion(GridItem);
 
-const ItemsGrid = ({ initialItems, slug }) => {
+const ItemsGrid = ({ initialItems, prefix, slug }) => {
   const [endCursor, setEndCursor] = useState(initialItems.pageInfo.endCursor);
   const [hasNextPage, setHasNextPage] = useState(
     initialItems.pageInfo.hasNextPage
@@ -53,7 +53,7 @@ const ItemsGrid = ({ initialItems, slug }) => {
               ease: "easeOut",
             }}
           >
-            <Link as={NextLink} href={`/product/${node.slug}`}>
+            <Link as={NextLink} href={`${prefix}${node.slug}`}>
               <a>
                 <Box rounded="md" overflow="hidden">
                   <NextImage
