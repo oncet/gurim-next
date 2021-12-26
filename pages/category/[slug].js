@@ -6,8 +6,6 @@ import { getCategory, getCategoriesSlugs } from "../../lib/api";
 import ItemsGrid from "../../components/ItemsGrid";
 
 export default function Category({ category, preview }) {
-  console.log("category", category);
-
   return (
     <>
       <Head>
@@ -19,24 +17,12 @@ export default function Category({ category, preview }) {
         <Heading fontWeight="200" size="2xl">
           {category.name}
         </Heading>
-        {category.products.edges && (
+        {category.posts.edges && (
           <ItemsGrid
-            initialItems={category.products}
-            prefix="/product/"
+            initialItems={category.posts}
+            prefix="/"
             slug={category.slug}
           />
-        )}
-        {category.posts.edges && (
-          <>
-            <Heading fontWeight="200" size="xl" mt="2">
-              Blog
-            </Heading>
-            <ItemsGrid
-              initialItems={category.posts}
-              prefix="/"
-              slug={category.slug}
-            />
-          </>
         )}
       </Stack>
     </>
