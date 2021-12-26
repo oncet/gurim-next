@@ -27,6 +27,7 @@ const Nav = () => {
   const router = useRouter();
 
   const duration = useBreakpointValue([0.3, 0.2]);
+  const height = useBreakpointValue([0, "auto"]);
 
   useEffect(() => {
     setIsOpen(false);
@@ -62,13 +63,13 @@ const Nav = () => {
           <AnimatePresence>
             {isOpen && (
               <AnimatedBox
-                initial={{ height: 0, opacity: 0 }}
+                initial={{ height, opacity: 0 }}
                 animate={{ height: "auto", opacity: 1 }}
                 transition={{
                   duration,
                   ease: "easeOut",
                 }}
-                exit={{ height: 0, opacity: 0 }}
+                exit={{ height, opacity: 0 }}
                 overflow="hidden"
                 position={["relative", "absolute"]}
                 zIndex="1"
