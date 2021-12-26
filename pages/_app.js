@@ -15,12 +15,11 @@ const styles = {
         bg: mode("yellow.50", "gray.800")(props),
       },
       ".user-content": {
-        p: {
+        "p, ul, blockquote": {
           marginBottom: props.theme.space[4],
         },
         ul: {
           marginInlineStart: props.theme.space[10],
-          marginBottom: props.theme.space[4],
           listStyleType: "square",
         },
         "figure img": {
