@@ -86,9 +86,16 @@ const Nav = () => {
                   textAlign={["right", "left"]}
                 >
                   <ListItem>
-                    <Link as={NextLink} passHref href="/category/cuadernos">
+                    <Link as={NextLink} passHref href="/category/bordado">
                       <ChakraA py="1" px="6">
-                        Cuadernos
+                        Bordado
+                      </ChakraA>
+                    </Link>
+                  </ListItem>
+                  <ListItem>
+                    <Link as={NextLink} passHref href="/category/fieltro">
+                      <ChakraA py="1" px="6">
+                        Fieltro
                       </ChakraA>
                     </Link>
                   </ListItem>
@@ -100,16 +107,20 @@ const Nav = () => {
                     </Link>
                   </ListItem>
                   <ListItem>
-                    <Link as={NextLink} passHref href="/category/accesorios">
+                    <Link as={NextLink} passHref href="/category/ecoprint">
                       <ChakraA py="1" px="6">
-                        Accesorios
+                        Ecoprint
                       </ChakraA>
                     </Link>
                   </ListItem>
                   <ListItem>
-                    <Link as={NextLink} passHref href="/category/delantales">
+                    <Link
+                      as={NextLink}
+                      passHref
+                      href="/category/encuadernacion"
+                    >
                       <ChakraA py="1" px="6">
-                        Delantales
+                        Encuadernación
                       </ChakraA>
                     </Link>
                   </ListItem>
