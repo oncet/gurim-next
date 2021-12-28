@@ -36,6 +36,7 @@ const Header = () => {
         </Link>
         {isMobile ? (
           <IconButton
+            aria-label="Alternar menú"
             icon={<Icon as={BsList} w="8" h="8" color="rgba(0, 0, 0, 0.5)" />}
             variant="ghost"
             onClick={() => setIsOpen(!isOpen)}
