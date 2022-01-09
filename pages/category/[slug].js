@@ -1,11 +1,44 @@
 import { useState } from "react";
 import Head from "next/head";
-import { Heading, Stack } from "@chakra-ui/react";
+import NextLink from "next/link";
+import NextImage from "next/image";
+import {
+  Heading,
+  Button,
+  Center,
+  Text,
+  Box,
+  Stack,
+  Grid,
+  GridItem,
+  Link,
+} from "@chakra-ui/react";
+import { motion } from "framer-motion";
 
 import { getCategory, getCategoriesSlugs } from "../../lib/api";
-import ItemsGrid from "../../components/ItemsGrid";
+
+const AnimatedGridItem = motion(GridItem);
 
 export default function Category({ category, preview }) {
+  const [endCursor, setEndCursor] = useState(category.posts.pageInfo.endCursor);
+  const [hasNextPage, setHasNextPage] = useState(
+    category.posts.pageInfo.hasNextPage
+  );
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [items, setItems] = useState(category.posts.edges);
+
+  const showMoreHandler = async () => {
+    setIsSubmitting(true);
+
+    const response = await getCategory(slug, endCursor);
+
+    setIsSubmitting(false);
+
+    setItems([...items, ...response.products.edges]);
+    setEndCursor(response.products.pageInfo.endCursor);
+    setHasNextPage(response.products.pageInfo.hasNextPage);
+  };
+
   return (
     <>
       <Head>
@@ -18,11 +51,56 @@ export default function Category({ category, preview }) {
           {category.name}
         </Heading>
         {category.posts.edges && (
-          <ItemsGrid
-            initialItems={category.posts}
-            prefix="/"
-            slug={category.slug}
-          />
+          <>
+            <Grid
+              templateColumns={[
+                "repeat(1, 1fr)",
+                "repeat(2, 1fr)",
+                "repeat(3, 1fr)",
+              ]}
+              gap={6}
+            >
+              {items.map(({ node }) => (
+                <AnimatedGridItem
+                  key={node.slug}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{
+                    duration: 0.6,
+                    ease: "easeOut",
+                  }}
+                >
+                  <Link as={NextLink} href={`/${node.slug}`}>
+                    <a>
+                      <Box rounded="md" overflow="hidden">
+                        <NextImage
+                          src={node.featuredImage.node.sourceUrl}
+                          alt={node.title}
+                          width={700}
+                          height={700}
+                          layout="responsive"
+                        />
+                      </Box>
+                      <Text mt="2">{node.title}</Text>
+                    </a>
+                  </Link>
+                </AnimatedGridItem>
+              ))}
+            </Grid>
+            {hasNextPage && (
+              <Center mt="2">
+                <Button
+                  isLoading={isSubmitting}
+                  variant="ghost"
+                  onClick={showMoreHandler}
+                  disabled={isSubmitting}
+                  fontWeight="400"
+                >
+                  Mostrar mas
+                </Button>
+              </Center>
+            )}
+          </>
         )}
       </Stack>
     </>
