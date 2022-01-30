@@ -16,7 +16,7 @@ export default function Home() {
       <Container maxW="container.xl">
         <Grid templateColumns={["repeat(1, 1fr)"]} gap={6}>
           <GridItem>
-            <Heading fontWeight="200" size="2xl" mb="4" textAlign="center">
+            <Heading fontWeight="200" size="xl" mb="4" textAlign="center">
               Handcrafted
             </Heading>
             <Box rounded="md" overflow="hidden">
@@ -40,7 +40,7 @@ export default function Home() {
           gap={6}
         >
           <GridItem>
-            <Heading fontWeight="200" size="xl" mb="4" textAlign="center">
+            <Heading fontWeight="200" size="lg" mb="4" textAlign="center">
               <NextLink passHref href="/category/fieltro"><Link>Fieltro</Link></NextLink>
             </Heading>
             <NextLink href="/category/fieltro" passHref>
@@ -48,7 +48,7 @@ export default function Home() {
                 <Box rounded="md" overflow="hidden">
                   <Image
                     src="https://gurim.com.ar/wp-content/uploads/2021/09/IMG_2216-1200x800.jpg"
-                    alt="asd"
+                    alt="Bolso de fieltro"
                     width={600}
                     height={400}
                     layout="responsive"
@@ -58,18 +58,21 @@ export default function Home() {
             </NextLink>
           </GridItem>
           <GridItem>
-            <Heading fontWeight="200" size="xl" mb="4" textAlign="center">
-              Ecoprint
+            <Heading fontWeight="200" size="lg" mb="4" textAlign="center">
+              <NextLink passHref href="/category/ecoprint"><Link>Ecoprint</Link></NextLink>
             </Heading>
-            <Box rounded="md" overflow="hidden">
-              <Image
-                src="https://gurim.com.ar/wp-content/uploads/2020/10/IMG_8973-1200x800.jpg"
-                alt=""
-                width={600}
-                height={400}
-                layout="responsive"
-              />
-            </Box>
+            <NextLink passHref href="/category/ecoprint"><Link>
+              <Box rounded="md" overflow="hidden">
+                <Image
+                  src="https://gurim.com.ar/wp-content/uploads/2020/10/IMG_8973-1200x800.jpg"
+                  alt="Estuche y cuaderno decorados con ecoprint"
+                  width={600}
+                  height={400}
+                  layout="responsive"
+                />
+              </Box>
+            </Link>
+            </NextLink>
           </GridItem>
         </Grid>
       </Container>
