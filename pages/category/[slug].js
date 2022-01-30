@@ -72,8 +72,8 @@ export default function Category({ category, preview }) {
                       ease: "easeOut",
                     }}
                   >
-                    <Link as={NextLink} href={`/${node.slug}`}>
-                      <a>
+                    <NextLink passHref href={`/${node.slug}`}>
+                      <Link>
                         <Box rounded="md" overflow="hidden">
                           <NextImage
                             src={node.featuredImage.node.sourceUrl}
@@ -84,8 +84,8 @@ export default function Category({ category, preview }) {
                           />
                         </Box>
                         <Text mt="2">{node.title}</Text>
-                      </a>
-                    </Link>
+                      </Link>
+                    </NextLink>
                   </AnimatedGridItem>
                 ))}
               </Grid>
