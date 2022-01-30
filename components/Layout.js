@@ -5,8 +5,6 @@ import { Box, Container, Stack } from "@chakra-ui/react";
 import Header from "./Header";
 
 const Layout = ({ children }) => {
-  const [isOpen, setIsOpen] = useState(false);
-
   return (
     <>
       <Head>
