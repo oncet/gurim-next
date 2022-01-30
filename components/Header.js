@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import {
   Box,
+  Container,
   Link,
   Icon,
   IconButton,
@@ -28,41 +29,43 @@ const Header = () => {
 
   return (
     <header>
-      <Box display="flex" alignItems="center" justifyContent="space-between">
-        <NextLink href="/" passHref>
-          <Link>
-            <Image src={logo} alt="Gurim logo" />
-          </Link>
-        </NextLink>
-        {isMobile ? (
-          <IconButton
-            aria-label="Alternar menú"
-            icon={<Icon as={BsList} w="8" h="8" color="rgba(0, 0, 0, 0.5)" />}
-            variant="ghost"
-            onClick={() => setIsOpen(!isOpen)}
-          />
-        ) : (
-          <Nav />
-        )}
-      </Box>
-      {isMobile && (
-        <AnimatePresence>
-          {isOpen && (
-            <AnimatedBox
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              transition={{
-                duration: 0.3,
-                ease: "easeOut",
-              }}
-              exit={{ height: 0, opacity: 0 }}
-              overflow="hidden"
-            >
-              <Nav />
-            </AnimatedBox>
+      <Container maxW="container.lg">
+        <Box display="flex" alignItems="center" justifyContent="space-between">
+          <NextLink href="/" passHref>
+            <Link>
+              <Image src={logo} alt="Gurim logo" />
+            </Link>
+          </NextLink>
+          {isMobile ? (
+            <IconButton
+              aria-label="Alternar menú"
+              icon={<Icon as={BsList} w="8" h="8" color="rgba(0, 0, 0, 0.5)" />}
+              variant="ghost"
+              onClick={() => setIsOpen(!isOpen)}
+            />
+          ) : (
+            <Nav />
           )}
-        </AnimatePresence>
-      )}
+        </Box>
+        {isMobile && (
+          <AnimatePresence>
+            {isOpen && (
+              <AnimatedBox
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: "auto", opacity: 1 }}
+                transition={{
+                  duration: 0.3,
+                  ease: "easeOut",
+                }}
+                exit={{ height: 0, opacity: 0 }}
+                overflow="hidden"
+              >
+                <Nav />
+              </AnimatedBox>
+            )}
+          </AnimatePresence>
+        )}
+      </Container>
     </header>
   );
 };

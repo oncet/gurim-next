@@ -1,6 +1,6 @@
-import { useState } from "react";
 import Head from "next/head";
 import { Box, Container, Stack } from "@chakra-ui/react";
+import Footer from "./Footer"
 
 import Header from "./Header";
 
@@ -14,10 +14,9 @@ const Layout = ({ children }) => {
       </Head>
       <Box pb="4">
         <Stack spacing="6">
-          <Container maxW="container.lg">
-            <Header />
-          </Container>
+          <Header />
           <main>{children}</main>
+          <Footer />
         </Stack>
       </Box>
     </>

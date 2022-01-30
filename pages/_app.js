@@ -6,7 +6,6 @@ import { motion } from "framer-motion";
 import Layout from "../components/Layout";
 
 import "../wp-style.min.css";
-import Footer from "../components/Footer";
 
 const styles = {
   global: (props) => {
@@ -81,22 +80,19 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <ChakraProvider theme={theme}>
-      <main>
-        <Layout>
-          <motion.div
-            key={router.asPath}
-            initial={{
-              opacity: 0,
-            }}
-            animate={{
-              opacity: 1,
-            }}
-          >
-            <Component {...pageProps} />
-          </motion.div>
-        </Layout>
-      </main>
-      <Footer />
+      <Layout>
+        <motion.div
+          key={router.asPath}
+          initial={{
+            opacity: 0,
+          }}
+          animate={{
+            opacity: 1,
+          }}
+        >
+          <Component {...pageProps} />
+        </motion.div>
+      </Layout>
     </ChakraProvider>
   );
 }
