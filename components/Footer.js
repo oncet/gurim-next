@@ -8,6 +8,13 @@ import {
   Link,
 } from "@chakra-ui/react";
 
+const WrappedLink = forwardRef(({ children, ...props }, ref) => (
+  <Link display="inline-block" py="2" {...props} ref={ref}>
+    {children}
+  </Link>
+));
+WrappedLink.displayName = "WrappedLink";
+
 const Footer = () => {
   return (
     <chakra.footer borderTop="1px solid" borderColor="gray.200" pt="6" pb="12">
@@ -23,16 +30,16 @@ const Footer = () => {
           >
             <ListItem>
               <NextLink passHref href="https://shop.gurim.com.ar/">
-                <Link>
+                <WrappedLink>
                   Tienda
-                </Link>
+                </WrappedLink>
               </NextLink>
             </ListItem>
             <ListItem>
               <NextLink passHref href="/contacto">
-                <Link>
+                <WrappedLink>
                   Contacto
-                </Link>
+                </WrappedLink>
               </NextLink>
             </ListItem>
             <ListItem>
@@ -40,9 +47,9 @@ const Footer = () => {
                 passHref
                 href="https://www.instagram.com/gurim_craft/"
               >
-                <Link>
+                <WrappedLink>
                   Instagram
-                </Link>
+                </WrappedLink>
               </NextLink>
             </ListItem>
             <ListItem>
@@ -50,9 +57,9 @@ const Footer = () => {
                 passHref
                 href="https://www.facebook.com/gurimcraft/"
               >
-                <Link>
+                <WrappedLink>
                   Facebook
-                </Link>
+                </WrappedLink>
               </NextLink>
             </ListItem>
           </UnorderedList>
