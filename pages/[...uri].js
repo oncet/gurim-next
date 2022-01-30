@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { Heading, Stack } from "@chakra-ui/react";
+import { Heading, Stack, Container } from "@chakra-ui/react";
 
 import {
   getPageUris,
@@ -17,13 +17,15 @@ export default function Page({ page, preview }) {
       <Head>
         <title>{page.title} — Gurim</title>
       </Head>
-      <Stack spacing="4">
-        <Heading fontWeight="200" size="2xl">
-          {page.title}
-        </Heading>
-        {page.categories && <Tags tags={page.categories.nodes} />}
-        <UserContent content={page.content} />
-      </Stack>
+      <Container maxW="container.lg">
+        <Stack spacing="4">
+          <Heading fontWeight="200" size="2xl">
+            {page.title}
+          </Heading>
+          {page.categories && <Tags tags={page.categories.nodes} />}
+          <UserContent content={page.content} />
+        </Stack>
+      </Container>
     </>
   );
 }

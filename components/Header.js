@@ -29,11 +29,11 @@ const Header = () => {
   return (
     <header>
       <Box display="flex" alignItems="center" justifyContent="space-between">
-        <Link as={NextLink} href="/">
-          <a>
+        <NextLink href="/" passHref>
+          <Link>
             <Image src={logo} alt="Gurim logo" />
-          </a>
-        </Link>
+          </Link>
+        </NextLink>
         {isMobile ? (
           <IconButton
             aria-label="Alternar menú"

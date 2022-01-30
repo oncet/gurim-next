@@ -81,24 +81,22 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <ChakraProvider theme={theme}>
-      <Container maxW="container.lg">
-        <main>
-          <Layout>
-            <motion.div
-              key={router.asPath}
-              initial={{
-                opacity: 0,
-              }}
-              animate={{
-                opacity: 1,
-              }}
-            >
-              <Component {...pageProps} />
-            </motion.div>
-          </Layout>
-        </main>
-        <Footer />
-      </Container>
+      <main>
+        <Layout>
+          <motion.div
+            key={router.asPath}
+            initial={{
+              opacity: 0,
+            }}
+            animate={{
+              opacity: 1,
+            }}
+          >
+            <Component {...pageProps} />
+          </motion.div>
+        </Layout>
+      </main>
+      <Footer />
     </ChakraProvider>
   );
 }

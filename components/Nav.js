@@ -14,12 +14,12 @@ import { AnimatePresence, motion } from "framer-motion";
 
 const AnimatedBox = motion(Box);
 
-const ChakraA = forwardRef(({ children, ...props }, ref) => (
-  <chakra.a cursor="pointer" display="inline-block" py="2" {...props} ref={ref}>
+const WrappedLink = forwardRef(({ children, ...props }, ref) => (
+  <Link display="inline-block" py="2" {...props} ref={ref}>
     {children}
-  </chakra.a>
+  </Link>
 ));
-ChakraA.displayName = "ChakraA";
+WrappedLink.displayName = "WrappedLink";
 
 const Nav = () => {
   const ref = useRef();
@@ -54,12 +54,14 @@ const Nav = () => {
         ml="0"
       >
         <ListItem>
-          <Link as={NextLink} passHref href="https://shop.gurim.com.ar/">
-            <ChakraA>Tienda</ChakraA>
-          </Link>
+          <NextLink passHref href="https://shop.gurim.com.ar/">
+            <WrappedLink>
+              Tienda
+            </WrappedLink>
+          </NextLink>
         </ListItem>
         <ListItem ref={ref}>
-          <ChakraA onClick={handleSubmenuClick}>Blog</ChakraA>
+          <WrappedLink onClick={handleSubmenuClick}>Blog</WrappedLink>
           <AnimatePresence>
             {isOpen && (
               <AnimatedBox
@@ -87,43 +89,42 @@ const Nav = () => {
                   textAlign={["right", "left"]}
                 >
                   <ListItem>
-                    <Link as={NextLink} passHref href="/category/bordado">
-                      <ChakraA py="1" px="6">
+                    <NextLink passHref href="/category/bordado">
+                      <Link px="6" py="1" display="inline-block">
                         Bordado
-                      </ChakraA>
-                    </Link>
+                      </Link>
+                    </NextLink>
                   </ListItem>
                   <ListItem>
-                    <Link as={NextLink} passHref href="/category/fieltro">
-                      <ChakraA py="1" px="6">
+                    <NextLink passHref href="/category/fieltro">
+                      <Link px="6" py="1" display="inline-block">
                         Fieltro
-                      </ChakraA>
-                    </Link>
+                      </Link>
+                    </NextLink>
                   </ListItem>
                   <ListItem>
-                    <Link as={NextLink} passHref href="/category/bolsos">
-                      <ChakraA py="1" px="6">
+                    <NextLink passHref href="/category/bolsos">
+                      <Link px="6" py="1" display="inline-block">
                         Bolsos
-                      </ChakraA>
-                    </Link>
+                      </Link>
+                    </NextLink>
                   </ListItem>
                   <ListItem>
-                    <Link as={NextLink} passHref href="/category/ecoprint">
-                      <ChakraA py="1" px="6">
+                    <NextLink passHref href="/category/ecoprint">
+                      <Link px="6" py="1" display="inline-block">
                         Ecoprint
-                      </ChakraA>
-                    </Link>
+                      </Link>
+                    </NextLink>
                   </ListItem>
                   <ListItem>
-                    <Link
-                      as={NextLink}
+                    <NextLink
                       passHref
                       href="/category/encuadernacion"
                     >
-                      <ChakraA py="1" px="6">
+                      <Link px="6" py="1" display="inline-block">
                         Encuadernación
-                      </ChakraA>
-                    </Link>
+                      </Link>
+                    </NextLink>
                   </ListItem>
                 </UnorderedList>
               </AnimatedBox>
@@ -131,14 +132,18 @@ const Nav = () => {
           </AnimatePresence>
         </ListItem>
         <ListItem>
-          <Link as={NextLink} passHref href="/nosotros">
-            <ChakraA>Gurim</ChakraA>
-          </Link>
+          <NextLink passHref href="/nosotros">
+            <WrappedLink>
+              Gurim
+            </WrappedLink>
+          </NextLink>
         </ListItem>
         <ListItem>
-          <Link as={NextLink} passHref href="/contacto">
-            <ChakraA>Contacto</ChakraA>
-          </Link>
+          <NextLink passHref href="/contacto">
+            <WrappedLink>
+              Contacto
+            </WrappedLink>
+          </NextLink>
         </ListItem>
       </UnorderedList>
     </chakra.nav>
