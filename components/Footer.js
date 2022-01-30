@@ -27,6 +27,7 @@ const Footer = () => {
             flexDirection={["column", "row"]}
             gridGap={[0, 6]}
             justifyContent="flex-end"
+            ml="0"
           >
             <ListItem>
               <NextLink passHref href="https://shop.gurim.com.ar/">
