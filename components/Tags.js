@@ -11,9 +11,11 @@ const Tags = ({ tags }) => (
         size="sm"
         fontWeight="200"
       >
-        <Link as={NextLink} href={`/category/${tag.slug}`}>
-          {tag.name}
-        </Link>
+        <NextLink passHref href={`/category/${tag.slug}`}>
+          <Link>
+            {tag.name}
+          </Link>
+        </NextLink>
       </Tag>
     ))}
   </HStack>
