@@ -1,6 +1,7 @@
 import { Box } from "@chakra-ui/react";
+import { forwardRef } from "react";
 
-const UserContent = ({ content }) => {
+const UserContent = forwardRef(({ content }, ref) => {
   const createMarkup = () => {
     return { __html: content };
   };
@@ -10,8 +11,10 @@ const UserContent = ({ content }) => {
       className="user-content"
       overflow="auto"
       dangerouslySetInnerHTML={createMarkup()}
+      ref={ref}
     />
   );
-};
+});
+UserContent.displayName = "UserContent";
 
 export default UserContent;

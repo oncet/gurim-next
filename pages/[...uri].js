@@ -1,5 +1,6 @@
+import { useEffect, useRef, useState } from "react";
 import Head from "next/head";
-import { Heading, Stack, Container } from "@chakra-ui/react";
+import { Heading, Stack, Container, Modal, ModalOverlay, ModalContent, Image, Spinner } from "@chakra-ui/react";
 
 import {
   getPageUris,
@@ -12,6 +13,32 @@ import UserContent from "../components/UserContent";
 import Tags from "../components/Tags";
 
 export default function Page({ page, preview }) {
+  const [isOpen, setIsOpen] = useState(false);
+  const [current, setCurrent] = useState({
+    src: "",
+    width: 0,
+    height: 0
+  })
+  const userContentRef = useRef();
+
+  const onClose = () => setIsOpen(false)
+
+  useEffect(() => {
+    const imageLinks = userContentRef.current.querySelectorAll('.blocks-gallery-item a');
+
+    imageLinks.forEach((imageLink) => {
+      imageLink.addEventListener('click', (event) => {
+        event.preventDefault();
+
+        setCurrent({
+          src: event.currentTarget.href,
+          alt: event.target.alt,
+        });
+        setIsOpen(true);
+      });
+    })
+  }, [userContentRef.current])
+
   return (
     <>
       <Head>
@@ -23,9 +50,19 @@ export default function Page({ page, preview }) {
             {page.title}
           </Heading>
           {page.categories && <Tags tags={page.categories.nodes} />}
-          <UserContent content={page.content} />
+          <UserContent ref={userContentRef} content={page.content} />
         </Stack>
       </Container>
+      <Modal isOpen={isOpen} onClose={onClose} size="5xl" isCentered variant="transparent">
+        <ModalOverlay />
+        <ModalContent >
+          <Image
+            src={current.src}
+            alt={current.alt}
+            fallback={<Spinner mx="auto" color="white" />}
+          />
+        </ModalContent>
+      </Modal>
     </>
   );
 }

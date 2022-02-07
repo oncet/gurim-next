@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { ChakraProvider, Container, extendTheme } from "@chakra-ui/react";
+import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import { mode } from "@chakra-ui/theme-tools";
 import { motion } from "framer-motion";
 
@@ -7,11 +7,43 @@ import Layout from "../components/Layout";
 
 import "../wp-style.min.css";
 
+const colors = {
+  yellow: {
+    50: "#fffef6",
+    100: "#fef7b9",
+    200: "#fff189",
+    300: "#ffeb5a",
+    400: "#ffe635",
+    500: "#e6cc26",
+    600: "#b39f1d",
+    700: "#807113",
+    800: "#4d4407",
+    900: "#1a1700",
+  },
+};
+
+const components = {
+  Modal: {
+    variants: {
+      transparent: {
+        dialog: {
+          bg: "none",
+          shadow: "none"
+        },
+      }
+    }
+  }
+}
+
 const styles = {
   global: (props) => {
     return {
       body: {
         bg: mode("yellow.50", "gray.800")(props),
+      },
+      "a.chakra-link:focus": {
+        boxShadow: "none",
+        textDecoration: "underline"
       },
       ".user-content": {
         "p, ul, blockquote": {
@@ -55,23 +87,9 @@ const styles = {
   },
 };
 
-const colors = {
-  yellow: {
-    50: "#fffef6",
-    100: "#fef7b9",
-    200: "#fff189",
-    300: "#ffeb5a",
-    400: "#ffe635",
-    500: "#e6cc26",
-    600: "#b39f1d",
-    700: "#807113",
-    800: "#4d4407",
-    900: "#1a1700",
-  },
-};
-
 const theme = extendTheme({
   colors,
+  components,
   styles,
 });
 
