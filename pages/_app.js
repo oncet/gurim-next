@@ -27,11 +27,18 @@ const components = {
     variants: {
       transparent: {
         dialog: {
-          bg: "none",
+          bg: "transparent",
           shadow: "none"
         },
       }
-    }
+    },
+    sizes: {
+      "fluid-width": {
+        dialog: {
+          width: "auto",
+        },
+      }
+    },
   }
 }
 

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import Head from "next/head";
-import { Heading, Stack, Container, Modal, ModalOverlay, ModalContent, Image, Spinner } from "@chakra-ui/react";
+import { Box, Heading, Stack, Container, Modal, ModalOverlay, ModalContent, Image, Spinner, ModalBody, chakra } from "@chakra-ui/react";
 
 import {
   getPageUris,
@@ -20,6 +20,7 @@ export default function Page({ page, preview }) {
     height: 0
   })
   const userContentRef = useRef();
+  const emptyRef = useRef();
 
   const onClose = () => setIsOpen(false)
 
@@ -53,14 +54,24 @@ export default function Page({ page, preview }) {
           <UserContent ref={userContentRef} content={page.content} />
         </Stack>
       </Container>
-      <Modal isOpen={isOpen} onClose={onClose} size="5xl" isCentered variant="transparent">
+      <Modal
+        finalFocusRef={emptyRef}
+        isCentered
+        isOpen={isOpen}
+        onClose={onClose}
+        scrollBehavior="inside"
+        size="fluid-width"
+        variant="transparent"
+      >
         <ModalOverlay />
-        <ModalContent >
-          <Image
-            src={current.src}
-            alt={current.alt}
-            fallback={<Spinner mx="auto" color="white" />}
-          />
+        <ModalContent>
+          <ModalBody position="relative" p={0}>
+            <Image
+              src={current.src}
+              alt={current.alt}
+              fallback={<Spinner mx="auto" color="white" />}
+            />
+          </ModalBody>
         </ModalContent>
       </Modal>
     </>
