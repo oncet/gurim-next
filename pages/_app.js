@@ -28,6 +28,7 @@ const components = {
       transparent: {
         dialog: {
           bg: "transparent",
+          border: "4px solid yellow",
           shadow: "none"
         },
       }
@@ -36,6 +37,7 @@ const components = {
       "fluid-width": {
         dialog: {
           width: "auto",
+          height: "100%"
         },
       }
     },

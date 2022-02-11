@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import Head from "next/head";
-import { Box, Heading, Stack, Container, Modal, ModalOverlay, ModalContent, Image, Spinner, ModalBody, chakra } from "@chakra-ui/react";
+import { Box, Heading, Stack, Container, Modal, ModalOverlay, ModalContent, Image, Spinner, ModalBody, chakra, ModalCloseButton } from "@chakra-ui/react";
 
 import {
   getPageUris,
@@ -65,12 +65,24 @@ export default function Page({ page, preview }) {
       >
         <ModalOverlay />
         <ModalContent>
-          <ModalBody position="relative" p={0}>
-            <Image
-              src={current.src}
-              alt={current.alt}
-              fallback={<Spinner mx="auto" color="white" />}
-            />
+          <ModalCloseButton color="white" _focus={{
+            border: "none",
+            bg: "gray.800"
+          }} />
+          <ModalBody display="flex" alignItems="center" p={0}>
+            <Box
+              mx="auto"
+              maxH="100%"
+              border="4px solid blue"
+            >
+              <Image
+                src={current.src}
+                alt={current.alt}
+                fallback={<Spinner mx="auto" color="white" />}
+                // w="auto"
+                maxH="100%"
+              />
+            </Box>
           </ModalBody>
         </ModalContent>
       </Modal>
