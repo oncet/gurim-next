@@ -16,10 +16,10 @@ export default function Home() {
       <Container maxW="container.xl">
         <Grid templateColumns={["repeat(1, 1fr)"]} gap={6}>
           <GridItem>
-            <Heading fontWeight="200" size="xl" mb="4" textAlign="center">
-              Handcrafted
+            <Heading fontWeight="200" letterSpacing={1} size="xl" mb="4" textAlign="center">
+              Hecho a mano
             </Heading>
-            <Box rounded="md" overflow="hidden">
+            <Box rounded="md" overflow="hidden" maxHeight={600}>
               <Image
                 src="https://gurim.com.ar/wp-content/uploads/2021/12/manos-scaled.jpg"
                 alt=""
@@ -40,7 +40,7 @@ export default function Home() {
           gap={6}
         >
           <GridItem>
-            <Heading fontWeight="200" size="lg" mb="4" textAlign="center">
+            <Heading fontWeight="200" letterSpacing={1} size="lg" mb="4" textAlign="center">
               <NextLink passHref href="/category/fieltro"><Link>Fieltro</Link></NextLink>
             </Heading>
             <NextLink href="/category/fieltro" passHref>
@@ -58,7 +58,7 @@ export default function Home() {
             </NextLink>
           </GridItem>
           <GridItem>
-            <Heading fontWeight="200" size="lg" mb="4" textAlign="center">
+            <Heading fontWeight="200" letterSpacing={1} size="lg" mb="4" textAlign="center">
               <NextLink passHref href="/category/ecoprint"><Link>Ecoprint</Link></NextLink>
             </Heading>
             <NextLink passHref href="/category/ecoprint"><Link>

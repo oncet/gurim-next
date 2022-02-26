@@ -17,8 +17,8 @@ WrappedLink.displayName = "WrappedLink";
 
 const Footer = () => {
   return (
-    <chakra.footer borderTop="1px solid" borderColor="gray.200" pt="6" pb="12">
-      <Container maxW="container.lg">
+    <chakra.footer bg="black" color="white" pt="12" pb="12" >
+      <Container maxW="container.xl">
         <nav>
           <UnorderedList
             styleType="none"
