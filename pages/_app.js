@@ -22,26 +22,6 @@ const colors = {
   },
 };
 
-const components = {
-  Modal: {
-    variants: {
-      transparent: {
-        dialog: {
-          bg: "transparent",
-          shadow: "none"
-        },
-      }
-    },
-    sizes: {
-      "fluid-width": {
-        dialog: {
-          width: "auto",
-        },
-      }
-    },
-  }
-}
-
 const styles = {
   global: (props) => {
     return {
@@ -96,7 +76,6 @@ const styles = {
 
 const theme = extendTheme({
   colors,
-  components,
   styles,
 });
 
