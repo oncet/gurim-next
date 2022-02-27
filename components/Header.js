@@ -24,8 +24,8 @@ const Header = () => {
   const isMobile = useBreakpointValue([true, false]);
 
   useEffect(() => {
-    setIsOpen(false);
-  }, [router.asPath]);
+    if (isMobile) setIsOpen(false);
+  }, [isMobile, router.asPath]);
 
   return (
     <header>
