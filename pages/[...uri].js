@@ -14,24 +14,20 @@ import Tags from "../components/Tags";
 
 export default function Page({ page, preview }) {
   const [isOpen, setIsOpen] = useState(false);
-  const [current, setCurrent] = useState({
-    src: "",
-    width: 0,
-    height: 0
-  })
+  const [currentImage, setCurrentImage] = useState()
+  const galleryImagesRef = useRef([]);
   const userContentRef = useRef();
 
   useEffect(() => {
+    galleryImagesRef.current = userContentRef.current.querySelectorAll('.blocks-gallery-item a img');
+
     const imageLinks = userContentRef.current.querySelectorAll('.blocks-gallery-item a');
 
-    imageLinks.forEach((imageLink) => {
+    imageLinks.forEach((imageLink, index) => {
       imageLink.addEventListener('click', (event) => {
         event.preventDefault();
 
-        setCurrent({
-          src: event.currentTarget.href,
-          alt: event.target.alt,
-        });
+        setCurrentImage(index);
         setIsOpen(true);
       });
     })
@@ -66,9 +62,16 @@ export default function Page({ page, preview }) {
         >
           <Image
             maxH="100%"
-            src={current.src}
-            alt={current.alt}
+            src={galleryImagesRef.current[currentImage].src}
+            alt={galleryImagesRef.current[currentImage].alt}
             fallback={<Spinner mx="auto" color="white" />}
+            onClick={(event) => {
+              event.stopPropagation();
+
+              const nextImage = currentImage < galleryImagesRef.current.length - 1 ? currentImage + 1 : 0;
+
+              setCurrentImage(nextImage);
+            }}
           />
         </Box>
       )}
