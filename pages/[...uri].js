@@ -20,9 +20,6 @@ export default function Page({ page, preview }) {
     height: 0
   })
   const userContentRef = useRef();
-  const emptyRef = useRef();
-
-  const onClose = () => setIsOpen(false)
 
   useEffect(() => {
     const imageLinks = userContentRef.current.querySelectorAll('.blocks-gallery-item a');
