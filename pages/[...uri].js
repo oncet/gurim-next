@@ -35,7 +35,7 @@ export default function Page({ page, preview }) {
         setIsOpen(true);
       });
     })
-  }, [userContentRef.current])
+  }, [])
 
   return (
     <>
