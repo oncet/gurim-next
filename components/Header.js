@@ -10,7 +10,7 @@ import {
   IconButton,
   useBreakpointValue,
 } from "@chakra-ui/react";
-import { BsList } from "react-icons/bs";
+import { BsList, BsX } from "react-icons/bs";
 import { AnimatePresence, motion } from "framer-motion";
 
 import logo from "../public/logo.png";
@@ -36,16 +36,32 @@ const Header = () => {
               <Image src={logo} alt="Gurim logo" />
             </Link>
           </NextLink>
-          {isMobile ? (
+          <Box display="flex" gap={5}>
+            {!isMobile && (
+              <AnimatePresence>
+                {isOpen && (
+                  <AnimatedBox
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    transition={{
+                      duration: 0.3,
+                      ease: "easeOut",
+                    }}
+                    exit={{ height: 0, opacity: 0 }}
+                    overflow="hidden"
+                  >
+                    <Nav />
+                  </AnimatedBox>
+                )}
+              </AnimatePresence>
+            )}
             <IconButton
               aria-label="Alternar menú"
-              icon={<Icon as={BsList} w="8" h="8" color="rgba(0, 0, 0, 0.5)" />}
+              icon={<Icon as={isOpen ? BsX : BsList} w="8" h="8" color="rgba(0, 0, 0, 0.5)" />}
               variant="ghost"
               onClick={() => setIsOpen(!isOpen)}
             />
-          ) : (
-            <Nav />
-          )}
+          </Box>
         </Box>
         {isMobile && (
           <AnimatePresence>
