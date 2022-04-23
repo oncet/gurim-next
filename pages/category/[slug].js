@@ -73,7 +73,7 @@ export default function Category({ category, preview }) {
                     }}
                   >
                     <NextLink passHref href={`/${node.slug}`}>
-                      <Link>
+                      <Link textUnderlineOffset="3px">
                         <Box rounded="md" overflow="hidden">
                           <NextImage
                             src={node.featuredImage.node.sourceUrl}

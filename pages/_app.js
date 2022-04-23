@@ -28,10 +28,6 @@ const styles = {
       body: {
         bg: mode("yellow.50", "gray.800")(props),
       },
-      "a.chakra-link:focus": {
-        boxShadow: "none",
-        textDecoration: "underline"
-      },
       ".user-content": {
         "p, ul, blockquote": {
           marginBottom: props.theme.space[4],
@@ -74,7 +70,24 @@ const styles = {
   },
 };
 
+const components = {
+  Link: {
+    baseStyle: {
+      textUnderlineOffset: "6px",
+      _hover: {
+        textDecorationThickness: "2px",
+      },
+      _focus: {
+        textDecoration: "underline",
+        textDecorationThickness: "2px",
+        boxShadow: "none",
+      },
+    },
+  },
+};
+
 const theme = extendTheme({
+  components,
   colors,
   styles,
 });
