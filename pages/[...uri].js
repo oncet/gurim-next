@@ -20,6 +20,8 @@ import {
 import UserContent from "../components/UserContent";
 import Tags from "../components/Tags";
 
+const AnimatedBox = motion(Box);
+
 export default function Page({ page, preview }) {
   const [isOpen, setIsOpen] = useState(false);
   const [currentImage, setCurrentImage] = useState();
@@ -79,22 +81,33 @@ export default function Page({ page, preview }) {
               alignItems="center"
               justifyContent="center"
             >
-              <Image
-                maxH="100%"
-                src={galleryImagesRef.current[currentImage].src}
-                alt={galleryImagesRef.current[currentImage].alt}
-                fallback={<Spinner mx="auto" color="white" />}
-                onClick={(event) => {
-                  event.stopPropagation();
+              <AnimatePresence>
+                <AnimatedBox
+                  key={currentImage}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.3 }}
+                  position="absolute"
+                >
+                  <Image
+                    maxH="100vh"
+                    src={galleryImagesRef.current[currentImage].src}
+                    alt={galleryImagesRef.current[currentImage].alt}
+                    fallback={<Spinner mx="auto" color="white" />}
+                    onClick={(event) => {
+                      event.stopPropagation();
 
-                  const nextImage =
-                    currentImage < galleryImagesRef.current.length - 1
-                      ? currentImage + 1
-                      : 0;
+                      const nextImage =
+                        currentImage < galleryImagesRef.current.length - 1
+                          ? currentImage + 1
+                          : 0;
 
-                  setCurrentImage(nextImage);
-                }}
-              />
+                      setCurrentImage(nextImage);
+                    }}
+                  />
+                </AnimatedBox>
+              </AnimatePresence>
             </Box>
           </motion.div>
         )}
