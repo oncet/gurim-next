@@ -41,7 +41,11 @@ export default function Home() {
         <Grid templateColumns={["repeat(1, 1fr)", "repeat(2, 1fr)"]} gap={6}>
           <GridItem>
             <NextLink passHref href="/category/fieltro">
-              <Link>
+              <Link
+                _hover={{
+                  textDecoration: "none",
+                }}
+              >
                 <Heading
                   fontWeight="200"
                   letterSpacing={1}
@@ -65,7 +69,11 @@ export default function Home() {
           </GridItem>
           <GridItem>
             <NextLink passHref href="/category/ecoprint">
-              <Link>
+              <Link
+                _hover={{
+                  textDecoration: "none",
+                }}
+              >
                 <Heading
                   fontWeight="200"
                   letterSpacing={1}
