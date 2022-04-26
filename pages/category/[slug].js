@@ -31,13 +31,13 @@ export default function Category({ category, preview }) {
   const showMoreHandler = async () => {
     setIsSubmitting(true);
 
-    const response = await getCategory(slug, endCursor);
+    const response = await getCategory(category.slug, endCursor);
 
     setIsSubmitting(false);
 
-    setItems([...items, ...response.products.edges]);
-    setEndCursor(response.products.pageInfo.endCursor);
-    setHasNextPage(response.products.pageInfo.hasNextPage);
+    setItems([...items, ...response.posts.edges]);
+    setEndCursor(response.posts.pageInfo.endCursor);
+    setHasNextPage(response.posts.pageInfo.hasNextPage);
   };
 
   return (
