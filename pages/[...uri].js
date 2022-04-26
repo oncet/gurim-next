@@ -24,28 +24,30 @@ const AnimatedBox = motion(Box);
 
 export default function Page({ page, preview }) {
   const [isOpen, setIsOpen] = useState(false);
-  const [currentImage, setCurrentImage] = useState();
-  const galleryImagesRef = useRef([]);
+  const [selectedImage, setSelectedImage] = useState();
+  const [imageLinks, setImageLinks] = useState([]);
   const userContentRef = useRef();
 
   useEffect(() => {
-    galleryImagesRef.current = userContentRef.current.querySelectorAll(
-      ".blocks-gallery-item a img"
+    setImageLinks(
+      userContentRef.current.querySelectorAll(
+        ".blocks-gallery-item a, .wp-block-image a"
+      )
     );
+  }, []);
 
-    const imageLinks = userContentRef.current.querySelectorAll(
-      ".blocks-gallery-item a"
-    );
-
+  useEffect(() => {
     imageLinks.forEach((imageLink, index) => {
       imageLink.addEventListener("click", (event) => {
         event.preventDefault();
 
-        setCurrentImage(index);
+        const { src, alt } = imageLink.querySelector("img");
+
+        setSelectedImage({ index, src, alt });
         setIsOpen(true);
       });
     });
-  }, []);
+  }, [imageLinks]);
 
   return (
     <>
@@ -83,7 +85,7 @@ export default function Page({ page, preview }) {
             >
               <AnimatePresence>
                 <AnimatedBox
-                  key={currentImage}
+                  key={selectedImage.index}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
@@ -92,18 +94,21 @@ export default function Page({ page, preview }) {
                 >
                   <Image
                     maxH="100vh"
-                    src={galleryImagesRef.current[currentImage].src}
-                    alt={galleryImagesRef.current[currentImage].alt}
+                    src={selectedImage.src}
+                    alt={selectedImage.alt}
                     fallback={<Spinner mx="auto" color="white" />}
                     onClick={(event) => {
                       event.stopPropagation();
 
-                      const nextImage =
-                        currentImage < galleryImagesRef.current.length - 1
-                          ? currentImage + 1
+                      const nextIndex =
+                        selectedImage.index < imageLinks.length - 1
+                          ? selectedImage.index + 1
                           : 0;
 
-                      setCurrentImage(nextImage);
+                      const { src, alt } =
+                        imageLinks[nextIndex].querySelector("img");
+
+                      setSelectedImage({ index: nextIndex, src, alt });
                     }}
                   />
                 </AnimatedBox>
