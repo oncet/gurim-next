@@ -94,6 +94,7 @@ export default function Page({ page, preview }) {
                 >
                   <Image
                     maxH="100vh"
+                    cursor="pointer"
                     src={selectedImage.src}
                     alt={selectedImage.alt}
                     fallback={<Spinner mx="auto" color="white" />}
