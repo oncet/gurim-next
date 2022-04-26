@@ -3,7 +3,7 @@ import { AnimatePresence, motion } from "framer-motion";
 
 const AnimatedBox = motion(Box);
 
-const Lightbox = ({ selectedImage, onClick, onBackgroundClick }) => {
+const Lightbox = ({ selectedImage, onNext, onExit }) => {
   return (
     <Box
       background="rgba(0, 0, 0, 0.8)"
@@ -12,7 +12,7 @@ const Lightbox = ({ selectedImage, onClick, onBackgroundClick }) => {
       left={0}
       height="100%"
       width="100%"
-      onClick={onBackgroundClick}
+      onClick={onExit}
       display="flex"
       alignItems="center"
       justifyContent="center"
@@ -32,7 +32,7 @@ const Lightbox = ({ selectedImage, onClick, onBackgroundClick }) => {
             src={selectedImage.src}
             alt={selectedImage.alt}
             fallback={<Spinner mx="auto" color="white" />}
-            onClick={onClick}
+            onClick={onNext}
           />
         </AnimatedBox>
       </AnimatePresence>

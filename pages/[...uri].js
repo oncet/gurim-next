@@ -65,7 +65,7 @@ export default function Page({ page, preview }) {
           >
             <Lightbox
               selectedImage={selectedImage}
-              onClick={(event) => {
+              onNext={(event) => {
                 event.stopPropagation();
 
                 const nextIndex =
@@ -77,7 +77,7 @@ export default function Page({ page, preview }) {
 
                 setSelectedImage({ index: nextIndex, src, alt });
               }}
-              onBackgroundClick={() => setIsOpen(false)}
+              onExit={() => setIsOpen(false)}
             />
           </motion.div>
         )}
