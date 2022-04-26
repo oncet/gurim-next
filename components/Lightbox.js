@@ -1,9 +1,37 @@
+import { useEffect } from "react";
 import { Box, Image, Spinner } from "@chakra-ui/react";
 import { AnimatePresence, motion } from "framer-motion";
 
 const AnimatedBox = motion(Box);
 
-const Lightbox = ({ selectedImage, onNext, onExit }) => {
+const Lightbox = ({ selectedImage, onNavigate, onExit }) => {
+  useEffect(() => {
+    const onKeyDown = (event) => {
+      if (event.key === "Escape") onExit();
+    };
+
+    document.addEventListener("keydown", onKeyDown);
+
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+    };
+  }, [onExit]);
+
+  useEffect(() => {
+    const onKeyDown = (event) => {
+      event.stopPropagation();
+
+      if (event.key === "ArrowRight" || event.key === "ArrowLeft")
+        onNavigate(event.key);
+    };
+
+    document.addEventListener("keydown", onNavigate);
+
+    return () => {
+      document.removeEventListener("keydown", onNavigate);
+    };
+  }, [onNavigate]);
+
   return (
     <Box
       background="rgba(0, 0, 0, 0.8)"
@@ -32,7 +60,11 @@ const Lightbox = ({ selectedImage, onNext, onExit }) => {
             src={selectedImage.src}
             alt={selectedImage.alt}
             fallback={<Spinner mx="auto" color="white" />}
-            onClick={onNext}
+            onClick={(event) => {
+              event.stopPropagation();
+
+              onNavigate();
+            }}
           />
         </AnimatedBox>
       </AnimatePresence>

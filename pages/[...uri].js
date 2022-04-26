@@ -65,13 +65,20 @@ export default function Page({ page, preview }) {
           >
             <Lightbox
               selectedImage={selectedImage}
-              onNext={(event) => {
-                event.stopPropagation();
+              onNavigate={(key) => {
+                let nextIndex;
 
-                const nextIndex =
-                  selectedImage.index < imageLinks.length - 1
-                    ? selectedImage.index + 1
-                    : 0;
+                if (key === "ArrowLeft") {
+                  nextIndex =
+                    selectedImage.index > 0
+                      ? selectedImage.index - 1
+                      : imageLinks.length - 1;
+                } else {
+                  nextIndex =
+                    selectedImage.index < imageLinks.length - 1
+                      ? selectedImage.index + 1
+                      : 0;
+                }
 
                 const { src, alt } = imageLinks[nextIndex].querySelector("img");
 
