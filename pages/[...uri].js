@@ -1,13 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import Head from "next/head";
-import {
-  Box,
-  Heading,
-  Stack,
-  Container,
-  Image,
-  Spinner,
-} from "@chakra-ui/react";
+import { Heading, Stack, Container } from "@chakra-ui/react";
 import { motion, AnimatePresence } from "framer-motion";
 
 import {
@@ -19,8 +12,7 @@ import {
 
 import UserContent from "../components/UserContent";
 import Tags from "../components/Tags";
-
-const AnimatedBox = motion(Box);
+import Lightbox from "../components/Lightbox";
 
 export default function Page({ page, preview }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -71,50 +63,22 @@ export default function Page({ page, preview }) {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
           >
-            <Box
-              background="rgba(0, 0, 0, 0.8)"
-              position="fixed"
-              top={0}
-              left={0}
-              height="100%"
-              width="100%"
-              onClick={() => setIsOpen(false)}
-              display="flex"
-              alignItems="center"
-              justifyContent="center"
-            >
-              <AnimatePresence>
-                <AnimatedBox
-                  key={selectedImage.index}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.3 }}
-                  position="absolute"
-                >
-                  <Image
-                    maxH="100vh"
-                    cursor="pointer"
-                    src={selectedImage.src}
-                    alt={selectedImage.alt}
-                    fallback={<Spinner mx="auto" color="white" />}
-                    onClick={(event) => {
-                      event.stopPropagation();
+            <Lightbox
+              selectedImage={selectedImage}
+              onClick={(event) => {
+                event.stopPropagation();
 
-                      const nextIndex =
-                        selectedImage.index < imageLinks.length - 1
-                          ? selectedImage.index + 1
-                          : 0;
+                const nextIndex =
+                  selectedImage.index < imageLinks.length - 1
+                    ? selectedImage.index + 1
+                    : 0;
 
-                      const { src, alt } =
-                        imageLinks[nextIndex].querySelector("img");
+                const { src, alt } = imageLinks[nextIndex].querySelector("img");
 
-                      setSelectedImage({ index: nextIndex, src, alt });
-                    }}
-                  />
-                </AnimatedBox>
-              </AnimatePresence>
-            </Box>
+                setSelectedImage({ index: nextIndex, src, alt });
+              }}
+              onBackgroundClick={() => setIsOpen(false)}
+            />
           </motion.div>
         )}
       </AnimatePresence>
