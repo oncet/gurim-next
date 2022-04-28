@@ -29,8 +29,10 @@ const styles = {
         bg: mode("yellow.50", "gray.800")(props),
       },
       ".user-content": {
-        "p, ul, blockquote": {
-          marginBottom: props.theme.space[4],
+        ">": {
+          "h2, p, ul, blockquote, figure": {
+            marginBottom: props.theme.space[4],
+          },
         },
         ul: {
           marginInlineStart: props.theme.space[10],
@@ -38,6 +40,9 @@ const styles = {
         },
         "figure img": {
           borderRadius: props.theme.radii.md,
+        },
+        figcaption: {
+          textAlign: "center",
         },
         ".blocks-gallery-grid": {
           marginInlineStart: 0,
