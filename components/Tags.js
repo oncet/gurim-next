@@ -7,14 +7,15 @@ const Tags = ({ tags }) => (
       <Tag
         key={tag.slug}
         variant="ghost"
-        color="gray.600"
+        color="gray.800"
         size="sm"
-        fontWeight="200"
+        fontWeight="300"
+        _hover={{
+          color: "black",
+        }}
       >
         <NextLink passHref href={`/category/${tag.slug}`}>
-          <Link>
-            {tag.name}
-          </Link>
+          <Link>{tag.name}</Link>
         </NextLink>
       </Tag>
     ))}
