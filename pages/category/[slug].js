@@ -17,16 +17,19 @@ import {
 import { motion } from "framer-motion";
 
 import { getCategory, getCategoriesSlugs } from "../../lib/api";
+import PageNotFound from "../../components/PageNotFound";
 
 const AnimatedGridItem = motion(GridItem);
 
 export default function Category({ category, preview }) {
-  const [endCursor, setEndCursor] = useState(category.posts.pageInfo.endCursor);
+  const [endCursor, setEndCursor] = useState(
+    category?.posts.pageInfo.endCursor
+  );
   const [hasNextPage, setHasNextPage] = useState(
-    category.posts.pageInfo.hasNextPage
+    category?.posts.pageInfo.hasNextPage
   );
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [items, setItems] = useState(category.posts.edges);
+  const [items, setItems] = useState(category?.posts.edges);
 
   const showMoreHandler = async () => {
     setIsSubmitting(true);
@@ -39,6 +42,10 @@ export default function Category({ category, preview }) {
     setEndCursor(response.posts.pageInfo.endCursor);
     setHasNextPage(response.posts.pageInfo.hasNextPage);
   };
+
+  if (!category) {
+    return <PageNotFound />;
+  }
 
   return (
     <>
@@ -117,7 +124,7 @@ export async function getStaticPaths() {
     params: { slug: node.slug },
   }));
 
-  return { paths, fallback: false };
+  return { paths, fallback: true };
 }
 
 export async function getStaticProps({ params, preview = false }) {

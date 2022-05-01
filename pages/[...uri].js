@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, forwardRef } from "react";
 import Head from "next/head";
-import { Heading, Stack, Container } from "@chakra-ui/react";
+import { Heading, Stack, Container, Link } from "@chakra-ui/react";
 import { motion, AnimatePresence } from "framer-motion";
 
 import {
@@ -13,6 +13,14 @@ import {
 import UserContent from "../components/UserContent";
 import Tags from "../components/Tags";
 import Lightbox from "../components/Lightbox";
+import PageNotFound from "../components/PageNotFound";
+
+const WrappedLink = forwardRef(({ children, ...props }, ref) => (
+  <Link display="inline-block" py="2" {...props} ref={ref}>
+    {children}
+  </Link>
+));
+WrappedLink.displayName = "WrappedLink";
 
 export default function Page({ page, preview }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,12 +29,14 @@ export default function Page({ page, preview }) {
   const userContentRef = useRef();
 
   useEffect(() => {
-    setImageLinks(
-      userContentRef.current.querySelectorAll(
-        ".blocks-gallery-item a, .wp-block-image a"
-      )
-    );
-  }, []);
+    if (page) {
+      setImageLinks(
+        userContentRef.current.querySelectorAll(
+          ".blocks-gallery-item a, .wp-block-image a"
+        )
+      );
+    }
+  }, [page]);
 
   useEffect(() => {
     imageLinks.forEach((imageLink, index) => {
@@ -40,6 +50,10 @@ export default function Page({ page, preview }) {
       });
     });
   }, [imageLinks]);
+
+  if (!page) {
+    return <PageNotFound />;
+  }
 
   return (
     <>
@@ -103,7 +117,7 @@ export async function getStaticPaths() {
     },
   }));
 
-  return { paths, fallback: false };
+  return { paths, fallback: true };
 }
 
 export async function getStaticProps({ params, preview = false }) {

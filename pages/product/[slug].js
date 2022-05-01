@@ -1,12 +1,16 @@
 import Head from "next/head";
-import Link from "next/link";
-import { HStack, Heading, Stack } from "@chakra-ui/react";
+import { Heading, Stack } from "@chakra-ui/react";
 
 import { getProduct, getProductsSlugs } from "../../lib/api";
 import UserContent from "../../components/UserContent";
 import Tags from "../../components/Tags";
+import PageNotFound from "../../components/PageNotFound";
 
 export default function Product({ product, preview }) {
+  if (!product) {
+    return <PageNotFound />;
+  }
+
   return (
     <>
       <Head>
@@ -30,7 +34,7 @@ export async function getStaticPaths() {
     params: { slug: node.slug },
   }));
 
-  return { paths, fallback: false };
+  return { paths, fallback: true };
 }
 
 export async function getStaticProps({ params, preview = false }) {
