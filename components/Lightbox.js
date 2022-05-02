@@ -18,13 +18,6 @@ const Lightbox = ({ selectedImage, onNavigate, onExit }) => {
   }, [onExit]);
 
   useEffect(() => {
-    const onKeyDown = (event) => {
-      event.stopPropagation();
-
-      if (event.key === "ArrowRight" || event.key === "ArrowLeft")
-        onNavigate(event.key);
-    };
-
     document.addEventListener("keydown", onNavigate);
 
     return () => {
@@ -63,7 +56,7 @@ const Lightbox = ({ selectedImage, onNavigate, onExit }) => {
             onClick={(event) => {
               event.stopPropagation();
 
-              onNavigate();
+              onNavigate(event);
             }}
           />
         </AnimatedBox>
