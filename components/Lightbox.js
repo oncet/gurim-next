@@ -26,8 +26,33 @@ const Lightbox = ({ selectedImage, onNavigate, onExit }) => {
 
     document.addEventListener("keydown", onKeyDown);
 
+    let touchstartX = 0;
+    let touchendX = 0;
+
+    const slider = document.getElementById("slider");
+
+    const onSwipe = () => {
+      if (touchendX < touchstartX) onNavigate("ArrowLeft");
+      if (touchendX > touchstartX) onNavigate("ArrowRight");
+    };
+
+    const onTouchstart = (event) => {
+      touchstartX = event.changedTouches[0].screenX;
+    };
+
+    document.addEventListener("touchstart", onTouchstart);
+
+    const onTouchend = (event) => {
+      touchendX = event.changedTouches[0].screenX;
+      onSwipe();
+    };
+
+    document.addEventListener("touchend", onTouchend);
+
     return () => {
       document.removeEventListener("keydown", onKeyDown);
+      document.removeEventListener("touchstart", onTouchstart);
+      document.removeEventListener("touchend", onTouchend);
     };
   }, [onNavigate]);
 
