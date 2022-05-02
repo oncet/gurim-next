@@ -51,15 +51,15 @@ export default function Page({ page, preview }) {
     });
   }, [imageLinks]);
 
-  const onNavigate = (event) => {
+  const onNavigate = (key) => {
     let nextIndex;
 
-    if (event.key === "ArrowLeft") {
+    if (key === "ArrowLeft") {
       nextIndex =
         selectedImage.index > 0
           ? selectedImage.index - 1
           : imageLinks.length - 1;
-    } else if (event.key === "ArrowRight" || event.type === "click") {
+    } else if (key === "ArrowRight" || key === "click") {
       nextIndex =
         selectedImage.index < imageLinks.length - 1
           ? selectedImage.index + 1

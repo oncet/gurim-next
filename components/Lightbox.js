@@ -18,10 +18,16 @@ const Lightbox = ({ selectedImage, onNavigate, onExit }) => {
   }, [onExit]);
 
   useEffect(() => {
-    document.addEventListener("keydown", onNavigate);
+    const onKeyDown = (event) => {
+      if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
+        onNavigate(event.key);
+      }
+    };
+
+    document.addEventListener("keydown", onKeyDown);
 
     return () => {
-      document.removeEventListener("keydown", onNavigate);
+      document.removeEventListener("keydown", onKeyDown);
     };
   }, [onNavigate]);
 
@@ -56,7 +62,7 @@ const Lightbox = ({ selectedImage, onNavigate, onExit }) => {
             onClick={(event) => {
               event.stopPropagation();
 
-              onNavigate(event);
+              onNavigate(event.type);
             }}
           />
         </AnimatedBox>
