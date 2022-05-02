@@ -32,8 +32,8 @@ const Lightbox = ({ selectedImage, onNavigate, onExit }) => {
     const slider = document.getElementById("slider");
 
     const onSwipe = () => {
-      if (touchendX < touchstartX) onNavigate("ArrowLeft");
-      if (touchendX > touchstartX) onNavigate("ArrowRight");
+      if (touchendX < touchstartX) onNavigate("ArrowRight");
+      if (touchendX > touchstartX) onNavigate("ArrowLeft");
     };
 
     const onTouchstart = (event) => {
