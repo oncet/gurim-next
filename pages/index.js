@@ -26,13 +26,19 @@ export default function Home() {
               Hecho a mano
             </Heading>
             <Box rounded="md" overflow="hidden" maxHeight={600}>
-              <Image
+              {/* <Image
                 src="https://gurim.com.ar/wp-content/uploads/2021/12/manos-scaled.jpg"
                 alt=""
                 width={960}
                 height={640}
                 layout="responsive"
-              />
+              /> */}
+              <video muted autoPlay loop>
+                <source
+                  src="https://gurim.com.ar/wp-content/uploads/2022/05/20220424-174306.mp4"
+                  type="video/mp4"
+                />
+              </video>
             </Box>
           </GridItem>
         </Grid>
