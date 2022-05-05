@@ -132,5 +132,6 @@ export async function getStaticProps({ params, preview = false }) {
 
   return {
     props: { page: page || post, preview },
+    revalidate: 30,
   };
 }

@@ -132,5 +132,6 @@ export async function getStaticProps({ params, preview = false }) {
 
   return {
     props: { category, preview },
+    revalidate: 30,
   };
 }
