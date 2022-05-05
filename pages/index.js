@@ -14,34 +14,14 @@ export default function Home() {
   return (
     <VStack spacing="7">
       <Container maxW="container.xl">
-        <Grid templateColumns={["repeat(1, 1fr)"]} gap={6}>
-          <GridItem>
-            <Heading
-              fontWeight="200"
-              letterSpacing={1}
-              size="xl"
-              mb="4"
-              textAlign="center"
-            >
-              Hecho a mano
-            </Heading>
-            <Box rounded="md" overflow="hidden" maxHeight={600}>
-              {/* <Image
-                src="https://gurim.com.ar/wp-content/uploads/2021/12/manos-scaled.jpg"
-                alt=""
-                width={960}
-                height={640}
-                layout="responsive"
-              /> */}
-              <video muted autoPlay loop>
-                <source
-                  src="https://gurim.com.ar/wp-content/uploads/2022/05/20220424-174306.mp4"
-                  type="video/mp4"
-                />
-              </video>
-            </Box>
-          </GridItem>
-        </Grid>
+        <Box rounded="md" overflow="hidden" maxHeight={600}>
+          <video width="1920" height="1080" muted autoPlay loop>
+            <source
+              src="https://gurim.com.ar/wp-content/uploads/2022/05/intro.mp4"
+              type="video/mp4"
+            />
+          </video>
+        </Box>
       </Container>
       <Container maxW="container.lg">
         <Grid templateColumns={["repeat(1, 1fr)", "repeat(2, 1fr)"]} gap={6}>
@@ -64,6 +44,7 @@ export default function Home() {
                     width={600}
                     height={400}
                     layout="responsive"
+                    priority
                   />
                 </Box>
               </Link>
@@ -88,6 +69,7 @@ export default function Home() {
                     width={600}
                     height={400}
                     layout="responsive"
+                    priority
                   />
                 </Box>
               </Link>
