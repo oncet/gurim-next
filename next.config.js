@@ -5,6 +5,6 @@ module.exports = {
     defaultLocale: "es-AR",
   },
   images: {
-    domains: ["gurim.com.ar"],
+    domains: ["admin.gurim.com.ar"],
   },
 };
