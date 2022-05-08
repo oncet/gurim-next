@@ -17,7 +17,7 @@ export default function Home() {
         <Box rounded="md" overflow="hidden" maxHeight={600}>
           <video width="1920" height="1080" muted autoPlay loop>
             <source
-              src="https://gurim.com.ar/wp-content/uploads/2022/05/intro.mp4"
+              src="https://admin.gurim.com.ar/wp-content/uploads/2022/05/intro.mp4"
               type="video/mp4"
             />
           </video>
