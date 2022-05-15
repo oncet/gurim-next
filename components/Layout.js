@@ -21,13 +21,11 @@ const Layout = ({ children }) => {
           opacity: 1,
         }}
       >
-        <Box>
-          <Stack spacing="6" minHeight="100vh">
-            <Header />
-            <chakra.main flexGrow={1}>{children}</chakra.main>
-            <Footer />
-          </Stack>
-        </Box>
+        <Stack spacing="6" minHeight="100vh">
+          <Header />
+          <chakra.main flexGrow={1}>{children}</chakra.main>
+          <Footer />
+        </Stack>
       </motion.div>
     </>
   );
