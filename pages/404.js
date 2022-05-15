@@ -10,7 +10,7 @@ const WrappedLink = forwardRef(({ children, ...props }, ref) => (
 ));
 WrappedLink.displayName = "WrappedLink";
 
-const PageNotFound = () => {
+export default function NotFound({ product, preview }) {
   return (
     <>
       <Head>
@@ -32,6 +32,4 @@ const PageNotFound = () => {
       </Container>
     </>
   );
-};
-
-export default PageNotFound;
+}

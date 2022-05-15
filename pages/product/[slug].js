@@ -4,13 +4,8 @@ import { Heading, Stack } from "@chakra-ui/react";
 import { getProduct, getProductsSlugs } from "../../lib/api";
 import UserContent from "../../components/UserContent";
 import Tags from "../../components/Tags";
-import PageNotFound from "../../components/PageNotFound";
 
 export default function Product({ product, preview }) {
-  if (!product) {
-    return <PageNotFound />;
-  }
-
   return (
     <>
       <Head>
@@ -42,6 +37,7 @@ export async function getStaticProps({ params, preview = false }) {
 
   return {
     props: { product, preview },
+    notFound: !product,
     revalidate: 30,
   };
 }

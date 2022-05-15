@@ -105,7 +105,7 @@ function MyApp({ Component, pageProps }) {
       <Layout>
         <AnimatePresence exitBeforeEnter>
           <motion.div
-            key={router.asPath}
+            key={router.asPath + router.isFallback}
             initial={{
               opacity: 0,
             }}

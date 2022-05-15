@@ -13,7 +13,6 @@ import {
 import UserContent from "../components/UserContent";
 import Tags from "../components/Tags";
 import Lightbox from "../components/Lightbox";
-import PageNotFound from "../components/PageNotFound";
 
 const WrappedLink = forwardRef(({ children, ...props }, ref) => (
   <Link display="inline-block" py="2" {...props} ref={ref}>
@@ -73,10 +72,6 @@ export default function Page({ page, preview }) {
     setSelectedImage({ index: nextIndex, src, alt });
   };
 
-  if (!page) {
-    return <PageNotFound />;
-  }
-
   return (
     <>
       <Head>
@@ -130,8 +125,11 @@ export async function getStaticProps({ params, preview = false }) {
   const page = await getPageByUri(uri);
   const post = await getPostByUri(uri);
 
+  const content = page || post;
+
   return {
     props: { page: page || post, preview },
+    notFound: !content,
     revalidate: 30,
   };
 }

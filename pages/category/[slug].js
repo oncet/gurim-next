@@ -17,7 +17,6 @@ import {
 import { motion } from "framer-motion";
 
 import { getCategory, getCategoriesSlugs } from "../../lib/api";
-import PageNotFound from "../../components/PageNotFound";
 
 const AnimatedGridItem = motion(GridItem);
 
@@ -42,10 +41,6 @@ export default function Category({ category, preview }) {
     setEndCursor(response.posts.pageInfo.endCursor);
     setHasNextPage(response.posts.pageInfo.hasNextPage);
   };
-
-  if (!category) {
-    return <PageNotFound />;
-  }
 
   return (
     <>
@@ -132,6 +127,7 @@ export async function getStaticProps({ params, preview = false }) {
 
   return {
     props: { category, preview },
+    notFound: !category,
     revalidate: 30,
   };
 }
