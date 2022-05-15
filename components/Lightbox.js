@@ -30,6 +30,7 @@ const Lightbox = ({
   );
 
   useEffect(() => {
+    // Handle keyboard navigation
     const onKeyDown = (event) => {
       if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
         onNavigate(event.key);
@@ -38,25 +39,21 @@ const Lightbox = ({
 
     document.addEventListener("keydown", onKeyDown);
 
+    // Handle swipe navigation
     let touchstartX = 0;
-    let touchendX = 0;
-
-    const onSwipe = () => {
-      if (touchendX < touchstartX) onNavigate("ArrowRight");
-      if (touchendX > touchstartX) onNavigate("ArrowLeft");
-    };
 
     const onTouchstart = (event) => {
       touchstartX = event.changedTouches[0].screenX;
     };
 
-    document.addEventListener("touchstart", onTouchstart);
-
     const onTouchend = (event) => {
-      touchendX = event.changedTouches[0].screenX;
-      onSwipe();
+      const touchendX = event.changedTouches[0].screenX;
+
+      if (touchendX < touchstartX) onNavigate("ArrowRight");
+      if (touchendX > touchstartX) onNavigate("ArrowLeft");
     };
 
+    document.addEventListener("touchstart", onTouchstart);
     document.addEventListener("touchend", onTouchend);
 
     return () => {
