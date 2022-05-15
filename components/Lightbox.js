@@ -1,21 +1,33 @@
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import { Box, Image, Spinner } from "@chakra-ui/react";
 import { AnimatePresence, motion } from "framer-motion";
 
 const AnimatedBox = motion(Box);
 
-const Lightbox = ({ selectedImage, onNavigate, onExit }) => {
-  useEffect(() => {
-    const onKeyDown = (event) => {
-      if (event.key === "Escape") onExit();
-    };
+const Lightbox = ({
+  imageCount,
+  selectedImage,
+  onSelectedImageChange,
+  onExit,
+}) => {
+  const onNavigate = useCallback(
+    (key) => {
+      let nextIndex;
 
-    document.addEventListener("keydown", onKeyDown);
+      if (key === "ArrowLeft") {
+        nextIndex =
+          selectedImage.index > 0 ? selectedImage.index - 1 : imageCount - 1;
+      } else if (key === "ArrowRight" || key === "click") {
+        nextIndex =
+          selectedImage.index < imageCount - 1 ? selectedImage.index + 1 : 0;
+      }
 
-    return () => {
-      document.removeEventListener("keydown", onKeyDown);
-    };
-  }, [onExit]);
+      if (nextIndex === undefined) return;
+
+      onSelectedImageChange(nextIndex);
+    },
+    [imageCount, selectedImage, onSelectedImageChange]
+  );
 
   useEffect(() => {
     const onKeyDown = (event) => {
@@ -28,8 +40,6 @@ const Lightbox = ({ selectedImage, onNavigate, onExit }) => {
 
     let touchstartX = 0;
     let touchendX = 0;
-
-    const slider = document.getElementById("slider");
 
     const onSwipe = () => {
       if (touchendX < touchstartX) onNavigate("ArrowRight");
@@ -55,6 +65,18 @@ const Lightbox = ({ selectedImage, onNavigate, onExit }) => {
       document.removeEventListener("touchend", onTouchend);
     };
   }, [onNavigate]);
+
+  useEffect(() => {
+    const onKeyDown = (event) => {
+      if (event.key === "Escape") onExit();
+    };
+
+    document.addEventListener("keydown", onKeyDown);
+
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+    };
+  }, [onExit]);
 
   return (
     <Box

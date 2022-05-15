@@ -48,28 +48,6 @@ export default function Page({ page, preview }) {
     });
   }, [imageLinks]);
 
-  const onNavigate = (key) => {
-    let nextIndex;
-
-    if (key === "ArrowLeft") {
-      nextIndex =
-        selectedImage.index > 0
-          ? selectedImage.index - 1
-          : imageLinks.length - 1;
-    } else if (key === "ArrowRight" || key === "click") {
-      nextIndex =
-        selectedImage.index < imageLinks.length - 1
-          ? selectedImage.index + 1
-          : 0;
-    }
-
-    if (nextIndex === undefined) return;
-
-    const { src, alt } = imageLinks[nextIndex].querySelector("img");
-
-    setSelectedImage({ index: nextIndex, src, alt });
-  };
-
   return (
     <>
       <Head>
@@ -93,8 +71,12 @@ export default function Page({ page, preview }) {
             transition={{ duration: 0.3 }}
           >
             <Lightbox
+              imageCount={imageLinks.length}
               selectedImage={selectedImage}
-              onNavigate={onNavigate}
+              onSelectedImageChange={(index) => {
+                const { src, alt } = imageLinks[index].querySelector("img");
+                setSelectedImage({ index, src, alt });
+              }}
               onExit={() => setIsOpen(false)}
             />
           </motion.div>
