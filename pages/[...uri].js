@@ -28,14 +28,12 @@ export default function Page({ page, preview }) {
   const userContentRef = useRef();
 
   useEffect(() => {
-    if (page) {
-      setImageLinks(
-        userContentRef.current.querySelectorAll(
-          ".blocks-gallery-item a, .wp-block-image a"
-        )
-      );
-    }
-  }, [page]);
+    setImageLinks(
+      userContentRef.current.querySelectorAll(
+        ".blocks-gallery-item a, .wp-block-image a"
+      )
+    );
+  }, []);
 
   useEffect(() => {
     imageLinks.forEach((imageLink, index) => {
