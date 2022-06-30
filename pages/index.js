@@ -39,8 +39,8 @@ export default function Home() {
                 </Heading>
                 <Box rounded="md" overflow="hidden">
                   <Image
-                    src="https://admin.gurim.com.ar/wp-content/uploads/2021/09/IMG_2216-1200x800.jpg"
-                    alt="Bolso de fieltro"
+                    src="/images/fieltro.jpg"
+                    alt="Proceso de fieltrado"
                     width={600}
                     height={400}
                     layout="responsive"
@@ -64,8 +64,8 @@ export default function Home() {
                 </Heading>
                 <Box rounded="md" overflow="hidden">
                   <Image
-                    src="https://admin.gurim.com.ar/wp-content/uploads/2020/10/IMG_8973-1200x800.jpg"
-                    alt="Estuche y cuaderno decorados con ecoprint"
+                    src="/images/ecoprint.jpg"
+                    alt="Tela con ecoprint"
                     width={600}
                     height={400}
                     layout="responsive"
