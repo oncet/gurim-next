@@ -21,7 +21,7 @@ const Layout = ({ children }) => {
           opacity: 1,
         }}
       >
-        <Stack spacing="6" minHeight="100vh">
+        <Stack spacing="10" minHeight="100vh">
           <Header />
           <chakra.main flexGrow={1}>{children}</chakra.main>
           <Footer />
