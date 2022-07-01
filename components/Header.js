@@ -33,7 +33,7 @@ const Header = () => {
         <Box display="flex" alignItems="center" justifyContent="space-between">
           <NextLink href="/" passHref>
             <Link>
-              <Image src={logo} alt="Gurim logo" />
+              <Image src={logo} width={90} height={113} alt="Gurim logo" />
             </Link>
           </NextLink>
           <Box display="flex" gap={5}>

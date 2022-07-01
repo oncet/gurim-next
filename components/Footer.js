@@ -27,8 +27,8 @@ const Footer = () => {
           <Image
             src={handcraftedLogo}
             alt="Handcrafted"
-            width={96}
-            height={93}
+            width={80}
+            height={108}
             style={{
               opacity: 0.9,
             }}
