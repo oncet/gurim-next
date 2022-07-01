@@ -24,10 +24,7 @@ export default function Home({ posts }) {
         <Container maxW="container.xl">
           <Box rounded="md" overflow="hidden" maxHeight={600}>
             <video width="1920" height="1080" muted autoPlay loop>
-              <source
-                src="https://admin.gurim.com.ar/wp-content/uploads/2022/05/intro.mp4"
-                type="video/mp4"
-              />
+              <source src="/intro.mp4" type="video/mp4" />
             </video>
           </Box>
         </Container>

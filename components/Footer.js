@@ -6,7 +6,11 @@ import {
   UnorderedList,
   ListItem,
   Link,
+  HStack,
 } from "@chakra-ui/react";
+import Image from "next/image";
+
+import handcraftedLogo from "../public/handcrafted-logo.png";
 
 const WrappedLink = forwardRef(({ children, ...props }, ref) => (
   <Link display="inline-block" py="2" {...props} ref={ref}>
@@ -17,54 +21,54 @@ WrappedLink.displayName = "WrappedLink";
 
 const Footer = () => {
   return (
-    <chakra.footer borderTop="1px solid" borderColor="gray.200" pt="12" pb="12" >
+    <chakra.footer borderTop="1px solid" borderColor="gray.200" pt="12" pb="12">
       <Container maxW="container.xl">
-        <nav>
-          <UnorderedList
-            styleType="none"
-            textAlign="right"
-            display="flex"
-            flexDirection={["column", "row"]}
-            gridGap={[0, 6]}
-            justifyContent="flex-end"
-            ml="0"
-          >
-            <ListItem>
-              <NextLink passHref href="https://shop.gurim.com.ar/">
-                <WrappedLink>
-                  Tienda
-                </WrappedLink>
-              </NextLink>
-            </ListItem>
-            <ListItem>
-              <NextLink passHref href="/contacto">
-                <WrappedLink>
-                  Contacto
-                </WrappedLink>
-              </NextLink>
-            </ListItem>
-            <ListItem>
-              <NextLink
-                passHref
-                href="https://www.instagram.com/gurim_craft/"
-              >
-                <WrappedLink>
-                  Instagram
-                </WrappedLink>
-              </NextLink>
-            </ListItem>
-            <ListItem>
-              <NextLink
-                passHref
-                href="https://www.facebook.com/gurimcraft/"
-              >
-                <WrappedLink>
-                  Facebook
-                </WrappedLink>
-              </NextLink>
-            </ListItem>
-          </UnorderedList>
-        </nav>
+        <HStack justifyContent="space-between">
+          <Image
+            src={handcraftedLogo}
+            alt="Handcrafted"
+            width={96}
+            height={93}
+            style={{
+              opacity: 0.9,
+            }}
+          />
+          <nav>
+            <UnorderedList
+              styleType="none"
+              textAlign="right"
+              display="flex"
+              flexDirection={["column", "row"]}
+              gridGap={[0, 6]}
+              justifyContent="flex-end"
+              ml="0"
+            >
+              <ListItem>
+                <NextLink passHref href="https://shop.gurim.com.ar/">
+                  <WrappedLink>Tienda</WrappedLink>
+                </NextLink>
+              </ListItem>
+              <ListItem>
+                <NextLink passHref href="/contacto">
+                  <WrappedLink>Contacto</WrappedLink>
+                </NextLink>
+              </ListItem>
+              <ListItem>
+                <NextLink
+                  passHref
+                  href="https://www.instagram.com/gurim_craft/"
+                >
+                  <WrappedLink>Instagram</WrappedLink>
+                </NextLink>
+              </ListItem>
+              <ListItem>
+                <NextLink passHref href="https://www.facebook.com/gurimcraft/">
+                  <WrappedLink>Facebook</WrappedLink>
+                </NextLink>
+              </ListItem>
+            </UnorderedList>
+          </nav>
+        </HStack>
       </Container>
     </chakra.footer>
   );
