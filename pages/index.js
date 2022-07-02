@@ -8,11 +8,10 @@ import {
   Container,
   VStack,
   Link,
-  HStack,
   Text,
   StackDivider,
 } from "@chakra-ui/react";
-import { getLatestPosts } from "../lib/api";
+import { getPosts } from "../lib/api";
 
 export default function Home({ posts }) {
   return (
@@ -117,7 +116,7 @@ export default function Home({ posts }) {
 }
 
 export async function getStaticProps() {
-  const posts = await getLatestPosts();
+  const posts = await getPosts();
 
   return {
     props: { posts },
