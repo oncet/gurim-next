@@ -55,9 +55,7 @@ const Nav = () => {
       >
         <ListItem>
           <NextLink passHref href="https://shop.gurim.com.ar/">
-            <WrappedLink>
-              Tienda
-            </WrappedLink>
+            <WrappedLink>Tienda</WrappedLink>
           </NextLink>
         </ListItem>
         <ListItem ref={ref}>
@@ -117,12 +115,16 @@ const Nav = () => {
                     </NextLink>
                   </ListItem>
                   <ListItem>
-                    <NextLink
-                      passHref
-                      href="/category/encuadernacion"
-                    >
+                    <NextLink passHref href="/category/encuadernacion">
                       <Link px="6" py="1" display="inline-block">
                         Encuadernación
+                      </Link>
+                    </NextLink>
+                  </ListItem>
+                  <ListItem>
+                    <NextLink passHref href="/blog">
+                      <Link px="6" py="1" display="inline-block">
+                        Ver todo
                       </Link>
                     </NextLink>
                   </ListItem>
@@ -133,16 +135,12 @@ const Nav = () => {
         </ListItem>
         <ListItem>
           <NextLink passHref href="/nosotros">
-            <WrappedLink>
-              Gurim
-            </WrappedLink>
+            <WrappedLink>Gurim</WrappedLink>
           </NextLink>
         </ListItem>
         <ListItem>
           <NextLink passHref href="/contacto">
-            <WrappedLink>
-              Contacto
-            </WrappedLink>
+            <WrappedLink>Contacto</WrappedLink>
           </NextLink>
         </ListItem>
       </UnorderedList>
