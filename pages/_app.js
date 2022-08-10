@@ -1,4 +1,5 @@
 import { useRouter } from "next/router";
+import Script from "next/script";
 import { Center, ChakraProvider, Spinner } from "@chakra-ui/react";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -12,6 +13,19 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <ChakraProvider theme={theme}>
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=UA-147454552-1"
+        strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){window.dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'UA-147454552-1');
+        `}
+      </Script>
       <Layout>
         <AnimatePresence exitBeforeEnter>
           <motion.div
