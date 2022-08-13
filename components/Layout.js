@@ -15,7 +15,10 @@ const Layout = ({ children }) => {
         <meta name="description" content="Botánica y textil." />
         <meta property="og:title" content="Gurim — Hecho a mano" />
         <meta property="og:description" content="Botánica y textil." />
-        <meta property="og:image" content={previewImage.src} />
+        <meta
+          property="og:image"
+          content={process.env.VERCEL_URL + previewImage.src}
+        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <motion.div
