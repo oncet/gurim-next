@@ -21,6 +21,7 @@ const Layout = ({ children }) => {
             "https://" + process.env.NEXT_PUBLIC_VERCEL_URL + previewImage.src
           }
         />
+        <meta name="twitter:card" content="summary_large_image" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <motion.div
