@@ -1,16 +1,21 @@
 import Head from "next/head";
-import { chakra, Box, Stack } from "@chakra-ui/react";
+import { chakra, Stack } from "@chakra-ui/react";
 import { motion } from "framer-motion";
-import Footer from "./Footer";
+
+import previewImage from "../public/images/preview.jpg";
 
 import Header from "./Header";
+import Footer from "./Footer";
 
 const Layout = ({ children }) => {
   return (
     <>
       <Head>
         <title>Gurim — Hecho a mano</title>
-        <meta name="description" content="Author of handcrafted products" />
+        <meta name="description" content="Botánica y textil." />
+        <meta property="og:title" content="Gurim — Hecho a mano" />
+        <meta property="og:description" content="Botánica y textil." />
+        <meta property="og:image" content={previewImage.src} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <motion.div
