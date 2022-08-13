@@ -17,7 +17,7 @@ const Layout = ({ children }) => {
         <meta property="og:description" content="Botánica y textil." />
         <meta
           property="og:image"
-          content={process.env.VERCEL_URL + previewImage.src}
+          content={process.env.NEXT_PUBLIC_VERCEL_URL + previewImage.src}
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
