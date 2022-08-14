@@ -10,7 +10,7 @@ const WrappedLink = forwardRef(({ children, ...props }, ref) => (
 ));
 WrappedLink.displayName = "WrappedLink";
 
-export default function NotFound({ product, preview }) {
+export default function NotFound() {
   return (
     <>
       <Head>

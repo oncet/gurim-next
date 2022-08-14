@@ -5,11 +5,16 @@ import { getProduct, getProductsSlugs } from "../../lib/api";
 import UserContent from "../../components/UserContent";
 import Tags from "../../components/Tags";
 
-export default function Product({ product, preview }) {
+export default function Product({ product }) {
   return (
     <>
       <Head>
         <title>{product.title} — Gurim</title>
+        <meta
+          key="og:title"
+          property="og:title"
+          content={`${product.title} — Gurim`}
+        />
       </Head>
       <Stack spacing="4">
         <Heading fontWeight="200" size="2xl">
@@ -32,11 +37,11 @@ export async function getStaticPaths() {
   return { paths, fallback: true };
 }
 
-export async function getStaticProps({ params, preview = false }) {
-  const product = await getProduct(params.slug, preview);
+export async function getStaticProps({ params }) {
+  const product = await getProduct(params.slug);
 
   return {
-    props: { product, preview },
+    props: { product },
     notFound: !product,
     revalidate: 30,
   };

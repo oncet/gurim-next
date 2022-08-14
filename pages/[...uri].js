@@ -21,7 +21,7 @@ const WrappedLink = forwardRef(({ children, ...props }, ref) => (
 ));
 WrappedLink.displayName = "WrappedLink";
 
-export default function Page({ page, preview }) {
+export default function Page({ page }) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState();
   const [imageLinks, setImageLinks] = useState([]);
@@ -52,6 +52,18 @@ export default function Page({ page, preview }) {
     <>
       <Head>
         <title>{page.title} — Gurim</title>
+        <meta
+          key="og:title"
+          property="og:title"
+          content={`${page.title} — Gurim`}
+        />
+        {!!page.featuredImage?.node.sourceUrl && (
+          <meta
+            key="og:image"
+            property="og:image"
+            content={page.featuredImage.node.sourceUrl}
+          />
+        )}
       </Head>
       <Container maxW="container.lg">
         <Stack spacing="4">
@@ -99,7 +111,7 @@ export async function getStaticPaths() {
   return { paths, fallback: true };
 }
 
-export async function getStaticProps({ params, preview = false }) {
+export async function getStaticProps({ params }) {
   const uri = `/${params.uri.join("/")}/`;
 
   const page = await getPageByUri(uri);
@@ -108,7 +120,7 @@ export async function getStaticProps({ params, preview = false }) {
   const content = page || post;
 
   return {
-    props: { page: page || post, preview },
+    props: { page: page || post },
     notFound: !content,
     revalidate: 30,
   };
