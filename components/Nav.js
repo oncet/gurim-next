@@ -22,24 +22,36 @@ const WrappedLink = forwardRef(({ children, ...props }, ref) => (
 WrappedLink.displayName = "WrappedLink";
 
 const Nav = () => {
-  const ref = useRef();
-  const [isOpen, setIsOpen] = useState(false);
+  const shopRef = useRef();
+  const blogRef = useRef();
+  const [isShopOpen, setIsShopOpen] = useState(false);
+  const [isBlogOpen, setIsBlogOpen] = useState(false);
   const router = useRouter();
 
   const duration = useBreakpointValue([0.3, 0.2]);
   const height = useBreakpointValue([0, "auto"]);
 
   useEffect(() => {
-    setIsOpen(false);
+    setIsShopOpen(false);
+    setIsBlogOpen(false);
   }, [router.asPath]);
 
   useOutsideClick({
-    ref,
-    handler: () => setIsOpen(false),
+    ref: shopRef,
+    handler: () => setIsShopOpen(false),
   });
 
-  const handleSubmenuClick = () => {
-    setIsOpen(!isOpen);
+  useOutsideClick({
+    ref: blogRef,
+    handler: () => setIsBlogOpen(false),
+  });
+
+  const handleShopClick = () => {
+    setIsShopOpen(!isShopOpen);
+  };
+
+  const handleBlogClick = () => {
+    setIsBlogOpen(!isBlogOpen);
   };
 
   return (
@@ -53,17 +65,61 @@ const Nav = () => {
         justifyContent="flex-end"
         ml="0"
       >
-        <ListItem>
-          <NextLink passHref href="https://shop.gurim.com.ar/">
-            <WrappedLink>Tienda</WrappedLink>
-          </NextLink>
+        <ListItem ref={shopRef}>
+          <WrappedLink onClick={handleShopClick} href="#">
+            Tienda
+          </WrappedLink>
+          <AnimatePresence>
+            {isShopOpen && (
+              <AnimatedBox
+                initial={{ height, opacity: 0 }}
+                animate={{ height: "auto", opacity: 1 }}
+                transition={{
+                  duration,
+                  ease: "easeOut",
+                }}
+                exit={{ height, opacity: 0 }}
+                overflow="hidden"
+                position={["relative", "absolute"]}
+                zIndex="1"
+                boxShadow={[null, "md"]}
+                borderRight={["1px solid", null]}
+                borderColor="gray.200"
+                rounded={[null, "md"]}
+              >
+                <UnorderedList
+                  backgroundColor="yellow.50"
+                  listStyleType="none"
+                  width="160px"
+                  py="2"
+                  ml={["auto", 0]}
+                  textAlign={["right", "left"]}
+                >
+                  <ListItem>
+                    <NextLink passHref href="https://shop.gurim.com.ar/">
+                      <Link px="6" py="1" display="inline-block">
+                        Argentina
+                      </Link>
+                    </NextLink>
+                  </ListItem>
+                  <ListItem>
+                    <NextLink passHref href="/shop">
+                      <Link px="6" py="1" display="inline-block">
+                        Global
+                      </Link>
+                    </NextLink>
+                  </ListItem>
+                </UnorderedList>
+              </AnimatedBox>
+            )}
+          </AnimatePresence>
         </ListItem>
-        <ListItem ref={ref}>
-          <WrappedLink onClick={handleSubmenuClick} href="#">
+        <ListItem ref={blogRef}>
+          <WrappedLink onClick={handleBlogClick} href="#">
             Blog
           </WrappedLink>
           <AnimatePresence>
-            {isOpen && (
+            {isBlogOpen && (
               <AnimatedBox
                 initial={{ height, opacity: 0 }}
                 animate={{ height: "auto", opacity: 1 }}
