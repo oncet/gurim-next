@@ -16,48 +16,39 @@ import {
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 
-import { getShopCategory, getCategoriesSlugs } from "../../lib/api";
+import { getProducts } from "../../lib/api";
 
 const AnimatedGridItem = motion(GridItem);
 
-export default function ShopCategory({ category }) {
-  const [endCursor, setEndCursor] = useState(
-    category?.products.pageInfo.endCursor
-  );
-  const [hasNextPage, setHasNextPage] = useState(
-    category?.products.pageInfo.hasNextPage
-  );
+export default function Shop({ posts }) {
+  const [endCursor, setEndCursor] = useState(posts?.pageInfo.endCursor);
+  const [hasNextPage, setHasNextPage] = useState(posts?.pageInfo.hasNextPage);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [items, setItems] = useState(category?.products.edges);
+  const [items, setItems] = useState(posts?.nodes);
 
   const showMoreHandler = async () => {
     setIsSubmitting(true);
 
-    const response = await getShopCategory(category.slug, endCursor);
+    const response = await getProducts(endCursor, 6);
 
     setIsSubmitting(false);
 
-    setItems([...items, ...response.products.edges]);
-    setEndCursor(response.products.pageInfo.endCursor);
-    setHasNextPage(response.products.pageInfo.hasNextPage);
+    setItems([...items, ...response.nodes]);
+    setEndCursor(response.pageInfo.endCursor);
+    setHasNextPage(response.pageInfo.hasNextPage);
   };
 
   return (
     <>
       <Head>
-        <title>{category.name} — Gurim</title>
-        <meta
-          key="og:title"
-          property="og:title"
-          content={`${category.name} — Gurim`}
-        />
+        <title>Shop — Gurim</title>
       </Head>
       <Container maxW="container.lg">
         <Stack spacing="4">
           <Heading fontWeight="200" size="2xl">
-            {category.name}
+            Shop
           </Heading>
-          {category.products.edges && (
+          {posts.nodes && (
             <>
               <Grid
                 templateColumns={[
@@ -67,9 +58,9 @@ export default function ShopCategory({ category }) {
                 ]}
                 gap={6}
               >
-                {items.map(({ node }) => (
+                {items.map(({ slug, featuredImage, title }) => (
                   <AnimatedGridItem
-                    key={node.slug}
+                    key={slug}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{
@@ -77,18 +68,18 @@ export default function ShopCategory({ category }) {
                       ease: "easeOut",
                     }}
                   >
-                    <NextLink passHref href={`/product/${node.slug}`}>
+                    <NextLink passHref href={`/product/${slug}`}>
                       <Link textUnderlineOffset="3px">
                         <Box rounded="md" overflow="hidden">
                           <NextImage
-                            src={node.featuredImage.node.sourceUrl}
-                            alt={node.title}
+                            src={featuredImage.node.sourceUrl}
+                            alt={title}
                             width={700}
                             height={700}
                             layout="responsive"
                           />
                         </Box>
-                        <Text mt="2">{node.title}</Text>
+                        <Text mt="2">{title}</Text>
                       </Link>
                     </NextLink>
                   </AnimatedGridItem>
@@ -115,22 +106,12 @@ export default function ShopCategory({ category }) {
   );
 }
 
-export async function getStaticPaths() {
-  const categories = await getCategoriesSlugs();
-
-  const paths = categories.edges.map(({ node }) => ({
-    params: { slug: node.slug },
-  }));
-
-  return { paths, fallback: true };
-}
-
-export async function getStaticProps({ params }) {
-  const category = await getShopCategory(params.slug);
+export async function getStaticProps() {
+  const posts = await getProducts(undefined, 6);
 
   return {
-    props: { category },
-    notFound: !category,
+    props: { posts },
+    notFound: !posts,
     revalidate: 30,
   };
 }

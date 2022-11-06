@@ -1,7 +1,7 @@
 import NextLink from "next/link";
 import { HStack, Tag, Link } from "@chakra-ui/react";
 
-const Tags = ({ tags }) => (
+const Tags = ({ urlPrefix = "/category/", tags }) => (
   <HStack spacing="2">
     {tags.map((tag) => (
       <Tag
@@ -14,7 +14,7 @@ const Tags = ({ tags }) => (
           color: "black",
         }}
       >
-        <NextLink passHref href={`/category/${tag.slug}`}>
+        <NextLink passHref href={urlPrefix + tag.slug}>
           <Link>{tag.name}</Link>
         </NextLink>
       </Tag>

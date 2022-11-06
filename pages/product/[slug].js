@@ -57,7 +57,7 @@ export default function Product({ product }) {
           <Heading fontWeight="200" size="2xl">
             {product.title}
           </Heading>
-          <Tags tags={product.categories.nodes} />
+          <Tags urlPrefix="/shop/" tags={product.categories.nodes} />
           <UserContent ref={userContentRef} content={product.content} />
         </Stack>
       </Container>
