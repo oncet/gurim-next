@@ -39,35 +39,35 @@ const Header = () => {
           <Box display="flex" gap={5}>
             {!isMobile && (
               <AnimatePresence>
-                {isOpen && (
-                  <AnimatedBox
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    transition={{
-                      duration: 0.3,
-                      ease: "easeOut",
-                    }}
-                    exit={{ height: 0, opacity: 0 }}
-                    overflow="hidden"
-                  >
-                    <Nav />
-                  </AnimatedBox>
-                )}
+                <AnimatedBox
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: "auto", opacity: 1 }}
+                  transition={{
+                    duration: 0.3,
+                    ease: "easeOut",
+                  }}
+                  exit={{ height: 0, opacity: 0 }}
+                  overflow="hidden"
+                >
+                  <Nav />
+                </AnimatedBox>
               </AnimatePresence>
             )}
-            <IconButton
-              aria-label="Alternar menú"
-              icon={
-                <Icon
-                  as={isOpen ? BsX : BsList}
-                  w="8"
-                  h="8"
-                  color="rgba(0, 0, 0, 0.5)"
-                />
-              }
-              variant="ghost"
-              onClick={() => setIsOpen(!isOpen)}
-            />
+            {isMobile && (
+              <IconButton
+                aria-label="Alternar menú"
+                icon={
+                  <Icon
+                    as={isOpen ? BsX : BsList}
+                    w="8"
+                    h="8"
+                    color="rgba(0, 0, 0, 0.5)"
+                  />
+                }
+                variant="ghost"
+                onClick={() => setIsOpen(!isOpen)}
+              />
+            )}
           </Box>
         </Box>
         {isMobile && (
