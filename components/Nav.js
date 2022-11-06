@@ -59,7 +59,9 @@ const Nav = () => {
           </NextLink>
         </ListItem>
         <ListItem ref={ref}>
-          <WrappedLink onClick={handleSubmenuClick}>Blog</WrappedLink>
+          <WrappedLink onClick={handleSubmenuClick} href="#">
+            Blog
+          </WrappedLink>
           <AnimatePresence>
             {isOpen && (
               <AnimatedBox
