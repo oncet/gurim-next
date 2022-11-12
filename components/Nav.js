@@ -136,11 +136,6 @@ const Nav = () => {
           </AnimatePresence>
         </ListItem>
         <ListItem>
-          <NextLink passHref href="/nosotros">
-            <WrappedLink>Gurim</WrappedLink>
-          </NextLink>
-        </ListItem>
-        <ListItem>
           <NextLink passHref href="/contacto">
             <WrappedLink>Contacto</WrappedLink>
           </NextLink>
