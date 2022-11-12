@@ -20,14 +20,14 @@ export default function Home({ posts }) {
         spacing={["8", "16"]}
         divider={<StackDivider borderColor="gray.200" />}
       >
-        <Container maxW="container.xl">
+        <Container maxW="container.xl" padding="0">
           <Box rounded="md" overflow="hidden" maxHeight={600}>
             <video width="1920" height="1080" muted autoPlay loop>
               <source src="/intro.mp4" type="video/mp4" />
             </video>
           </Box>
         </Container>
-        <Container maxW="container.lg">
+        <Container maxW="container.lg" padding="0">
           <Grid
             templateColumns={[
               "repeat(1, 1fr)",
@@ -56,7 +56,7 @@ export default function Home({ posts }) {
             ))}
           </Grid>
         </Container>
-        <Container maxW="container.xl">
+        <Container maxW="container.xl" padding="0">
           <Grid templateColumns={["repeat(1, 1fr)", "repeat(2, 1fr)"]} gap={6}>
             <GridItem>
               <NextLink passHref href="/category/fieltro">
