@@ -1,6 +1,7 @@
 import Image from "next/image";
 import NextLink from "next/link";
 import {
+  Button,
   Grid,
   GridItem,
   Box,
@@ -10,10 +11,39 @@ import {
   Link,
   Text,
   StackDivider,
+  Spinner,
 } from "@chakra-ui/react";
+import { AnimatePresence, motion } from "framer-motion";
 import { getPosts } from "../lib/api";
 
+import imageEscritorio from "../public/images/slideshow/escritorio.jpg";
+import imageTelas from "../public/images/slideshow/telas.jpg";
+import imageTelas2 from "../public/images/slideshow/telas-2.jpg";
+import { useEffect, useState } from "react";
+
+console.log("imageEscritorio", imageEscritorio);
+
+const images = [imageEscritorio, imageTelas, imageTelas2];
+
+const AnimatedBox = motion(Box);
+
 export default function Home({ posts }) {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    const timerId = setInterval(() => {
+      console.log("Hey!", currentSlide);
+
+      if (currentSlide === images.length - 1) {
+        setCurrentSlide(0);
+      } else {
+        setCurrentSlide((currentSlideValue) => currentSlideValue + 1);
+      }
+    }, 2000);
+
+    return () => clearInterval(timerId);
+  }, [currentSlide]);
+
   return (
     <Container maxW="container.xl">
       <VStack
@@ -21,11 +51,40 @@ export default function Home({ posts }) {
         divider={<StackDivider borderColor="gray.200" />}
       >
         <Container maxW="container.xl" padding="0">
-          <Box rounded="md" overflow="hidden" maxHeight={600}>
-            <video width="1920" height="1080" muted autoPlay loop>
-              <source src="/intro.mp4" type="video/mp4" />
-            </video>
+          <Box
+            background="black"
+            rounded="md"
+            overflow="hidden"
+            maxHeight={600}
+          >
+            <AnimatePresence exitBeforeEnter>
+              <AnimatedBox
+                key={images[currentSlide].src}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                <Image
+                  src={images[currentSlide]}
+                  alt="Image"
+                  layout="responsive"
+                  fallback={<Spinner mx="auto" color="white" />}
+                />
+              </AnimatedBox>
+            </AnimatePresence>
           </Box>
+          {/* <Button
+            onClick={() => {
+              if (currentSlide === images.length - 1) {
+                setCurrentSlide(0);
+              } else {
+                setCurrentSlide(currentSlide + 1);
+              }
+            }}
+          >
+            Next
+          </Button> */}
         </Container>
         <Container maxW="container.lg" padding="0">
           <Grid
