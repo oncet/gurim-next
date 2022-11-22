@@ -1,27 +1,23 @@
-import Image from "next/image";
-import NextLink from "next/link";
 import {
-  Button,
+  Box,
+  Container,
   Grid,
   GridItem,
-  Box,
   Heading,
-  Container,
-  VStack,
   Link,
-  Text,
-  StackDivider,
   Spinner,
+  StackDivider,
+  Text,
+  VStack,
 } from "@chakra-ui/react";
 import { AnimatePresence, motion } from "framer-motion";
-import { getPosts } from "../lib/api";
-
-import imageEscritorio from "../public/images/slideshow/escritorio.jpg";
-import imageTelas from "../public/images/slideshow/telas.jpg";
-import imageTelas2 from "../public/images/slideshow/telas-2.jpg";
+import Image from "next/image";
+import NextLink from "next/link";
 import { useEffect, useState } from "react";
-
-console.log("imageEscritorio", imageEscritorio);
+import { getPosts } from "../lib/api";
+import imageEscritorio from "../public/images/slideshow/escritorio.jpg";
+import imageTelas2 from "../public/images/slideshow/telas-2.jpg";
+import imageTelas from "../public/images/slideshow/telas.jpg";
 
 const images = [imageEscritorio, imageTelas, imageTelas2];
 
@@ -32,14 +28,12 @@ export default function Home({ posts }) {
 
   useEffect(() => {
     const timerId = setInterval(() => {
-      console.log("Hey!", currentSlide);
-
       if (currentSlide === images.length - 1) {
         setCurrentSlide(0);
       } else {
         setCurrentSlide((currentSlideValue) => currentSlideValue + 1);
       }
-    }, 2000);
+    }, 10000);
 
     return () => clearInterval(timerId);
   }, [currentSlide]);
@@ -56,6 +50,9 @@ export default function Home({ posts }) {
             rounded="md"
             overflow="hidden"
             maxHeight={600}
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
           >
             <AnimatePresence exitBeforeEnter>
               <AnimatedBox
@@ -64,6 +61,7 @@ export default function Home({ posts }) {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.3 }}
+                width="100%"
               >
                 <Image
                   src={images[currentSlide]}
@@ -74,17 +72,6 @@ export default function Home({ posts }) {
               </AnimatedBox>
             </AnimatePresence>
           </Box>
-          {/* <Button
-            onClick={() => {
-              if (currentSlide === images.length - 1) {
-                setCurrentSlide(0);
-              } else {
-                setCurrentSlide(currentSlide + 1);
-              }
-            }}
-          >
-            Next
-          </Button> */}
         </Container>
         <Container maxW="container.lg" padding="0">
           <Grid
