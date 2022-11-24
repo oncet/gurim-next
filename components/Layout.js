@@ -1,4 +1,3 @@
-import Head from "next/head";
 import { chakra, Stack } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 
