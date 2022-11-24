@@ -1,16 +1,12 @@
 import {
   Box,
-  Container,
   Grid,
   GridItem,
   Heading,
   Link,
   Spinner,
-  StackDivider,
   Text,
-  VStack,
 } from "@chakra-ui/react";
-import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import NextLink from "next/link";
 import { useEffect, useState } from "react";
@@ -20,8 +16,6 @@ import imageTelas2 from "../public/images/slideshow/telas-2.jpg";
 import imageTelas from "../public/images/slideshow/telas.jpg";
 
 const images = [imageEscritorio, imageTelas, imageTelas2];
-
-const AnimatedBox = motion(Box);
 
 export default function Home({ posts }) {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -39,41 +33,22 @@ export default function Home({ posts }) {
   }, [currentSlide]);
 
   return (
-    <Container maxW="container.xl">
-      <VStack
-        spacing={["8", "16"]}
-        divider={<StackDivider borderColor="gray.200" />}
-      >
-        <Container maxW="container.xl" padding="0">
-          <Box
-            background="black"
-            rounded="md"
-            overflow="hidden"
-            maxHeight={600}
-            display="flex"
-            alignItems="center"
-            justifyContent="center"
-          >
-            <AnimatePresence exitBeforeEnter>
-              <AnimatedBox
-                key={images[currentSlide].src}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.3 }}
-                width="100%"
-              >
-                <Image
-                  src={images[currentSlide]}
-                  alt="Image"
-                  layout="responsive"
-                  fallback={<Spinner mx="auto" color="white" />}
-                />
-              </AnimatedBox>
-            </AnimatePresence>
-          </Box>
-        </Container>
-        <Container maxW="container.lg" padding="0">
+    <div className="max-w-7xl mx-auto">
+      <div className="flex flex-col gap-8 md:gap-16 px-4">
+        <div className="mx-auto w-full">
+          <div className="max-h-[600px] overflow-hidden rounded-md flex items-center justify-center bg-black">
+            <div className="w-full">
+              <Image
+                src={images[currentSlide]}
+                alt="Image"
+                layout="responsive"
+                fallback={<Spinner mx="auto" color="white" />}
+              />
+            </div>
+          </div>
+        </div>
+        <div className="border-b border-gray-200" />
+        <div className="max-w-5xl mx-auto w-full">
           <Grid
             templateColumns={[
               "repeat(1, 1fr)",
@@ -101,8 +76,9 @@ export default function Home({ posts }) {
               </GridItem>
             ))}
           </Grid>
-        </Container>
-        <Container maxW="container.xl" padding="0">
+        </div>
+        <div className="border-b border-gray-200" />
+        <div className="mx-auto w-full">
           <Grid templateColumns={["repeat(1, 1fr)", "repeat(2, 1fr)"]} gap={6}>
             <GridItem>
               <NextLink passHref href="/category/fieltro">
@@ -155,9 +131,9 @@ export default function Home({ posts }) {
               </NextLink>
             </GridItem>
           </Grid>
-        </Container>
-      </VStack>
-    </Container>
+        </div>
+      </div>
+    </div>
   );
 }
 

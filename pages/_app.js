@@ -9,6 +9,7 @@ import Layout from "../components/Layout";
 import previewImage from "../public/images/preview.jpg";
 
 import "../wp-style.min.css";
+import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
