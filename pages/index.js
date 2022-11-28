@@ -42,21 +42,14 @@ export default function Home({ posts }) {
                 src={images[currentSlide]}
                 alt="Image"
                 layout="responsive"
-                fallback={<Spinner mx="auto" color="white" />}
+                // fallback={<Spinner mx="auto" color="white" />}
               />
             </div>
           </div>
         </div>
         <div className="border-b border-gray-200" />
         <div className="max-w-5xl mx-auto w-full">
-          <Grid
-            templateColumns={[
-              "repeat(1, 1fr)",
-              "repeat(2, 1fr)",
-              "repeat(4, 1fr)",
-            ]}
-            gap={6}
-          >
+          <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {posts.nodes.map(({ id, title, slug, featuredImage }) => (
               <GridItem key={id}>
                 <NextLink passHref href={`/${slug}`}>
@@ -75,7 +68,7 @@ export default function Home({ posts }) {
                 </NextLink>
               </GridItem>
             ))}
-          </Grid>
+          </div>
         </div>
         <div className="border-b border-gray-200" />
         <div className="mx-auto w-full">
