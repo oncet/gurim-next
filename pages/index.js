@@ -1,12 +1,4 @@
-import {
-  Box,
-  Grid,
-  GridItem,
-  Heading,
-  Link,
-  Spinner,
-  Text,
-} from "@chakra-ui/react";
+// import { Spinner } from "@chakra-ui/react";
 import Image from "next/image";
 import NextLink from "next/link";
 import { useEffect, useState } from "react";
@@ -51,10 +43,10 @@ export default function Home({ posts }) {
         <div className="max-w-5xl mx-auto w-full">
           <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {posts.nodes.map(({ id, title, slug, featuredImage }) => (
-              <GridItem key={id}>
+              <div key={id}>
                 <NextLink passHref href={`/${slug}`}>
-                  <Link textUnderlineOffset="3px">
-                    <Box rounded="md" overflow="hidden">
+                  <a className="hover:underline-offset-4 hover:underline decoration-2">
+                    <div className="rounded overflow-hidden">
                       <Image
                         src={featuredImage.node.sourceUrl}
                         alt={title}
@@ -62,30 +54,24 @@ export default function Home({ posts }) {
                         height={700}
                         layout="responsive"
                       />
-                    </Box>
-                    <Text mt="2">{title}</Text>
-                  </Link>
+                    </div>
+                    <p className="mt-2">{title}</p>
+                  </a>
                 </NextLink>
-              </GridItem>
+              </div>
             ))}
           </div>
         </div>
         <div className="border-b border-gray-200" />
         <div className="mx-auto w-full">
-          <Grid templateColumns={["repeat(1, 1fr)", "repeat(2, 1fr)"]} gap={6}>
-            <GridItem>
+          <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
               <NextLink passHref href="/category/fieltro">
-                <Link>
-                  <Heading
-                    fontWeight="200"
-                    letterSpacing={1}
-                    size="lg"
-                    mb="4"
-                    textAlign="center"
-                  >
+                <a className="hover:underline-offset-4 hover:underline decoration-2">
+                  <h2 className="mb-4 text-3xl text-center font-extralight">
                     Fieltro
-                  </Heading>
-                  <Box rounded="md" overflow="hidden">
+                  </h2>
+                  <div className="rounded overflow-hidden">
                     <Image
                       src="/images/fieltro.jpg"
                       alt="Proceso de fieltrado"
@@ -94,23 +80,17 @@ export default function Home({ posts }) {
                       layout="responsive"
                       priority
                     />
-                  </Box>
-                </Link>
+                  </div>
+                </a>
               </NextLink>
-            </GridItem>
-            <GridItem>
+            </div>
+            <div>
               <NextLink passHref href="/category/ecoprint">
-                <Link>
-                  <Heading
-                    fontWeight="200"
-                    letterSpacing={1}
-                    size="lg"
-                    mb="4"
-                    textAlign="center"
-                  >
+                <a className="hover:underline-offset-4 hover:underline decoration-2">
+                  <h2 className="mb-4 text-3xl text-center font-extralight">
                     Ecoprint
-                  </Heading>
-                  <Box rounded="md" overflow="hidden">
+                  </h2>
+                  <div className="rounded overflow-hidden">
                     <Image
                       src="/images/ecoprint.jpg"
                       alt="Tela con ecoprint"
@@ -119,11 +99,11 @@ export default function Home({ posts }) {
                       layout="responsive"
                       priority
                     />
-                  </Box>
-                </Link>
+                  </div>
+                </a>
               </NextLink>
-            </GridItem>
-          </Grid>
+            </div>
+          </div>
         </div>
       </div>
     </div>
