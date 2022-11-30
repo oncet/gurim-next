@@ -41,7 +41,7 @@ export default function Home({ posts }) {
         </div>
         <div className="border-b border-gray-200" />
         <div className="max-w-5xl mx-auto w-full">
-          <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {posts.nodes.map(({ id, title, slug, featuredImage }) => (
               <div key={id}>
                 <NextLink passHref href={`/${slug}`}>
@@ -64,7 +64,7 @@ export default function Home({ posts }) {
         </div>
         <div className="border-b border-gray-200" />
         <div className="mx-auto w-full">
-          <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <NextLink passHref href="/category/fieltro">
                 <a className="hover:underline-offset-4 hover:underline decoration-2">
