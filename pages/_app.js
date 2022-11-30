@@ -1,8 +1,7 @@
 import Head from "next/head";
 import Script from "next/script";
 import { useRouter } from "next/router";
-import { Center, ChakraProvider, Spinner } from "@chakra-ui/react";
-import { AnimatePresence, motion } from "framer-motion";
+import { ChakraProvider } from "@chakra-ui/react";
 
 import theme from "../theme";
 import Layout from "../components/Layout";
@@ -50,31 +49,16 @@ function MyApp({ Component, pageProps }) {
         `}
         </Script>
         <Layout>
-          <AnimatePresence exitBeforeEnter>
-            <motion.div
-              key={router.asPath + router.isFallback}
-              initial={{
-                opacity: 0,
-              }}
-              animate={{
-                opacity: 1,
-              }}
-              exit={{
-                opacity: 0,
-              }}
-              transition={{
-                duration: 0.15,
-              }}
-            >
-              {router.isFallback ? (
-                <Center>
-                  <Spinner size="xl" thickness={4} emptyColor="gray.200" />
-                </Center>
-              ) : (
-                <Component {...pageProps} />
-              )}
-            </motion.div>
-          </AnimatePresence>
+          <div>
+            {router.isFallback ? (
+              <div>
+                {/* <Spinner size="xl" thickness={4} emptyColor="gray.200" /> */}
+                Loading...
+              </div>
+            ) : (
+              <Component {...pageProps} />
+            )}
+          </div>
         </Layout>
       </ChakraProvider>
     </>
