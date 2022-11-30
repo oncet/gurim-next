@@ -1,29 +1,21 @@
 import { forwardRef } from "react";
 import NextLink from "next/link";
-import {
-  chakra,
-  Container,
-  UnorderedList,
-  ListItem,
-  Link,
-  HStack,
-} from "@chakra-ui/react";
 import Image from "next/image";
 
 import handcraftedLogo from "../public/handcrafted-logo.png";
 
 const WrappedLink = forwardRef(({ children, ...props }, ref) => (
-  <Link display="inline-block" py="2" {...props} ref={ref}>
+  <a className="inline-block py-2" {...props} ref={ref}>
     {children}
-  </Link>
+  </a>
 ));
 WrappedLink.displayName = "WrappedLink";
 
 const Footer = () => {
   return (
-    <chakra.footer borderTop="1px solid" borderColor="gray.200" pt="12" pb="12">
-      <Container maxW="container.xl">
-        <HStack justifyContent="space-between">
+    <footer className="border-t-2 border-gray-200 py-12">
+      <div className="max-w-7xl mx-auto px-4">
+        <div className="flex justify-between items-center">
           <Image
             src={handcraftedLogo}
             alt="Handcrafted"
@@ -34,43 +26,35 @@ const Footer = () => {
             }}
           />
           <nav>
-            <UnorderedList
-              styleType="none"
-              textAlign="right"
-              display="flex"
-              flexDirection={["column", "row"]}
-              gridGap={[0, 6]}
-              justifyContent="flex-end"
-              ml="0"
-            >
-              <ListItem>
+            <ul className="list-none text-right flex flex-col md:flex-row gap-0 md:gap-6 justify-end ml-0">
+              <li>
                 <NextLink passHref href="https://shop.gurim.com.ar/">
                   <WrappedLink>Tienda</WrappedLink>
                 </NextLink>
-              </ListItem>
-              <ListItem>
+              </li>
+              <li>
                 <NextLink passHref href="/contacto">
                   <WrappedLink>Contacto</WrappedLink>
                 </NextLink>
-              </ListItem>
-              <ListItem>
+              </li>
+              <li>
                 <NextLink
                   passHref
                   href="https://www.instagram.com/gurim_craft/"
                 >
                   <WrappedLink>Instagram</WrappedLink>
                 </NextLink>
-              </ListItem>
-              <ListItem>
+              </li>
+              <li>
                 <NextLink passHref href="https://www.facebook.com/gurimcraft/">
                   <WrappedLink>Facebook</WrappedLink>
                 </NextLink>
-              </ListItem>
-            </UnorderedList>
+              </li>
+            </ul>
           </nav>
-        </HStack>
-      </Container>
-    </chakra.footer>
+        </div>
+      </div>
+    </footer>
   );
 };
 
