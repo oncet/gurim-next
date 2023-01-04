@@ -68,6 +68,7 @@ export default function Home({ posts }) {
                   alt="Image"
                   layout="responsive"
                   fallback={<Spinner mx="auto" color="white" />}
+                  priority
                 />
               </AnimatedBox>
             </AnimatePresence>
