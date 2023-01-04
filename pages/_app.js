@@ -6,7 +6,6 @@ import { AnimatePresence, motion } from "framer-motion";
 import theme from "../theme";
 import Layout from "../components/Layout";
 import previewImage from "../public/images/preview.jpg";
-import imageEscritorio from "../public/images/slideshow/escritorio.jpg";
 
 import "../wp-style.min.css";
 
@@ -33,7 +32,6 @@ function MyApp({ Component, pageProps }) {
         />
         <meta name="twitter:card" content="summary_large_image" />
         <link rel="icon" href="/favicon.ico" />
-        <link rel="preload" href={imageEscritorio} as="image" />
       </Head>
       <ChakraProvider theme={theme}>
         <Layout>
