@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "next/future/image";
 import { useEffect, useState } from "react";
 
 import imageEscritorio from "../public/images/slideshow/escritorio.jpg";
@@ -23,15 +23,17 @@ const Slideshow = () => {
   }, [currentSlide]);
 
   return (
-    <div className="max-h-[600px] overflow-hidden rounded-md flex items-center justify-center bg-black">
-      <div className="w-full">
+    <div className="flex flex-row overflow-hidden rounded-md max-h-[600px] items-center">
+      {images.map((image) => (
         <Image
-          src={images[currentSlide]}
+          key={image.src}
+          src={image}
           alt="Image"
           layout="responsive"
           priority
+          className={`w-full shrink-0 ease-in-out duration-500 transition-transform translate-x-[-${currentSlide}00%]`}
         />
-      </div>
+      ))}
     </div>
   );
 };

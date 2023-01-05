@@ -7,4 +7,9 @@ module.exports = {
   images: {
     domains: ["admin.gurim.com.ar"],
   },
+  experimental: {
+    images: {
+      allowFutureImage: true,
+    },
+  },
 };
