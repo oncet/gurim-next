@@ -1,5 +1,4 @@
 import Head from "next/head";
-import Script from "next/script";
 import { useRouter } from "next/router";
 
 import Layout from "../components/Layout";
@@ -32,19 +31,6 @@ function MyApp({ Component, pageProps }) {
         <meta name="twitter:card" content="summary_large_image" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Script
-        src="https://www.googletagmanager.com/gtag/js?id=UA-147454552-1"
-        strategy="afterInteractive"
-      />
-      <Script id="google-analytics" strategy="afterInteractive">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){window.dataLayer.push(arguments);}
-          gtag('js', new Date());
-
-          gtag('config', 'UA-147454552-1');
-        `}
-      </Script>
       <Layout>
         <div>
           {router.isFallback ? (
