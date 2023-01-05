@@ -34,6 +34,7 @@ export default function Home({ posts }) {
                 src={images[currentSlide]}
                 alt="Image"
                 layout="responsive"
+                priority
                 // fallback={<Spinner mx="auto" color="white" />}
               />
             </div>
