@@ -4,10 +4,10 @@
 
 @layer base {
   .user-content > h2,
-  p,
-  ul,
-  blockquote,
-  figure {
+  .user-content > p,
+  .user-content > ul,
+  .user-content > blockquote,
+  .user-content > figure {
     @apply mb-4;
   }
 
@@ -28,7 +28,7 @@
   }
 
   .user-content .wp-block-image,
-  .wp-block-image figure {
+  .user-content .wp-block-image figure {
     @apply my-0;
   }
 
