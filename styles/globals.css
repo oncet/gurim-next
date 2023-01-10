@@ -1,3 +1,54 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  .user-content > h2,
+  p,
+  ul,
+  blockquote,
+  figure {
+    @apply mb-4;
+  }
+
+  .user-content ul {
+    @apply ml-10 list-[square];
+  }
+
+  .user-content figure img {
+    @apply !rounded-md;
+  }
+
+  .user-content figcaption {
+    @apply text-center;
+  }
+
+  .user-content .blocks-gallery-grid {
+    @apply ml-0;
+  }
+
+  .user-content .wp-block-image,
+  .wp-block-image figure {
+    @apply my-0;
+  }
+
+  .user-content .wp-block-image img {
+    @apply mb-2 rounded-md;
+  }
+
+  @media screen(sm) {
+    .user-content .blocks-gallery-item {
+      @apply mr-0 w-full;
+    }
+  }
+
+  @media screen(md) {
+    .user-content figure.alignleft {
+      @apply mr-0 w-full;
+    }
+
+    .user-content img {
+      @apply w-full;
+    }
+  }
+}
