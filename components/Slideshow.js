@@ -31,7 +31,13 @@ const Slideshow = () => {
           alt="Image"
           layout="responsive"
           priority
-          className={`w-full shrink-0 ease-in-out duration-500 transition-transform translate-x-[-${currentSlide}00%]`}
+          className={`w-full shrink-0 ease-in-out duration-500 transition-transform ${
+            currentSlide === 0
+              ? "translate-x-0"
+              : currentSlide === 1
+              ? "-translate-x-full"
+              : "translate-x-[-200%]"
+          }`}
         />
       ))}
     </div>
