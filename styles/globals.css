@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 @layer base {
+  a {
+    @apply hover:underline-offset-4 hover:underline decoration-2;
+  }
+
   .user-content > h2,
   .user-content > p,
   .user-content > ul,

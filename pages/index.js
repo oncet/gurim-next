@@ -16,7 +16,7 @@ export default function Home({ posts }) {
             {posts.nodes.map(({ id, title, slug, featuredImage }) => (
               <div key={id}>
                 <NextLink passHref href={`/${slug}`}>
-                  <a className="hover:underline-offset-4 hover:underline decoration-2">
+                  <a>
                     <div className="rounded overflow-hidden">
                       <Image
                         src={featuredImage.node.sourceUrl}
@@ -38,7 +38,7 @@ export default function Home({ posts }) {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <NextLink passHref href="/category/fieltro">
-                <a className="hover:underline-offset-4 hover:underline decoration-2">
+                <a>
                   <h2 className="mb-4 text-3xl text-center font-extralight">
                     Fieltro
                   </h2>
@@ -57,7 +57,7 @@ export default function Home({ posts }) {
             </div>
             <div>
               <NextLink passHref href="/category/ecoprint">
-                <a className="hover:underline-offset-4 hover:underline decoration-2">
+                <a>
                   <h2 className="mb-4 text-3xl text-center font-extralight">
                     Ecoprint
                   </h2>
