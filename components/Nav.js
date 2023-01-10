@@ -1,4 +1,4 @@
-import { useEffect, forwardRef, useState, useRef } from "react";
+import { useEffect, forwardRef, useState, useRef, useCallback } from "react";
 import NextLink from "next/link";
 import { useRouter } from "next/router";
 
@@ -14,9 +14,21 @@ const Nav = () => {
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
 
+  const clickOutsideHandler = useCallback(() => {
+    setIsOpen(false);
+  }, [setIsOpen]);
+
   useEffect(() => {
     setIsOpen(false);
   }, [router.asPath]);
+
+  useEffect(() => {
+    if (isOpen) {
+      window.addEventListener("click", clickOutsideHandler);
+    } else {
+      window.removeEventListener("click", clickOutsideHandler);
+    }
+  }, [isOpen]);
 
   const handleSubmenuClick = () => {
     setIsOpen(!isOpen);
