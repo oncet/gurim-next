@@ -24,7 +24,7 @@ const Nav = () => {
 
   return (
     <nav>
-      <ul className="list-none text-right flex flex-col md:flex-row gap-0 md:gap-6 justify-end ml-0">
+      <ul className="list-none text-right flex flex-col md:flex-row gap-0 md:gap-6 justify-end ml-0 mb-0">
         <li>
           <NextLink passHref href="https://shop.gurim.com.ar/">
             <WrappedLink>Tienda</WrappedLink>
@@ -40,14 +40,14 @@ const Nav = () => {
                 ${isOpen ? "opacity-100" : "opacity-0"}
                 border-gray-200
                 border-r-2 md:border-none
-                md:rounded
+                rounded
                 md:shadow
                 overflow-hidden
                 relative md:absolute
                 z-10
               `}
           >
-            <ul className="bg-yellow-50 text-right md:text-left py-2">
+            <ul className="bg-yellow-50 text-right md:text-left py-2 m-0">
               <li>
                 <NextLink passHref href="/category/bordado">
                   <a className="px-6 py-1 inline-block">Bordado</a>
