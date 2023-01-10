@@ -1,4 +1,3 @@
-import { Box } from "@chakra-ui/react";
 import { forwardRef } from "react";
 
 const UserContent = forwardRef(({ content }, ref) => {
@@ -7,9 +6,8 @@ const UserContent = forwardRef(({ content }, ref) => {
   };
 
   return (
-    <Box
-      className="user-content"
-      overflow="auto"
+    <div
+      className="user-content overflow-auto"
       dangerouslySetInnerHTML={createMarkup()}
       ref={ref}
     />

@@ -2,23 +2,8 @@ import { useState } from "react";
 import Head from "next/head";
 import NextLink from "next/link";
 import NextImage from "next/image";
-import {
-  Heading,
-  Button,
-  Center,
-  Text,
-  Box,
-  Stack,
-  Grid,
-  GridItem,
-  Link,
-  Container,
-} from "@chakra-ui/react";
-import { motion } from "framer-motion";
 
 import { getPosts } from "../lib/api";
-
-const AnimatedGridItem = motion(GridItem);
 
 export default function Blog({ posts }) {
   const [endCursor, setEndCursor] = useState(posts?.pageInfo.endCursor);
@@ -43,34 +28,17 @@ export default function Blog({ posts }) {
       <Head>
         <title>Blog — Gurim</title>
       </Head>
-      <Container maxW="container.lg">
-        <Stack spacing="4">
-          <Heading fontWeight="200" size="2xl">
-            Blog
-          </Heading>
+      <div className="max-w-5xl mx-auto px-4">
+        <div className="flex flex-col gap-4">
+          <h2 className="font-extralight text-4xl md:text-5xl">Blog</h2>
           {posts.nodes && (
             <>
-              <Grid
-                templateColumns={[
-                  "repeat(1, 1fr)",
-                  "repeat(2, 1fr)",
-                  "repeat(3, 1fr)",
-                ]}
-                gap={6}
-              >
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {items.map(({ slug, featuredImage, title }) => (
-                  <AnimatedGridItem
-                    key={slug}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{
-                      duration: 0.6,
-                      ease: "easeOut",
-                    }}
-                  >
+                  <div key={slug}>
                     <NextLink passHref href={`/${slug}`}>
-                      <Link textUnderlineOffset="3px">
-                        <Box rounded="md" overflow="hidden">
+                      <a className="hover:underline-offset-4 hover:underline decoration-2">
+                        <div className="rounded-md overflow-hidden">
                           <NextImage
                             src={featuredImage.node.sourceUrl}
                             alt={title}
@@ -78,30 +46,28 @@ export default function Blog({ posts }) {
                             height={700}
                             layout="responsive"
                           />
-                        </Box>
-                        <Text mt="2">{title}</Text>
-                      </Link>
+                        </div>
+                        <p className="mt-2">{title}</p>
+                      </a>
                     </NextLink>
-                  </AnimatedGridItem>
+                  </div>
                 ))}
-              </Grid>
+              </div>
               {hasNextPage && (
-                <Center mt="2">
-                  <Button
+                <div className="flex items-center justify-center mt-2">
+                  {/* <Button
                     isLoading={isSubmitting}
                     variant="ghost"
-                    onClick={showMoreHandler}
-                    disabled={isSubmitting}
-                    fontWeight="400"
-                  >
+                  > */}
+                  <button onClick={showMoreHandler} disabled={isSubmitting}>
                     Mostrar mas
-                  </Button>
-                </Center>
+                  </button>
+                </div>
               )}
             </>
           )}
-        </Stack>
-      </Container>
+        </div>
+      </div>
     </>
   );
 }

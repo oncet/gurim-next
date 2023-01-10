@@ -1,7 +1,5 @@
-import { useEffect, useRef, useState, forwardRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Head from "next/head";
-import { Container, Heading, Stack } from "@chakra-ui/react";
-import { motion, AnimatePresence } from "framer-motion";
 
 import { getProduct, getProductsSlugs } from "../../lib/api";
 import UserContent from "../../components/UserContent";
@@ -52,35 +50,28 @@ export default function Product({ product }) {
           />
         )}
       </Head>
-      <Container maxW="container.lg">
-        <Stack spacing="4">
-          <Heading fontWeight="200" size="2xl">
+      <div className="max-w-5xl mx-auto px-4">
+        <div className="flex flex-col gap-4">
+          <h2 className="font-extralight text-4xl md:text-5xl">
             {product.title}
-          </Heading>
+          </h2>
           <Tags tags={product.categories.nodes} />
           <UserContent ref={userContentRef} content={product.content} />
-        </Stack>
-      </Container>
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-          >
-            <Lightbox
-              imageCount={imageLinks.length}
-              selectedImage={selectedImage}
-              onSelectedImageChange={(index) => {
-                const { src, alt } = imageLinks[index].querySelector("img");
-                setSelectedImage({ index, src, alt });
-              }}
-              onExit={() => setIsOpen(false)}
-            />
-          </motion.div>
-        )}
-      </AnimatePresence>
+        </div>
+      </div>
+      {isOpen && (
+        <div>
+          <Lightbox
+            imageCount={imageLinks.length}
+            selectedImage={selectedImage}
+            onSelectedImageChange={(index) => {
+              const { src, alt } = imageLinks[index].querySelector("img");
+              setSelectedImage({ index, src, alt });
+            }}
+            onExit={() => setIsOpen(false)}
+          />
+        </div>
+      )}
     </>
   );
 }

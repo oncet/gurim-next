@@ -1,7 +1,5 @@
-import { useEffect, useRef, useState, forwardRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Head from "next/head";
-import { Heading, Stack, Container, Link } from "@chakra-ui/react";
-import { motion, AnimatePresence } from "framer-motion";
 
 import {
   getPageUris,
@@ -13,13 +11,6 @@ import {
 import UserContent from "../components/UserContent";
 import Tags from "../components/Tags";
 import Lightbox from "../components/Lightbox";
-
-const WrappedLink = forwardRef(({ children, ...props }, ref) => (
-  <Link display="inline-block" py="2" {...props} ref={ref}>
-    {children}
-  </Link>
-));
-WrappedLink.displayName = "WrappedLink";
 
 export default function Page({ page }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -65,35 +56,31 @@ export default function Page({ page }) {
           />
         )}
       </Head>
-      <Container maxW="container.lg">
-        <Stack spacing="4">
-          <Heading fontWeight="200" size="2xl">
-            {page.title}
-          </Heading>
+      <div className="max-w-5xl mx-auto px-4">
+        <div className="flex flex-col gap-4">
+          <h2 className="font-extralight text-4xl md:text-5xl">{page.title}</h2>
           {page.categories && <Tags tags={page.categories.nodes} />}
           <UserContent ref={userContentRef} content={page.content} />
-        </Stack>
-      </Container>
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-          >
-            <Lightbox
-              imageCount={imageLinks.length}
-              selectedImage={selectedImage}
-              onSelectedImageChange={(index) => {
-                const { src, alt } = imageLinks[index].querySelector("img");
-                setSelectedImage({ index, src, alt });
-              }}
-              onExit={() => setIsOpen(false)}
-            />
-          </motion.div>
-        )}
-      </AnimatePresence>
+        </div>
+      </div>
+      {isOpen && (
+        <div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3 }}
+        >
+          <Lightbox
+            imageCount={imageLinks.length}
+            selectedImage={selectedImage}
+            onSelectedImageChange={(index) => {
+              const { src, alt } = imageLinks[index].querySelector("img");
+              setSelectedImage({ index, src, alt });
+            }}
+            onExit={() => setIsOpen(false)}
+          />
+        </div>
+      )}
     </>
   );
 }

@@ -1,7 +1,6 @@
 import { useEffect, forwardRef, useState, useRef } from "react";
 import NextLink from "next/link";
 import { useRouter } from "next/router";
-import { useOutsideClick, useBreakpointValue } from "@chakra-ui/react";
 
 const WrappedLink = forwardRef(({ children, ...props }, ref) => (
   <a className="inline-block py-2" {...props} ref={ref}>
@@ -15,17 +14,9 @@ const Nav = () => {
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
 
-  const duration = useBreakpointValue([0.3, 0.2]);
-  const height = useBreakpointValue([0, "auto"]);
-
   useEffect(() => {
     setIsOpen(false);
   }, [router.asPath]);
-
-  useOutsideClick({
-    ref,
-    handler: () => setIsOpen(false),
-  });
 
   const handleSubmenuClick = () => {
     setIsOpen(!isOpen);
