@@ -28,6 +28,10 @@ const Nav = () => {
     } else {
       window.removeEventListener("click", clickOutsideHandler);
     }
+
+    return () => {
+      window.removeEventListener("click", clickOutsideHandler);
+    };
   }, [isOpen]);
 
   const handleSubmenuClick = () => {
@@ -48,8 +52,9 @@ const Nav = () => {
           </WrappedLink>
           <div
             className={`
-                transition-opacity
+                transition-all
                 ${isOpen ? "opacity-100" : "opacity-0"}
+                ${isOpen ? "h-52" : "h-0"}
                 border-gray-200
                 border-r-2 md:border-none
                 rounded
