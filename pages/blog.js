@@ -55,11 +55,13 @@ export default function Blog({ posts }) {
               </div>
               {hasNextPage && (
                 <div className="flex items-center justify-center mt-2">
-                  {/* <Button
-                    isLoading={isSubmitting}
-                    variant="ghost"
-                  > */}
-                  <button onClick={showMoreHandler} disabled={isSubmitting}>
+                  <button
+                    onClick={showMoreHandler}
+                    disabled={isSubmitting}
+                    className={`disabled:text-gray-500 disabled:cursor-not-allowed hover:bg-gray-100 px-4 py-2 rounded-md ${
+                      isSubmitting ? "animate-pulse" : ""
+                    }`}
+                  >
                     Mostrar mas
                   </button>
                 </div>
