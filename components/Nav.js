@@ -17,8 +17,7 @@ const Nav = () => {
 
   const clickOutsideHandler = useCallback(
     (event) => {
-      // TODO useRef instead of ID attribute?
-      if (event.target.id !== "toggle") {
+      if (!ref.current.contains(event.target)) {
         setIsOpen(false);
       }
     },
@@ -54,27 +53,29 @@ const Nav = () => {
           </NextLink>
         </li>
         <li ref={ref}>
-          <WrappedLink onClick={handleSubmenuClick} id="toggle" href="#">
+          <WrappedLink onClick={handleSubmenuClick} href="#">
             Blog
           </WrappedLink>
           <Transition
             show={isOpen}
-            enter="transition-opacity"
-            enterFrom="opacity-0"
-            enterTo="opacity-100"
-            leave="transition-opacity"
-            leaveFrom="opacity-100"
-            leaveTo="opacity-0"
+            enter="transition-all"
+            enterFrom="opacity-0 h-0"
+            enterTo="opacity-100 h-52"
+            leave="transition-all"
+            leaveFrom="opacity-100 h-52"
+            leaveTo="opacity-0 h-0"
             className="
               bg-yellow-50 
               border-gray-200
-              border-r-2
+              border-r-[1px]
               md:absolute
               md:border-none
+              md:rounded
               md:shadow
+              md:text-left
               overflow-hidden
               relative
-              rounded
+              text-right
               z-10
             "
           >
