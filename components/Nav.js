@@ -16,6 +16,7 @@ const Nav = () => {
 
   const clickOutsideHandler = useCallback(
     (event) => {
+      // TODO useRef instead of ID attribute?
       if (event.target.id !== "toggle") {
         setIsOpen(false);
       }
