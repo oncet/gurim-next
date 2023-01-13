@@ -38,7 +38,7 @@ const Nav = () => {
     return () => {
       window.removeEventListener("click", clickOutsideHandler);
     };
-  }, [isOpen]);
+  }, [isOpen, clickOutsideHandler]);
 
   const handleSubmenuClick = () => {
     setIsOpen(!isOpen);
