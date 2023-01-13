@@ -1,6 +1,7 @@
 import { useEffect, forwardRef, useState, useRef, useCallback } from "react";
 import NextLink from "next/link";
 import { useRouter } from "next/router";
+import { Transition } from "@headlessui/react";
 
 const WrappedLink = forwardRef(({ children, ...props }, ref) => (
   <a className="inline-block py-2" {...props} ref={ref}>
@@ -56,52 +57,60 @@ const Nav = () => {
           <WrappedLink onClick={handleSubmenuClick} id="toggle" href="#">
             Blog
           </WrappedLink>
-          {isOpen && (
-            <div
-              className={`
-                border-gray-200
-                border-r-2 md:border-none
-                rounded
-                md:shadow
-                overflow-hidden
-                relative md:absolute
-                z-10
-              `}
-            >
-              <ul className="bg-yellow-50 text-right md:text-left py-2">
-                <li>
-                  <NextLink passHref href="/category/bordado">
-                    <a className="px-6 py-1 inline-block">Bordado</a>
-                  </NextLink>
-                </li>
-                <li>
-                  <NextLink passHref href="/category/fieltro">
-                    <a className="px-6 py-1 inline-block">Fieltro</a>
-                  </NextLink>
-                </li>
-                <li>
-                  <NextLink passHref href="/category/bolsos">
-                    <a className="px-6 py-1 inline-block">Bolsos</a>
-                  </NextLink>
-                </li>
-                <li>
-                  <NextLink passHref href="/category/ecoprint">
-                    <a className="px-6 py-1 inline-block">Ecoprint</a>
-                  </NextLink>
-                </li>
-                <li>
-                  <NextLink passHref href="/category/encuadernacion">
-                    <a className="px-6 py-1 inline-block">Encuadernación</a>
-                  </NextLink>
-                </li>
-                <li>
-                  <NextLink passHref href="/blog">
-                    <a className="px-6 py-1 inline-block">Ver todo</a>
-                  </NextLink>
-                </li>
-              </ul>
-            </div>
-          )}
+          <Transition
+            show={isOpen}
+            enter="transition-opacity"
+            enterFrom="opacity-0"
+            enterTo="opacity-100"
+            leave="transition-opacity"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
+            className="
+              bg-yellow-50 
+              border-gray-200
+              border-r-2
+              md:absolute
+              md:border-none
+              md:shadow
+              overflow-hidden
+              relative
+              rounded
+              z-10
+            "
+          >
+            <ul className="py-2">
+              <li>
+                <NextLink passHref href="/category/bordado">
+                  <a className="px-6 py-1 inline-block">Bordado</a>
+                </NextLink>
+              </li>
+              <li>
+                <NextLink passHref href="/category/fieltro">
+                  <a className="px-6 py-1 inline-block">Fieltro</a>
+                </NextLink>
+              </li>
+              <li>
+                <NextLink passHref href="/category/bolsos">
+                  <a className="px-6 py-1 inline-block">Bolsos</a>
+                </NextLink>
+              </li>
+              <li>
+                <NextLink passHref href="/category/ecoprint">
+                  <a className="px-6 py-1 inline-block">Ecoprint</a>
+                </NextLink>
+              </li>
+              <li>
+                <NextLink passHref href="/category/encuadernacion">
+                  <a className="px-6 py-1 inline-block">Encuadernación</a>
+                </NextLink>
+              </li>
+              <li>
+                <NextLink passHref href="/blog">
+                  <a className="px-6 py-1 inline-block">Ver todo</a>
+                </NextLink>
+              </li>
+            </ul>
+          </Transition>
         </li>
         <li>
           <NextLink passHref href="/contacto">
