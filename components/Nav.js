@@ -14,9 +14,14 @@ const Nav = () => {
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
 
-  const clickOutsideHandler = useCallback(() => {
-    setIsOpen(false);
-  }, [setIsOpen]);
+  const clickOutsideHandler = useCallback(
+    (event) => {
+      if (event.target.id !== "toggle") {
+        setIsOpen(false);
+      }
+    },
+    [setIsOpen]
+  );
 
   useEffect(() => {
     setIsOpen(false);
@@ -47,14 +52,12 @@ const Nav = () => {
           </NextLink>
         </li>
         <li ref={ref}>
-          <WrappedLink onClick={handleSubmenuClick} href="#">
+          <WrappedLink onClick={handleSubmenuClick} id="toggle" href="#">
             Blog
           </WrappedLink>
-          <div
-            className={`
-                transition-all
-                ${isOpen ? "opacity-100" : "opacity-0"}
-                ${isOpen ? "h-52" : "h-0"}
+          {isOpen && (
+            <div
+              className={`
                 border-gray-200
                 border-r-2 md:border-none
                 rounded
@@ -63,40 +66,41 @@ const Nav = () => {
                 relative md:absolute
                 z-10
               `}
-          >
-            <ul className="bg-yellow-50 text-right md:text-left py-2">
-              <li>
-                <NextLink passHref href="/category/bordado">
-                  <a className="px-6 py-1 inline-block">Bordado</a>
-                </NextLink>
-              </li>
-              <li>
-                <NextLink passHref href="/category/fieltro">
-                  <a className="px-6 py-1 inline-block">Fieltro</a>
-                </NextLink>
-              </li>
-              <li>
-                <NextLink passHref href="/category/bolsos">
-                  <a className="px-6 py-1 inline-block">Bolsos</a>
-                </NextLink>
-              </li>
-              <li>
-                <NextLink passHref href="/category/ecoprint">
-                  <a className="px-6 py-1 inline-block">Ecoprint</a>
-                </NextLink>
-              </li>
-              <li>
-                <NextLink passHref href="/category/encuadernacion">
-                  <a className="px-6 py-1 inline-block">Encuadernación</a>
-                </NextLink>
-              </li>
-              <li>
-                <NextLink passHref href="/blog">
-                  <a className="px-6 py-1 inline-block">Ver todo</a>
-                </NextLink>
-              </li>
-            </ul>
-          </div>
+            >
+              <ul className="bg-yellow-50 text-right md:text-left py-2">
+                <li>
+                  <NextLink passHref href="/category/bordado">
+                    <a className="px-6 py-1 inline-block">Bordado</a>
+                  </NextLink>
+                </li>
+                <li>
+                  <NextLink passHref href="/category/fieltro">
+                    <a className="px-6 py-1 inline-block">Fieltro</a>
+                  </NextLink>
+                </li>
+                <li>
+                  <NextLink passHref href="/category/bolsos">
+                    <a className="px-6 py-1 inline-block">Bolsos</a>
+                  </NextLink>
+                </li>
+                <li>
+                  <NextLink passHref href="/category/ecoprint">
+                    <a className="px-6 py-1 inline-block">Ecoprint</a>
+                  </NextLink>
+                </li>
+                <li>
+                  <NextLink passHref href="/category/encuadernacion">
+                    <a className="px-6 py-1 inline-block">Encuadernación</a>
+                  </NextLink>
+                </li>
+                <li>
+                  <NextLink passHref href="/blog">
+                    <a className="px-6 py-1 inline-block">Ver todo</a>
+                  </NextLink>
+                </li>
+              </ul>
+            </div>
+          )}
         </li>
         <li>
           <NextLink passHref href="/contacto">
