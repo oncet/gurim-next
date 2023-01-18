@@ -38,10 +38,10 @@ function MyApp({ Component, pageProps }) {
           show
           appear
           key={router.asPath + router.isFallback}
-          enter="transition-all"
+          enter="transition-opacity"
           enterFrom="opacity-0"
           enterTo="opacity-100"
-          leave="transition-all"
+          leave="transition-opacity"
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
           className="duration-500"

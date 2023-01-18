@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import Head from "next/head";
+import { Transition } from "@headlessui/react";
 
 import {
   getPageUris,
@@ -63,24 +64,25 @@ export default function Page({ page }) {
           <UserContent ref={userContentRef} content={page.content} />
         </div>
       </div>
-      {isOpen && (
-        <div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.3 }}
-        >
-          <Lightbox
-            imageCount={imageLinks.length}
-            selectedImage={selectedImage}
-            onSelectedImageChange={(index) => {
-              const { src, alt } = imageLinks[index].querySelector("img");
-              setSelectedImage({ index, src, alt });
-            }}
-            onExit={() => setIsOpen(false)}
-          />
-        </div>
-      )}
+      <Transition
+        show={isOpen}
+        enter="transition-opacity"
+        enterFrom="opacity-0"
+        enterTo="opacity-100"
+        leave="transition-opacity"
+        leaveFrom="opacity-100"
+        leaveTo="opacity-0"
+      >
+        <Lightbox
+          imageCount={imageLinks.length}
+          selectedImage={selectedImage}
+          onSelectedImageChange={(index) => {
+            const { src, alt } = imageLinks[index].querySelector("img");
+            setSelectedImage({ index, src, alt });
+          }}
+          onExit={() => setIsOpen(false)}
+        />
+      </Transition>
     </>
   );
 }
