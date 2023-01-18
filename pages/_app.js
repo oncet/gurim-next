@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { Transition } from "@headlessui/react";
 
 import Layout from "../components/Layout";
+import Spinner from "../components/Spinner";
 import previewImage from "../public/images/preview.jpg";
 
 import "../wp-style.min.css";
@@ -47,25 +48,7 @@ function MyApp({ Component, pageProps }) {
         >
           {router.isFallback ? (
             <div className="flex items-center justify-center">
-              <svg
-                viewBox="0 0 60 60"
-                className="w-20 h-w-20 animate-spin duration-75"
-              >
-                <circle
-                  cx="30"
-                  cy="30"
-                  r="25"
-                  className="stroke-gray-200"
-                  fill="transparent"
-                  strokeWidth="5"
-                />
-                <path
-                  d="M 30 5 A 25 25 0 0 1 55 30"
-                  className="stroke-gray-800"
-                  fill="transparent"
-                  strokeWidth="5"
-                />
-              </svg>
+              <Spinner />
             </div>
           ) : (
             <Component {...pageProps} />
