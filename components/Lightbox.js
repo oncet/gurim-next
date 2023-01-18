@@ -1,3 +1,4 @@
+import { Transition } from "@headlessui/react";
 import { useCallback, useEffect } from "react";
 
 const Lightbox = ({
@@ -77,18 +78,31 @@ const Lightbox = ({
       onClick={onExit}
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
+      <Transition
         key={selectedImage.index}
-        className="max-h-screen cursor-pointer"
-        src={selectedImage.src}
-        alt={selectedImage.alt}
-        // fallback={<Spinner mx="auto" color="white" />}
-        onClick={(event) => {
-          event.stopPropagation();
+        show
+        appear
+        enter="transition-opacity"
+        enterFrom="opacity-0"
+        enterTo="opacity-100"
+        leave="transition-opacity"
+        leaveFrom="opacity-100"
+        leaveTo="opacity-0"
+        className="duration-300"
+      >
+        <img
+          key={selectedImage.index}
+          className="max-h-screen cursor-pointer"
+          src={selectedImage.src}
+          alt={selectedImage.alt}
+          // fallback={<Spinner mx="auto" color="white" />}
+          onClick={(event) => {
+            event.stopPropagation();
 
-          onNavigate(event.type);
-        }}
-      />
+            onNavigate(event.type);
+          }}
+        />
+      </Transition>
     </div>
   );
 };
