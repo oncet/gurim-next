@@ -1,4 +1,3 @@
-import { Transition } from "@headlessui/react";
 import { useCallback, useEffect } from "react";
 
 const Lightbox = ({
