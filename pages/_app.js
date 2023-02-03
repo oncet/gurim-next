@@ -34,26 +34,13 @@ function MyApp({ Component, pageProps }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        <Transition
-          show
-          appear
-          key={router.asPath + router.isFallback}
-          enter="transition-opacity"
-          enterFrom="opacity-0"
-          enterTo="opacity-100"
-          leave="transition-opacity"
-          leaveFrom="opacity-100"
-          leaveTo="opacity-0"
-          className="duration-500"
-        >
-          {router.isFallback ? (
-            <div className="flex items-center justify-center">
-              <Spinner />
-            </div>
-          ) : (
-            <Component {...pageProps} />
-          )}
-        </Transition>
+        {router.isFallback ? (
+          <div className="flex items-center justify-center">
+            <Spinner />
+          </div>
+        ) : (
+          <Component {...pageProps} />
+        )}
       </Layout>
     </>
   );

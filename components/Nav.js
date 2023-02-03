@@ -56,62 +56,38 @@ const Nav = () => {
           <WrappedLink onClick={handleSubmenuClick} href="#">
             Blog
           </WrappedLink>
-          <Transition
-            show={isOpen}
-            enter="transition-all"
-            enterFrom="opacity-0 h-0"
-            enterTo="opacity-100 h-52"
-            leave="transition-all"
-            leaveFrom="opacity-100 h-52"
-            leaveTo="opacity-0 h-0"
-            className="
-              bg-yellow-50 
-              border-gray-200
-              border-r-[1px]
-              md:absolute
-              md:border-none
-              md:rounded
-              md:shadow
-              md:text-left
-              overflow-hidden
-              relative
-              text-right
-              z-10
-            "
-          >
-            <ul className="py-2">
-              <li>
-                <NextLink passHref href="/category/bordado">
-                  <a className="px-6 py-1 inline-block">Bordado</a>
-                </NextLink>
-              </li>
-              <li>
-                <NextLink passHref href="/category/fieltro">
-                  <a className="px-6 py-1 inline-block">Fieltro</a>
-                </NextLink>
-              </li>
-              <li>
-                <NextLink passHref href="/category/bolsos">
-                  <a className="px-6 py-1 inline-block">Bolsos</a>
-                </NextLink>
-              </li>
-              <li>
-                <NextLink passHref href="/category/ecoprint">
-                  <a className="px-6 py-1 inline-block">Ecoprint</a>
-                </NextLink>
-              </li>
-              <li>
-                <NextLink passHref href="/category/encuadernacion">
-                  <a className="px-6 py-1 inline-block">Encuadernación</a>
-                </NextLink>
-              </li>
-              <li>
-                <NextLink passHref href="/blog">
-                  <a className="px-6 py-1 inline-block">Ver todo</a>
-                </NextLink>
-              </li>
-            </ul>
-          </Transition>
+          <ul className="py-2">
+            <li>
+              <NextLink passHref href="/category/bordado">
+                <a className="px-6 py-1 inline-block">Bordado</a>
+              </NextLink>
+            </li>
+            <li>
+              <NextLink passHref href="/category/fieltro">
+                <a className="px-6 py-1 inline-block">Fieltro</a>
+              </NextLink>
+            </li>
+            <li>
+              <NextLink passHref href="/category/bolsos">
+                <a className="px-6 py-1 inline-block">Bolsos</a>
+              </NextLink>
+            </li>
+            <li>
+              <NextLink passHref href="/category/ecoprint">
+                <a className="px-6 py-1 inline-block">Ecoprint</a>
+              </NextLink>
+            </li>
+            <li>
+              <NextLink passHref href="/category/encuadernacion">
+                <a className="px-6 py-1 inline-block">Encuadernación</a>
+              </NextLink>
+            </li>
+            <li>
+              <NextLink passHref href="/blog">
+                <a className="px-6 py-1 inline-block">Ver todo</a>
+              </NextLink>
+            </li>
+          </ul>
         </li>
         <li>
           <NextLink passHref href="/contacto">

@@ -78,31 +78,18 @@ const Lightbox = ({
       onClick={onExit}
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <Transition
+      <img
         key={selectedImage.index}
-        show
-        appear
-        enter="transition-opacity"
-        enterFrom="opacity-0"
-        enterTo="opacity-100"
-        leave="transition-opacity"
-        leaveFrom="opacity-100"
-        leaveTo="opacity-0"
-        className="duration-300"
-      >
-        <img
-          key={selectedImage.index}
-          className="max-h-screen cursor-pointer"
-          src={selectedImage.src}
-          alt={selectedImage.alt}
-          // fallback={<Spinner mx="auto" color="white" />}
-          onClick={(event) => {
-            event.stopPropagation();
+        className="max-h-screen cursor-pointer"
+        src={selectedImage.src}
+        alt={selectedImage.alt}
+        // fallback={<Spinner mx="auto" color="white" />}
+        onClick={(event) => {
+          event.stopPropagation();
 
-            onNavigate(event.type);
-          }}
-        />
-      </Transition>
+          onNavigate(event.type);
+        }}
+      />
     </div>
   );
 };
