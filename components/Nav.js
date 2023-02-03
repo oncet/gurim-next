@@ -1,7 +1,6 @@
 import { useEffect, forwardRef, useState, useRef, useCallback } from "react";
 import NextLink from "next/link";
 import { useRouter } from "next/router";
-import { Transition } from "@headlessui/react";
 
 const WrappedLink = forwardRef(({ children, ...props }, ref) => (
   <a className="inline-block py-2" {...props} ref={ref}>

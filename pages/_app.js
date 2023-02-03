@@ -1,6 +1,5 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { Transition } from "@headlessui/react";
 
 import Layout from "../components/Layout";
 import Spinner from "../components/Spinner";
