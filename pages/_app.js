@@ -48,7 +48,7 @@ function MyApp({ Component, pageProps }) {
                 opacity: 0,
               }}
               transition={{
-                duration: 0.15,
+                duration: 0.3,
               }}
             >
               {router.isFallback ? (
