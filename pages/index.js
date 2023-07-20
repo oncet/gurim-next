@@ -68,6 +68,7 @@ export default function Home({ posts }) {
                   alt="Image"
                   layout="responsive"
                   fallback={<Spinner mx="auto" color="white" />}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   priority
                 />
               </AnimatedBox>
@@ -94,6 +95,7 @@ export default function Home({ posts }) {
                         width={700}
                         height={700}
                         layout="responsive"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       />
                     </Box>
                     <Text mt="2">{title}</Text>
