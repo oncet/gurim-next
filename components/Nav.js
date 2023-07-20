@@ -53,11 +53,6 @@ const Nav = () => {
         justifyContent="flex-end"
         ml="0"
       >
-        <ListItem>
-          <NextLink passHref href="https://shop.gurim.com.ar/">
-            <WrappedLink>Tienda</WrappedLink>
-          </NextLink>
-        </ListItem>
         <ListItem ref={ref}>
           <WrappedLink onClick={handleSubmenuClick} href="#">
             Blog
