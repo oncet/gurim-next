@@ -2,7 +2,7 @@ import NextLink from "next/link";
 import Image from "next/image";
 import { Box, Container, Link } from "@chakra-ui/react";
 
-import logo from "../public/logo.png";
+import logo from "../public/logo-2.png";
 import Nav from "./Nav";
 
 const Header = () => {
@@ -15,8 +15,8 @@ const Header = () => {
           justifyContent="space-between"
         >
           <NextLink href="/" passHref>
-            <Link>
-              <Image src={logo} width={90} height={113} alt="Gurim logo" />
+            <Link width={90}>
+              <Image src={logo} width={180} height={226} alt="Gurim logo" />
             </Link>
           </NextLink>
           <Nav />
