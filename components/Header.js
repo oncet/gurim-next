@@ -16,7 +16,13 @@ const Header = () => {
         >
           <NextLink href="/" passHref>
             <Link>
-              <Image src={logo} width={90} height={113} alt="Gurim logo" />
+              <Image
+                src={logo}
+                width={90}
+                height={113}
+                alt="Gurim logo"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              />
             </Link>
           </NextLink>
           <Nav />

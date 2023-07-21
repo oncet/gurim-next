@@ -86,6 +86,7 @@ export default function Category({ category }) {
                             width={700}
                             height={700}
                             layout="responsive"
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                           />
                         </Box>
                         <Text mt="2">{node.title}</Text>
