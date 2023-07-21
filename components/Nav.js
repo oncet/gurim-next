@@ -53,7 +53,7 @@ const Nav = () => {
         justifyContent="flex-end"
         ml="0"
       >
-        <ListItem ref={ref}>
+        <ListItem ref={ref} position="relative">
           <WrappedLink onClick={handleSubmenuClick} href="#">
             Blog
           </WrappedLink>
@@ -73,6 +73,7 @@ const Nav = () => {
                 boxShadow={[null, "md"]}
                 borderRight={["1px solid", null]}
                 borderColor="gray.200"
+                left={[null, "-2rem"]}
                 rounded={[null, "md"]}
               >
                 <UnorderedList
