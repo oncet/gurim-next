@@ -9,6 +9,7 @@ import {
   UnorderedList,
   useOutsideClick,
   useBreakpointValue,
+  Button,
 } from "@chakra-ui/react";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -54,9 +55,14 @@ const Nav = () => {
         ml="0"
       >
         <ListItem ref={ref} position="relative">
-          <WrappedLink onClick={handleSubmenuClick} href="#">
+          <Button
+            variant="link"
+            onClick={handleSubmenuClick}
+            py="2"
+            fontWeight="normal"
+          >
             Blog
-          </WrappedLink>
+          </Button>
           <AnimatePresence>
             {isOpen && (
               <AnimatedBox

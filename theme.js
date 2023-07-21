@@ -83,6 +83,22 @@ const components = {
       },
     },
   },
+  Button: {
+    variants: {
+      link: {
+        color: "gray.800",
+        textUnderlineOffset: "6px",
+        _hover: {
+          textDecorationThickness: "2px",
+        },
+        _focus: {
+          textDecoration: "underline",
+          textDecorationThickness: "2px",
+          boxShadow: "none",
+        },
+      },
+    },
+  },
 };
 
 export default extendTheme({
