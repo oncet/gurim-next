@@ -58,8 +58,9 @@ const Nav = () => {
           <Button
             variant="link"
             onClick={handleSubmenuClick}
-            py="2"
             fontWeight="normal"
+            height="100%"
+            minWidth="0"
           >
             Blog
           </Button>
